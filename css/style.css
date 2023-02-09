@@ -35,14 +35,24 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+
+}
+.main-page{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }
 .posts{
-    max-width: 300px;
-    background: white;
+    max-width: 900px;
     display: grid;
     grid-gap: 30px;
+    grid-template-columns: 300px 300px;
+    grid-template-rows: auto;
+    flex: 40%;
+    margin-right: 15%;
 }
 .single-post{
+    max-width: 300px;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -59,10 +69,11 @@ img {
 }
 
 .profile-side-bar {
-    background-color: white;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
-	justify-content: center;
 	align-items: center;
-    max-width: 300px;
+    flex: 20%;
+    margin-left: 10%;
+    margin-right: 5%;
 }
