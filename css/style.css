@@ -24,7 +24,8 @@ img {
 }
 
 .prof-social {
-    margin: 1rem 0;
+    margin: 10px;
+    padding: 10px;
     list-style: none;
     display: flex;
     gap: 0.5rem;
@@ -42,12 +43,14 @@ img {
 .avatar {
     width: 200px;
     border-radius: 100%;
+    padding-top: 20px;
 }
 .profile-text {
     text-align: center;
 }
 
 .profile-side-bar {
+    background-color: white;
     display: flex;
     flex-direction: column;
 	justify-content: center;
