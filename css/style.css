@@ -43,7 +43,7 @@ img {
 .avatar {
     width: 200px;
     border-radius: 100%;
-    padding-top: 20px;
+    margin-top: 20px;
 }
 .profile-text {
     text-align: center;
