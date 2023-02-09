@@ -14,7 +14,7 @@ h1 {
     color: rgb(45, 45, 45);
 }
 body{
-    background: rgb(239, 224, 205);
+    background: rgb(255, 255, 255);
 }
 h3 {
     color: #6495ED;
@@ -38,7 +38,15 @@ img {
 }
 .posts{
     max-width: 300px;
-    background: whitesmoke;
+    background: white;
+    display: grid;
+    grid-gap: 30px;
+}
+.single-post{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    margin: 10px;
 }
 .avatar {
     width: 200px;
@@ -47,6 +55,7 @@ img {
 }
 .profile-text {
     text-align: center;
+    font-style: italic;
 }
 
 .profile-side-bar {
