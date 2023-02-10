@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .reg-form {
@@ -13,11 +14,13 @@
 .sign-box{
     position: absolute;
     width: 350px;
-   
+    box-shadow: -4px 6px 54px -1px rgba(15,26,63,0.75);
+    -webkit-box-shadow: -4px 6px 54px -1px rgba(15,26,63,0.75);
+    -moz-box-shadow: -4px 6px 54px -1px rgba(15,26,63,0.75);
     top: 50%;
     left: 50%;
     transform: translate( -50% , -50% );
-    background-color: #8898BD;
+    background-color: #adbbdc;
     padding: 25px 25px 45px 25px;
     border-radius: 25px;
 }
@@ -27,6 +30,7 @@
     font-size: 40px;
     margin-bottom: 20px;
     position: relative;
+    font-weight: 400;
 }
 
 .reg-text::before{
@@ -36,7 +40,7 @@
     height: 5px;
     
     border-radius: 30px;
-    background-color: #4F70BD;
+    background: linear-gradient(65deg , #4F70BD , #3A528A);
     bottom: -10px;
 }
 
@@ -52,7 +56,7 @@
     outline: none;
     border-width: 0px 0px 2px 0px;
     border-color: #395188;
-    background-color: #8898BD;
+    background-color:#adbbdc;
 }
 
 .sign-box .input-box label{
@@ -77,10 +81,32 @@
     font-size: 18px;
     display: flex;
     justify-content: flex-end;
+    color:#192642;
     /*<!--color: #c7d6f8;-->*/
 
 }
 
+.sign-box .input-box .password-checkbox input[type="checkbox"]{
+    display: grid;
+    grid-template-columns: 0.8em auto;
+    gap: 0.5em;
+
+    
+}
+/*у мене не вийшло, може потім це зролю':)
+.sign-box .input-box .password-checkbox input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+  }
+  
+  .sign-box .input-box .password-checkbox input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+*/
 .sign-box .input-box .password-checkbox .show-text{
     margin-left: 5px;
 }
@@ -95,6 +121,9 @@
     font-size: 23px;
     border-radius: 10px;
     cursor: pointer;
+    box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
+-webkit-box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
+-moz-box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
 } 
 
 .sign-box .submit-but:active{
