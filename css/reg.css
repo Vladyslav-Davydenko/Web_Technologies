@@ -6,12 +6,13 @@
 
 form i{
     cursor: pointer;
+    color: #192642;
 }
 
 .reg-form {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(45deg , #4F70BD , #233358);
+    background: linear-gradient(5deg , #4F70BD , #233358);
     position: relative;
 }
 
@@ -35,6 +36,7 @@ form i{
     margin-bottom: 20px;
     position: relative;
     font-weight: 400;
+    color: #192642;
 }
 
 .reg-text::before{
@@ -101,14 +103,19 @@ form i{
 }
 
 .sign-box .input-box .password-checkbox{
-    width: 100%;
+    width: 10%;
     font-size: 18px;
     display: flex;
     justify-content: flex-end;
     color:#192642;
+    position: absolute;
+    top: 30%;
+    right: 2%;
     /*<!--color: #c7d6f8;-->*/
 
 }
+
+
 
 .sign-box .input-box .password-checkbox input[type="checkbox"]{
     display: grid;
@@ -146,8 +153,9 @@ form i{
     border-radius: 10px;
     cursor: pointer;
     box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
--webkit-box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
--moz-box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
+    -webkit-box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
+    -moz-box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
+
 } 
 
 .sign-box .submit-but:active{
@@ -162,11 +170,12 @@ form i{
 }
 
 .sign-box .login-link a{
-    color: black;
+    color: #192642;
     text-decoration: none;
 }
 
 .sign-box .login-link a:hover{
     text-decoration: underline;
     text-underline-position: under;
+    color: #192642;
 }
