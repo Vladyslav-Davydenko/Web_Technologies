@@ -65,6 +65,8 @@ img {
     background-color: #d0dcf9;
     padding-bottom: 25px;
     border-radius: 25px;
+    box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
+    -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63);
 }
 .single-post .post-text{
     margin-left: 10px;
@@ -90,6 +92,8 @@ img {
     height: 50%;
     background-color: #d0dcf9;
     border-radius: 25px;
+    box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
+    -webkit-box-shadow: -4px 6px 54px -1px rgb(15 26 63);
 }
 
 .profile-side-bar a{
