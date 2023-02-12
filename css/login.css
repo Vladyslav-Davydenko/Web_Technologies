@@ -42,7 +42,7 @@ form i{
 .reg-text::before{
     position: absolute;
     content: '';
-    width: 65%;
+    width: 32%;
     height: 5px;
     
     border-radius: 30px;
@@ -124,20 +124,7 @@ form i{
 
     
 }
-/*у мене не вийшло, може потім це зролю':)
-.sign-box .input-box .password-checkbox input[type="checkbox"]::before {
-    content: "";
-    width: 0.65em;
-    height: 0.65em;
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--form-control-color);
-  }
-  
-  .sign-box .input-box .password-checkbox input[type="checkbox"]:checked::before {
-    transform: scale(1);
-  }
-*/
+
 .sign-box .input-box .password-checkbox .show-text{
     margin-left: 5px;
 }
