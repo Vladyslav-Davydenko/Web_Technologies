@@ -115,7 +115,11 @@ form i{
 
 }
 
+.sign-box .input-box .password-checkbox svg{
+    width: 20px;
+    height: auto;
 
+}
 
 .sign-box .input-box .password-checkbox input[type="checkbox"]{
     display: grid;
