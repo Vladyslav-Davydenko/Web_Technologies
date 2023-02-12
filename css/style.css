@@ -7,21 +7,38 @@ header{
     margin-left: 5%;
     margin-right: 5%;
     border-radius: 25px;
+    box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
+    -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63); 
+}
+a{
+    text-decoration: none;
 }
 nav a{
     color: #d0dcf9;
     text-decoration: none;
     margin: 30px;
-    font-size: 20px;
+    font-size: 20px;   
 }   
 h1 {
     color: #d0dcf9;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 100px;
+}
+h4{
+    color: darkslategrey;
+    font-size: 15px;
+    font-style: italic;
 }
 body{
     background: linear-gradient(65deg , #4F70BD , #3A528A);
 }
 h3 {
     color: #6495ED;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.main-page h3{
+    margin-top: 20px;
 }
 img {
     width: 300px;
@@ -39,7 +56,6 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px;
 
 }
 .main-page{
@@ -48,7 +64,6 @@ img {
     margin-top: 50px;
 }
 .posts{
-    max-width: 900px;
     display: grid;
     grid-gap: 30px;
     grid-template-columns: 300px 300px;
@@ -56,14 +71,19 @@ img {
     flex: 40%;
     margin-right: 15%;
 }
+.posts-home{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: auto;
+    margin: 5% 20% 0 18%;
+    place-items: center;
+    margin-bottom: 5%;
+}
 .single-post{
     max-width: 300px;
-    display: grid;
-    justify-content: center;
-    align-content: center;
     margin: -5px;
     background-color: #d0dcf9;
-    padding-bottom: 25px;
     border-radius: 25px;
     box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
     -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63);
@@ -71,11 +91,33 @@ img {
 .single-post .post-text{
     margin-left: 10px;
 }
+.post-author{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    place-items: left;
+
+}
+.post-author .post-author-img{
+    max-width: 40px;
+    display: grid;
+    place-items: center;
+}
+.posted{
+    display: flex;
+    justify-content: right;
+    margin-right: 5%;
+}
 .avatar {
     width: 200px;
     border-radius: 100%;
     margin-top: 20px;
 }
+.avatar-small{
+    width: 35px;
+    border-radius: 100%;
+}
+
 .profile-text {
     text-align: center;
     font-style: italic;
