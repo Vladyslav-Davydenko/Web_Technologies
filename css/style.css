@@ -6,7 +6,7 @@ header{
     background: #6495ED;
     height: 50px;
    
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 20px;
     box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
     -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63); 
@@ -24,6 +24,47 @@ nav a{
     font-weight: bold;
     font-family: optima;
 }   
+
+ .home-link{
+    margin-top: 3px;
+    background-color: #b2c2e6;
+    border-radius: 5%;
+    padding: 10px 15px;
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    left: 20px;
+}
+
+.home-link:hover{
+    background-color:#395188;
+    color:#b2c2e6;
+}
+
+.profile-link{
+    margin-top: -2px;
+    
+    border-radius: 5%;
+    padding: 10px 15px;
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    right: 20px;
+    size:20px;
+}
+
+.profile-link:hover{
+    color:#b2c2e6;
+}
+
+.profile-link svg{
+    display: block;
+    width: 40px;
+    height: auto;
+}
+
+.profile-link path:hover{
+    fill:#b2c2e6;
+}
+
 h1 {
     color: #d0dcf9;
     font-family: 'Brush Script MT', cursive;
