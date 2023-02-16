@@ -6,7 +6,7 @@ header{
     background: #6495ED;
     height: 50px;
    
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 20px;
     box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
     -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63); 
@@ -24,13 +24,52 @@ nav a{
     font-weight: bold;
     font-family: optima;
 }   
+
+ .home-link{
+    margin-top: 3px;
+    background-color: #b2c2e6;
+    border-radius: 5%;
+    padding: 10px 15px;
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    left: 20px;
+}
+
+.home-link:hover{
+    background-color:#395188;
+    color:#b2c2e6;
+}
+
+.profile-link{
+    margin-top: -2px;
+    
+    border-radius: 5%;
+    padding: 10px 15px;
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    right: 20px;
+    size:20px;
+}
+
+.profile-link:hover{
+    color:#b2c2e6;
+}
+
+.profile-link svg{
+    display: block;
+    width: 40px;
+    height: auto;
+}
+
+
+
 h1 {
     color: #d0dcf9;
     font-family: 'Brush Script MT', cursive;
     font-size: 100px;
 }
 h4{
-    color: darkslategrey;
+    color: rgb(18, 43, 72);
     font-size: 15px;
     font-style: italic;
     font-family: optima;
@@ -52,7 +91,8 @@ h3 {
 }
 img {
     width: 100%;
-    border-radius: 25px 25px 0px 0px;
+    
+    border-radius: 10px 10px 0px 0px;
 }
 p {
     font-family: optima;
@@ -63,7 +103,10 @@ p {
     padding: 10px;
     list-style: none;
     display: flex;
+    
   }
+
+
 
 .main-name{
     display: flex;
@@ -96,11 +139,12 @@ p {
 .single-post{
     max-width: 300px;
     margin: -5px;
-    background-color: #d0dcf9;
-    border-radius: 25px;
+    background-color: #e2eafd;
+    border-radius: 10px;
     box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
     -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63);
 }
+
 .single-post .post-text{
     margin-left: 10px;
 }
