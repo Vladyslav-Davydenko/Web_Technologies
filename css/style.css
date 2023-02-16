@@ -12,6 +12,26 @@ header{
     -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63); 
     z-index: 1;
 }
+@font-face {
+    font-family: "Parisienne-Regular";
+    font-style: normal;
+    src: url("../fonts/Parisienne-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Naruto-Style";
+    font-style: normal;
+    src: url("../fonts/ninja-naruto.regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Squealer";
+    font-style: normal;
+    src: url("../fonts/squealer.regular.otf") format("opentype");
+}
+@font-face {
+    font-family: "Action-Is";
+    font-style: normal;
+    src: url("../fonts/action-is.regular.ttf") format("truetype");
+}
 a{
     text-decoration: none;
     font-family: optima;
@@ -128,14 +148,20 @@ nav a{
 
 h1 {
     color: #d0dcf9;
-    font-family: 'Brush Script MT', cursive;
+    font-family: "Action-Is", cursive;
     font-size: 100px;
+    text-align: center;
+}
+h2 {
+    font-family: "Parisienne-Regular";
+    text-align: center;
+    font-size: 40px;
 }
 h4{
     color: rgb(18, 43, 72);
     font-size: 15px;
     font-style: italic;
-    font-family: optima;
+    font-family: Parisienne-Regular;
 }
 body{
     background-image:
@@ -158,7 +184,11 @@ img {
     border-radius: 10px 10px 0px 0px;
 }
 p {
-    font-family: optima;
+    font-family: "Naruto-Style";
+    font-size: 20px;
+    word-spacing: 5px;
+    line-height: 1.4;
+
 }
 
 .prof-social {
@@ -181,6 +211,7 @@ p {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 .posts{
     display: grid;
@@ -200,12 +231,13 @@ p {
     margin-bottom: 5%;
 }
 .single-post{
-    max-width: 300px;
+    max-width: 950px;
     margin: -5px;
     background-color: #e2eafd;
     border-radius: 10px;
     box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
     -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63);
+    height: auto;
 }
 
 .single-post .post-text{
@@ -263,4 +295,53 @@ p {
     color: #4F70BD;
     text-decoration: none;
     margin: 30px;
+}
+.post-meta {
+    font-family: "Squealer";
+    font-weight: normal;
+    padding-right: 20px;
+    text-align: right;
+    font-size: 20px;
+}
+.post-image {
+    margin: 5px;
+}
+.post-tags {
+    margin-left: 10px;
+    font-size: 18px;
+    width: 30px;
+}
+.tag {
+    padding: 5px 5px;
+    margin: 5px 5px;
+}
+.fa {
+    text-align: center;
+}
+.fa:hover {
+    opacity: 0.5;
+}
+.fa-facebook::before {
+    content: "\f082";
+}
+.fa-twitter::before {
+    content: "\f099";
+}
+.fa-instagram::before {
+    content: "\f16d";
+}
+.fa-telegram::before {
+    content: "\f2c6";
+}
+.share-links {
+    padding-left: 40px;
+}
+.fa-heart::before {
+    content: "&#xf08a";
+    color:rgb(255, 0, 0);
+
+}
+.fa-heart::after {
+    content: "";
+    color: rgb(255, 0, 0);
 }
