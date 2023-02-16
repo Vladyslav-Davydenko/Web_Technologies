@@ -23,20 +23,45 @@ nav a{
     font-size: 25px;
     font-weight: bold;
     font-family: optima;
+    transition: all 0.3s ease-in-out;
 }   
 
  .home-link{
     margin-top: 3px;
-    background-color: #b2c2e6;
     border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    left: 20px;
+    left: 50px;
 }
 
 .home-link:hover{
-    background-color:#395188;
+    color:#b2c2e6;
+}
+
+.about-link{
+    margin-top: 3px;
+    border-radius: 5%;
+    padding: 10px 15px;
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    left: 205px;
+}
+
+.about-link:hover{
+    color:#b2c2e6;
+}
+
+.login-link{
+    margin-top: 3px;
+    border-radius: 5%;
+    padding: 10px 15px;
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    right: 120px;
+}
+
+.login-link:hover{
     color:#b2c2e6;
 }
 
@@ -61,7 +86,45 @@ nav a{
     height: auto;
 }
 
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
 
+.form-field{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form .input-text{
+    width: 600px;
+    
+}
+
+.form .form-field input[type="text"]{
+    font-size: 20px;
+    outline: none;
+    padding: 15px 15px;
+    border-radius: 10px;
+    border: 2px solid #395188;
+    background-color: #d0dcf9;
+}
+.btn{
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 25px;
+    color: #d0dcf9;
+    background-color: #395188;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-color: #4966a8;
+}
 
 h1 {
     color: #d0dcf9;
