@@ -32,6 +32,9 @@ header{
     font-style: normal;
     src: url("../fonts/action-is.regular.ttf") format("truetype");
 }
+
+
+
 a{
     text-decoration: none;
     font-family: optima;
@@ -65,7 +68,7 @@ nav a{
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    left: 205px;
+    left: 175px;
 }
 
 .about-link:hover{
@@ -78,7 +81,7 @@ nav a{
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    right: 120px;
+    right: 89px;
 }
 
 .login-link:hover{
@@ -114,8 +117,8 @@ nav a{
 }
 
 .form-field{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    
+   
 }
 
 .form .input-text{
@@ -130,6 +133,7 @@ nav a{
     border-radius: 10px;
     border: 2px solid #395188;
     background-color: #d0dcf9;
+    font-family: 'Ubuntu', sans-serif;
 }
 .btn{
     border: none;
@@ -158,9 +162,9 @@ h2 {
     font-size: 40px;
 }
 h4{
-    color: rgb(18, 43, 72);
+    color: rgb(123, 137, 152);
     font-size: 15px;
-    font-style: italic;
+    
     font-family: Parisienne-Regular;
 }
 body{
@@ -173,7 +177,7 @@ h3 {
     color: #6495ED;
     margin-block-start: 0;
     margin-block-end: 0;
-    font-family: optima;
+    font-family: 'Ubuntu', sans-serif;
 }
 .main-page h3{
     margin-top: 20px;
@@ -345,3 +349,91 @@ p {
     content: "";
     color: rgb(255, 0, 0);
 }
+
+.container{
+    max-width: 1170px;
+    margin:auto;
+  }
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  ul{
+    list-style: none;
+  }
+  .footer{
+    background-color:  #192642;
+    padding: 70px 0;
+    border-radius: 10px;
+  }
+
+  .col{
+    width: 25%;
+    padding: 0 15px;
+ }
+ .col h5{
+   font-size: 18px;
+   color: #d0dcf9;
+   text-transform: capitalize;
+   margin-bottom: 35px;
+   font-weight: 500;
+   position: relative;
+   font-family: 'Ubuntu', sans-serif;
+ }
+ .col h5::before{
+   content: '';
+   position: absolute;
+   left:0;
+   bottom: -10px;
+   background-color: #d0dcf9;
+   height: 2px;
+   box-sizing: border-box;
+   width: 50px;
+ }
+
+ .col ul li:not(:last-child){
+    margin-bottom: 10px;
+  }
+  .col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #d0dcf9;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .col ul li a:hover{
+    color: #ffffff;
+    padding-left: 8px;
+  }
+  .col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    margin:0 10px 10px 0;
+    text-align: center;
+    line-height: 47px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+  }
+
+  .col .social-links a svg{
+    width: 20px;
+    height: auto;
+  }
+
+  .col .social-links a:hover{
+    color: #24262b;
+    background-color: #ffffff;
+  }
+
+  .col .social-links a path:hover{
+    fill: #192642;
+    
+  }
+ 
