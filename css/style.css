@@ -5,8 +5,9 @@ header{
     
     background: #6495ED;
     height: 50px;
-   
-    border-radius: 5px;
+    margin-left: 30px;
+    margin-right: 25px;
+    border-radius: 15px;
     padding: 20px;
     box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
     -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63); 
@@ -42,7 +43,6 @@ a{
 nav a{
     color: #395188;
     text-decoration: none;
-    margin: 30px;
     font-size: 25px;
     font-weight: bold;
     font-family: optima;
@@ -50,12 +50,12 @@ nav a{
 }   
 
  .home-link{
-    margin-top: 3px;
+    margin-top: 0;
     border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    left: 50px;
+    left: 75px;
 }
 
 .home-link:hover{
@@ -63,12 +63,12 @@ nav a{
 }
 
 .about-link{
-    margin-top: 3px;
+    margin-top: 0;
     border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    left: 175px;
+    left: 200px;
 }
 
 .about-link:hover{
@@ -76,12 +76,12 @@ nav a{
 }
 
 .login-link{
-    margin-top: 3px;
+    margin-top: 0;
     border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    right: 89px;
+    right: 200px;
 }
 
 .login-link:hover{
@@ -95,8 +95,8 @@ nav a{
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    right: 20px;
-    size:20px;
+    right: 75px;
+    size: 20px;
 }
 
 .profile-link:hover{
@@ -110,6 +110,8 @@ nav a{
 }
 
 .form{
+    position: absolute;
+    left: 370px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,7 +126,7 @@ nav a{
 .form .form-field input[type="text"]{
     font-size: 20px;
     outline: none;
-    padding: 15px 15px;
+    padding: 10px 10px;
     border-radius: 10px;
     border: 2px solid #395188;
     background-color: #d0dcf9;
@@ -132,9 +134,9 @@ nav a{
 }
 .btn{
     border: none;
-    padding: 10px 25px;
+    padding: 10px 15px;
     border-radius: 10px;
-    font-size: 25px;
+    font-size: 22px;
     color: #d0dcf9;
     background-color: #395188;
     transition: all 0.3s ease-in-out;
@@ -147,8 +149,9 @@ nav a{
 
 h1 {
     color: #d0dcf9;
-    font-family: "Action-Is", cursive;
+    font-family: "Parisienne-Regular", cursive;
     font-size: 100px;
+    font-weight: 800;
     text-align: center;
 }
 h2 {
@@ -159,14 +162,13 @@ h2 {
 h4{
     color: rgb(123, 137, 152);
     font-size: 15px;
-    
-    font-family: Parisienne-Regular;
 }
 body{
     background-image:
     linear-gradient(65deg, #4f70bdf2, #3a528af2),
     url('../img/bg.jpeg');
     overflow-x: hidden;
+    margin: 0%;
 }
 h3 {
     color: #6495ED;
@@ -183,8 +185,7 @@ img {
     border-radius: 10px 10px 0px 0px;
 }
 p {
-    font-family: "Naruto-Style";
-    font-size: 20px;
+    font-size: 16px;
     word-spacing: 5px;
     line-height: 1.4;
 
@@ -210,7 +211,7 @@ p {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 200px;
 }
 .posts{
     display: grid;
@@ -227,13 +228,12 @@ p {
     grid-template-rows: auto;
     margin: 5% 20% 0 18%;
     place-items: center;
-    margin-bottom: 5%;
+    margin-bottom: 200px;
 }
 .single-post{
-    max-width: 960px;
-    margin: -5px;
+    max-width: 300px;
     background-color: #e2eafd;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: -4px 13px 34px -14px rgba(15,26,63,0.52);
     -webkit-box-shadow: -4px 6px 30px -1px rgb(15 26 63);
     height: auto;
@@ -241,6 +241,7 @@ p {
 
 .single-post .post-text{
     margin-left: 10px;
+    margin-right: 10px;
 }
 .post-author{
     display: grid;
@@ -271,8 +272,9 @@ p {
 
 .profile-text {
     text-align: center;
-    font-style: italic;
     font-family: optima;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .profile-side-bar {
@@ -347,16 +349,17 @@ p {
   }
   ul{
     list-style: none;
+    padding-left: 0;
   }
   .footer{
     background-color:  #192642;
     padding: 70px 0;
-    border-radius: 10px;
   }
 
   .col{
     width: 25%;
     padding: 0 15px;
+    margin-left: 35px;
  }
  .col h5{
    font-size: 18px;
@@ -401,7 +404,7 @@ p {
     height: 40px;
     width: 40px;
     background-color: rgba(255,255,255,0.2);
-    margin:0 10px 10px 0;
+    margin:0 10px 10px 0px;
     text-align: center;
     line-height: 47px;
     border-radius: 50%;
