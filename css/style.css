@@ -305,13 +305,8 @@ p {
 .post-image {
     margin: 5px;
 }
-.post-tags {
-    margin-left: 10px;
-    font-size: 18px;
-    width: 30px;
-}
 .tag {
-    padding: 5px 5px;
+    padding: 2px 2px;
     margin: 5px 5px;
 }
 .fa {
@@ -331,9 +326,6 @@ p {
 }
 .fa-telegram::before {
     content: "\f2c6";
-}
-.share-links {
-    padding-left: 40px;
 }
 .fa-heart::before {
     content: "&#xf08a";
@@ -431,4 +423,21 @@ p {
     fill: #192642;
     
   }
- 
+.post-footer {
+    display: flex;
+}
+.post-tags {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 60px;
+    font-size: 18px;
+    width: auto;
+}
+.post-like {
+    margin: 15px 65px 15px 135px;
+    width: auto;
+}
+.share-links {
+    margin: 15px 170px 15px 130px;
+    width: auto;
+}
