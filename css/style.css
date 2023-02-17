@@ -425,6 +425,7 @@ p {
   }
 .post-footer {
     display: flex;
+    text-decoration: overline underline;
 }
 .post-tags {
     margin-top: 15px;
@@ -440,4 +441,17 @@ p {
 .share-links {
     margin: 15px 170px 15px 130px;
     width: auto;
+    padding-left: 7px;
+}
+.post-like-button {
+    padding-right: 30px;
+}
+.facebook-share {
+    padding-right: 10px;
+}
+.twitter-share {
+    padding-right: 10px;
+}
+.instagram-share {
+    padding-right: 10px;
 }
