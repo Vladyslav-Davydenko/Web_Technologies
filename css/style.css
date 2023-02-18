@@ -52,6 +52,7 @@ header{
     .posts-home{
         grid-template-columns: 300px 300px !important;
         grid-template-rows: auto !important;
+        margin-left: 20% !important;
     }
 }
 
@@ -78,6 +79,7 @@ header{
     .posts-home{
         grid-template-columns: 300px !important;
         grid-template-rows: auto !important;
+        margin-left: 20% !important;
     }
 }
 
@@ -196,6 +198,24 @@ nav a{
     background-color: #4966a8;
 }
 
+.btn-edit{
+    margin-top: -20px;
+    float: right;
+    margin-right: 12px;
+    margin-top: 0;
+    transition: all ease-in;
+}
+
+.btn-edit i{
+    text-decoration: none;
+    color: #395188;
+}
+
+.btn-edit:hover{
+    cursor: pointer;
+    color: #4966a8;
+}
+
 h1 {
     color: #d0dcf9;
     font-family: "Parisienne-Regular", cursive;
@@ -260,6 +280,7 @@ p {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    width: 100%;
     margin-bottom: 200px;
 }
 .posts{
@@ -277,8 +298,7 @@ p {
     grid-gap: 30px;
     grid-template-columns: 300px 300px 300px;
     grid-template-rows: auto;
-    margin: 5% 20% 0 18%;
-    place-items: center;
+    margin: 5% 10% 0 18%;
     margin-bottom: 200px;
 }
 .single-post{
