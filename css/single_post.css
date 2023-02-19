@@ -31,6 +31,16 @@ header {
     font-style: normal;
     src: url("../fonts/action-is.regular.ttf") format("truetype");
 }
+@font-face {
+    font-family: "Libre-Baskerville";
+    font-style: normal;
+    src: url("../fonts/libre-baskerville.regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Libre-Baskerville-Italic";
+    font-style: italic;
+    src: url("../fonts/libre-baskerville.italic.ttf") format("truetype");
+}
 
 @media screen and (max-width: 1450px) {
     
