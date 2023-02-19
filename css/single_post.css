@@ -102,19 +102,6 @@ nav a{
     color:#FFF0F3;
 }
 
-.login-link{
-    margin-top: 0;
-    border-radius: 5%;
-    padding: 10px 15px;
-    font-family: 'Ubuntu', sans-serif;
-    position: absolute;
-    right: 200px;
-}
-
-.login-link:hover{
-    color:#FFF0F3;
-}
-
 .profile-link{
     margin-top: -2px;
     border-radius: 5%;
@@ -175,7 +162,7 @@ p {
     text-overflow: ellipsis;
     line-height: 1.4;
     color: #1B2021;
-    font-family: "Naruto-style"
+    font-family: "Libre-Baskerville-Italic"
 }
 .main-name{
     display: flex;
