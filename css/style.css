@@ -45,7 +45,18 @@ header{
         background: none;
         box-shadow: none;
     }
+
+    .posts-home{
+        margin-top: -150px !important;
+    }
     
+    .posts{
+        margin-top: -150px !important;
+    }
+
+    .profile-side-bar{
+        margin-top: -150px !important;
+    }
   
 }
 
@@ -63,10 +74,6 @@ header{
         grid-template-columns: 300px !important;
         grid-template-rows: auto !important;
     }
-    .posts-home{
-        grid-template-columns: 300px !important;
-        grid-template-rows: auto !important;
-    }
 }
 
 @media screen and (max-width: 650px){
@@ -81,7 +88,6 @@ header{
     .posts-home{
         grid-template-columns: 300px !important;
         grid-template-rows: auto !important;
-        margin-left: 20% !important;
     }
 }
 
@@ -236,7 +242,7 @@ h2 {
     font-size: 40px;
 }
 h4{
-    color: #30343F;
+    color: #ea638c;
     font-size: 15px;
 }
 body{
@@ -264,6 +270,9 @@ img {
 p {
     font-size: 16px;
     word-spacing: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     line-height: 1.4;
     color: #1B2021;
 }
@@ -336,6 +345,8 @@ p {
 }
 .posted{
     display: flex;
+    bottom: 0;
+    right: 0;
     justify-content: right;
     margin-right: 5%;
 }
@@ -432,7 +443,7 @@ p {
   }
   .footer{
     background-color:  #A4133C;
-    border-radius: 10px;
+    border-radius: 15px 15px 0px 0px;
     padding: 70px 0;
   }
 
