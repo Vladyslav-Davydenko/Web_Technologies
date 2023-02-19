@@ -363,6 +363,7 @@ p {
 .profile-text {
     text-align: center;
     font-family: optima;
+    white-space: normal;
     margin-left: 10px;
     margin-right: 10px;
 }
