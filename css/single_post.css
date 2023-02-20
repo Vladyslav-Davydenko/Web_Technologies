@@ -125,6 +125,17 @@ nav a{
 .profile-link path{
     fill: #800F2F;
 }
+
+.post-meta {
+    font-family: "Squealer";
+    font-weight: normal;
+    padding-right: 20px;
+    text-align: right;
+    font-size: 20px;
+    
+    margin: 0px;
+}
+
 h1 {
     color: #FFB3C1;
     text-shadow: 4px 4px 0px #FF758F;
@@ -134,9 +145,14 @@ h1 {
     text-align: center;
 }
 h2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     font-family: "Parisienne-Regular";
     text-align: center;
     font-size: 40px;
+    
+    margin: 10px 0px 10px 0px;
 }
 body{
     background-color: #ea638c;
@@ -151,18 +167,29 @@ body{
 }
 img {
     width: 100%;
-    
+    margin-top: 50px;
     border-radius: 10px 10px 10px 10px;
 }
+
+.entry-desc{
+    position: absolute;
+    padding: 30px 20px;
+    left: 0px;
+    margin: 20px;
+    
+}
+
 p {
+    width: 920px;
+    height: 100%;
     font-size: 16px;
     word-spacing: 5px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.4;
     color: #1B2021;
-    font-family: "Libre-Baskerville-Italic"
+    font-family: "Libre-Baskerville-Italic";
+    white-space: nowrap;
 }
 .main-name{
     display: flex;
@@ -178,17 +205,21 @@ p {
     margin-bottom: 200px;
 }
 .single-post{
+    width: 100%;
     max-width: 960px;
     background-color: #FFF0F3;
     border-radius: 15px;
     box-shadow: -4px 13px 34px -14px #A4133C;
     -webkit-box-shadow: -4px 6px 30px -1px #C9184A;
     height: auto;
+    padding: 20px;
+    position: relative;
 }
 
 .single-post .post-text{
     margin-left: 10px;
     margin-right: 10px;
+    position: absolute;
 }
 .post-author{
     display: grid;
@@ -197,13 +228,7 @@ p {
     place-items: left;
 
 }
-.post-meta {
-    font-family: "Squealer";
-    font-weight: normal;
-    padding-right: 20px;
-    text-align: right;
-    font-size: 20px;
-}
+
 .post-image {
     margin: 5px;
 }
@@ -229,12 +254,17 @@ p {
 .fa-telegram::before {
     content: "\f2c6";
 }
-.fa-heart::before {
+.fa-heart{
     content: "&#xf08a";
-    color:rgb(255, 0, 0);
+    color:rgb(255, 140, 140);
 
 }
-.fa-heart::after {
+
+.fa-heart:active{
+    
+    fill:rgb(243, 0, 0);
+}
+.fa-heart::after{
     content: "";
     color: rgb(255, 0, 0);
 }
@@ -336,25 +366,37 @@ p {
     display: flex;
     border-top: 1px solid #c50a2c;
     border-bottom: 1px solid #c50a2c;
+    justify-content: space-between;
+    margin: 8px 0px 0px 0px;
+    text-align: center;
 }
 .post-tags {
     width: 320px;
     height: 50px;
     font-size: 18px;
+    padding-top: 17px;
+    
 }
 .post-like {
     width: 320px;
     height: 50px;
     text-align: center;
     vertical-align: middle;
+    padding-top: 17px;
+    
 }
 .share-links {
     width: 320px;
     height: 50px;
+    padding-top: 17px;
     vertical-align: middle;
+    text-align: center;
 }
 .post-like-button {
     padding-right: 30px;
+    border: none;
+    background-color: #FFF0F3;
+    width: 30px;
 }
 .facebook-share {
     height: 40px;
@@ -372,3 +414,8 @@ p {
     height: 40px;
     width: 40px;
 }
+
+.post-pagination{
+    margin: 233px 0px 10px 0px;
+}
+
