@@ -304,6 +304,7 @@ p {
     display: grid;
     width: 100%;
     grid-gap: 30px;
+    margin-bottom: 100px;
     grid-template-columns: 300px 300px;
     grid-template-rows: auto;
     flex: 40%;
