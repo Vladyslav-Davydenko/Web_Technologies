@@ -33,6 +33,15 @@ header{
     src: url("../fonts/action-is.regular.ttf") format("truetype");
 }
 
+
+
+@media screen and (min-width: 1600px){
+    .form{
+        left: 30% !important;
+    }
+    
+}
+
 @media screen and (max-width: 1450px){
     .nav-link{
         display: none;
@@ -64,7 +73,6 @@ header{
     .posts-home{
         grid-template-columns: 300px 300px !important;
         grid-template-rows: auto !important;
-        margin-left: 20% !important;
     }
     
 }
@@ -77,13 +85,12 @@ header{
 }
 
 @media screen and (max-width: 650px){
-    .profile-side-bar{
+    .side-bar{
         display: none !important;
     }
     .posts{
         grid-template-columns: 300px !important;
         grid-template-rows: auto !important;
-        margin-left: 20% !important;
     }
     .posts-home{
         grid-template-columns: 300px !important;
@@ -114,7 +121,7 @@ nav a{
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    left: 75px;
+    left: 5%;
 }
 
 .home-link:hover{
@@ -127,7 +134,7 @@ nav a{
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    left: 200px;
+    left: 13%;
 }
 
 .about-link:hover{
@@ -140,7 +147,7 @@ nav a{
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    right: 200px;
+    right: 12%;
 }
 
 .login-link:hover{
@@ -154,7 +161,7 @@ nav a{
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    right: 75px;
+    right: 5%;
     size: 20px;
 }
 
@@ -174,7 +181,7 @@ nav a{
 
 .form{
     position: absolute;
-    left: 370px;
+    left: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,7 +200,6 @@ nav a{
     border-radius: 10px;
     border: 2px solid #A4133C;
     background-color: #FFF0F3;
-    font-family: 'Ubuntu', sans-serif;
 }
 .btn{
     border: none;
@@ -269,7 +275,6 @@ img {
 }
 p {
     font-size: 16px;
-    word-spacing: 5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -300,21 +305,16 @@ p {
 }
 .posts{
     display: grid;
-    width: 100%;
     grid-gap: 30px;
     margin-bottom: 100px;
     grid-template-columns: 300px 300px;
     grid-template-rows: auto;
-    flex: 40%;
-    margin-right: 15%;
 }
 .posts-home{
     display: grid;
-    width: 100%;
     grid-gap: 30px;
     grid-template-columns: 300px 300px 300px;
     grid-template-rows: auto;
-    margin: 5% 10% 0 18%;
     margin-bottom: 200px;
 }
 .single-post{
@@ -373,7 +373,6 @@ p {
     flex-direction: column;
 	align-items: center;
     flex: 20%;
-    margin-left: 15%;
     margin-right: 5%;
     height: 50%;
 }
@@ -410,6 +409,7 @@ p {
 .workers .about-post .about-img{
     max-width: 300px;
     border-radius: 15px;
+    overflow: inherit;
 }
 
 .about-post h3{
