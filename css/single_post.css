@@ -135,11 +135,14 @@ nav a{
     
     margin: 0px;
 }
+.post-body {
+    height: 300px;
+}
 
 h1 {
     color: #FFB3C1;
     text-shadow: 4px 4px 0px #FF758F;
-    font-family: "Parisienne-Regular", cursive;
+    font-family: "Action-Is", cursive;
     font-size: 100px;
     font-weight: 800;
     text-align: center;
@@ -416,6 +419,18 @@ p {
 }
 
 .post-pagination{
-    margin: 233px 0px 10px 0px;
+    margin-bottom: 10px;
 }
-
+.next-post {
+    right: 20px;
+}
+h4 {
+    font-size: 20px;
+    width: 550px;
+}
+.button-previous-post {
+    font-size: 22px;
+}
+.button-next-post {
+    font-size: 22px;
+}
