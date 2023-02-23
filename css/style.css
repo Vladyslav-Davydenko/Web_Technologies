@@ -285,8 +285,6 @@ p {
     
   }
 
-
-
 .main-name{
     display: flex;
     justify-content: center;
@@ -369,7 +367,7 @@ p {
     margin-right: 10px;
 }
 
-.profile-side-bar {
+.side-bar{
     max-width: 300px;
     display: flex;
     flex-direction: column;
@@ -378,6 +376,21 @@ p {
     margin-left: 15%;
     margin-right: 5%;
     height: 50%;
+}
+
+.create-btn{
+    margin-top: 20px;
+}
+
+.create-btn .btn{
+    padding: 20px 90px;
+    border-radius: 25px;
+}
+
+.profile-side-bar {
+    display: flex;
+    flex-direction: column;
+	align-items: center;
     background-color: #FFF0F3;
     border-radius: 25px;
     box-shadow: -4px 13px 34px -14px #A4133C;
