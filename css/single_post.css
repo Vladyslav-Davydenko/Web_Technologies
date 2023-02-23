@@ -510,20 +510,30 @@ p {
     text-align: center;
     vertical-align: middle;
     padding-top: 17px;
+    font-size: 20px;
     
 }
+.share-links {
+    width: 344px;
 .social-links {
     width: 320px;
     height: 50px;
-    padding-top: 17px;
+    padding-top: 291px;
     vertical-align: middle;
     text-align: center;
 }
+
+.share-links i{
+    font-size: 23px;
+    color: #1B2021;
+}
+
 .post-like-button {
     padding-right: 30px;
     border: none;
     background-color: #FFF0F3;
     width: 30px;
+    font-size: 20px;
 }
 .facebook-share {
     height: 40px;
@@ -544,4 +554,11 @@ p {
 h4 {
     font-size: 20px;
     width: 550px;
+}
+.button-previous-post {
+    font-size: 22px;
+    
+}
+.button-next-post {
+    font-size: 22px;
 }
