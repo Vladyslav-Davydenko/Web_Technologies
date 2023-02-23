@@ -541,20 +541,7 @@ p {
     height: 40px;
     width: 40px;
 }
-
-.post-pagination{
-    margin-bottom: 10px;
-}
-.next-post {
-    right: 20px;
-}
 h4 {
     font-size: 20px;
     width: 550px;
-}
-.button-previous-post {
-    font-size: 22px;
-}
-.button-next-post {
-    font-size: 22px;
 }
