@@ -1,7 +1,4 @@
 header{
-    
-    display: flex;
-    justify-content: center;
     background: #FF758F;
     height: 50px;
     margin-left: 30px;
@@ -116,8 +113,6 @@ nav a{
 }
 
  .home-link{
-    margin-top: 0;
-    border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
@@ -129,8 +124,6 @@ nav a{
 }
 
 .about-link{
-    margin-top: 0;
-    border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
@@ -142,8 +135,6 @@ nav a{
 }
 
 .login-link{
-    margin-top: 0;
-    border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
@@ -156,13 +147,10 @@ nav a{
 
 .profile-link{
     margin-top: -2px;
-    
-    border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
     right: 5%;
-    size: 20px;
 }
 
 .profile-link:hover{
@@ -180,10 +168,8 @@ nav a{
 }
 
 .form{
-    position: absolute;
     left: 25%;
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 2rem;
 }
@@ -239,8 +225,8 @@ h1 {
     text-shadow: 4px 4px 0px #FF758F;
     font-family: "Action-Is", cursive;
     font-size: 100px;
-    font-weight: 800;
     text-align: center;
+    font-weight: 800;
 }
 h2 {
     font-family: "Parisienne-Regular";
@@ -252,11 +238,9 @@ h4{
     font-size: 15px;
 }
 body{
-    background-color: #ea638c;
     background-image:
     linear-gradient(65deg, #FF4D6Db2, #FF4D6Db2),
     url('../img/istockphoto-538992590-612x612.jpg');
-    overflow-x: hidden;
     margin: 0%;
 }
 h3 {
@@ -269,8 +253,9 @@ h3 {
     margin-top: 20px;
 }
 img {
-    width: 100%;
-    
+    object-fit: cover;
+    width: 300px;
+    height: 200px;
     border-radius: 10px 10px 0px 0px;
 }
 p {
@@ -293,20 +278,17 @@ p {
 .main-name{
     display: flex;
     justify-content: center;
-    align-items: center;
 
 }
 .main-page{
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    width: 100%;
     margin-bottom: 200px;
 }
 .posts{
     display: grid;
     grid-gap: 30px;
-    margin-bottom: 100px;
     grid-template-columns: 300px 300px;
     grid-template-rows: auto;
 }
@@ -315,7 +297,6 @@ p {
     grid-gap: 30px;
     grid-template-columns: 300px 300px 300px;
     grid-template-rows: auto;
-    margin-bottom: 200px;
 }
 .single-post{
     max-width: 300px;
@@ -323,7 +304,6 @@ p {
     border-radius: 15px;
     box-shadow: -4px 13px 34px -14px #A4133C;
     -webkit-box-shadow: -4px 6px 30px -1px #C9184A;
-    height: auto;
 }
 
 .single-post .post-text{
@@ -343,10 +323,7 @@ p {
     place-items: center;
 }
 .posted{
-    display: flex;
-    bottom: 0;
-    right: 0;
-    justify-content: right;
+    float: right;
     margin-right: 5%;
 }
 .avatar {
@@ -356,6 +333,7 @@ p {
 }
 .avatar-small{
     width: 35px;
+    height: 35px;
     border-radius: 100%;
 }
 
@@ -369,12 +347,7 @@ p {
 
 .side-bar{
     max-width: 300px;
-    display: flex;
-    flex-direction: column;
-	align-items: center;
-    flex: 20%;
     margin-right: 5%;
-    height: 50%;
 }
 
 .main-about{
@@ -390,26 +363,25 @@ p {
 
 .main-about .about-post{
     display: flex;
-    justify-content: center;
     max-width: 900px;
     background-color: #FFF0F3;
     border-radius: 15px;
     box-shadow: -4px 13px 34px -14px #A4133C;
     -webkit-box-shadow: -4px 6px 30px -1px #C9184A;
-    height: auto;
 }
 
 .workers{
     display: flex;
-    justify-content: center;
     flex-direction: column;
     gap: 20px;
 }
 
 .workers .about-post .about-img{
-    max-width: 300px;
-    border-radius: 15px;
     overflow: inherit;
+}
+
+.workers img{
+    height: 300px;
 }
 
 .about-post h3{
@@ -425,7 +397,7 @@ p {
 }
 
 .create-btn .btn{
-    padding: 20px 90px;
+    padding: 20px 73px;
     border-radius: 25px;
 }
 
