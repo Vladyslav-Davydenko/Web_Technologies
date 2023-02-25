@@ -259,7 +259,8 @@ h2 {
     font-family: "Parisienne-Regular";
     text-align: center;
     font-size: 40px;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0px 25px 0px;
+    color: #A4133C;
 }
 h4{
     color: #ea638c;
@@ -282,35 +283,28 @@ h3 {
 }
 img {
     width: 100%;
-    margin-top: 50px;
     border-radius: 10px 10px 10px 10px;
 }
 .post-meta {
     font-family: "Squealer";
     position: sticky;
     text-align: right;
+    color: #ea638c;
 }
 
 .entry-desc{
-    position: sticky;
-    padding: 30px 20px;
-    left: 0px;
-    margin: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
     
 }
-
+/* fdjjkfdksfjkdsjfdsf */
 p {
-    width: 1000px;
-    height: 100%;
     font-size: 22px;
-    word-spacing: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-spacing: 4px;
     line-height: 1.4;
     color: #1B2021;
     font-family: "Libre-Baskerville-Italic";
-    white-space: nowrap;
-    text-align: center;
 }
 .main-name{
     display: flex;
@@ -321,20 +315,33 @@ p {
 .main-page{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 50px;
     width: 100%;
     margin-bottom: 200px;
 }
+.post-author-img{
+    max-width: 40px;
+    display: grid;
+    place-items: center;
+}
+.avatar-small{
+    width: 35px;
+    border-radius: 100%;
+}
 .single-post{
-    width: 100%;
-    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 2%;
+    width: 1100px;
     background-color: #FFF0F3;
     border-radius: 15px;
     box-shadow: -4px 13px 34px -14px #A4133C;
     -webkit-box-shadow: -4px 6px 30px -1px #C9184A;
-    height: 1300px;
     padding: 20px;
-    position: relative;
 }
 
 .single-post .post-text{
@@ -406,7 +413,7 @@ p {
     border-radius: 15px 15px 0px 0px;
     padding: 70px 0;
     width: 100%;
-    max-width: 1140px;
+    /*max-width: 1140px;*/
   }
 
   .col{
@@ -492,38 +499,11 @@ p {
     margin: 8px 0px 0px 0px;
     text-align: center;
 }
-.post-image-reply-section {
-    height: 50px;
-    display: flex;
-    border-top: 1px solid #c50a2c;
-    border-bottom: 1px solid #c50a2c;
-    justify-content: space-between;
-    margin: 8px 0px 0px 0px;
-    text-align: center;
-}
-.post-body {
-    height: 357px;
-}
 .post-like {
-    width: 320px;
-    height: 50px;
-    text-align: center;
-    vertical-align: middle;
     padding-top: 17px;
     font-size: 20px;
     
 }
-<<<<<<< HEAD
-
-.social-links {
-    
-
-=======
-.share-links {
-    width: 344px;
-.social-links {
-    width: 320px;
->>>>>>> c3ed1c03f8bebbe8be7ec0eb293aa3a913d55b06
     height: 50px;
     padding-top: 291px;
     vertical-align: middle;
@@ -562,13 +542,3 @@ h4 {
     font-size: 20px;
     width: 550px;
 }
-<<<<<<< HEAD
-=======
-.button-previous-post {
-    font-size: 22px;
-    
-}
-.button-next-post {
-    font-size: 22px;
-}
->>>>>>> c3ed1c03f8bebbe8be7ec0eb293aa3a913d55b06
