@@ -24,8 +24,8 @@
 }
 
 .pop{
-    width: 600px;
-    height: 500px;
+    width: 650px;
+    height: 570px;
     border-radius: 25px;
     position: absolute;
     top: 50%;
@@ -45,12 +45,12 @@
 }
 
 .pop .box{
-    width: 400px;
+    width: 470px;
     height: 300px;
     cursor: pointer;
     padding: 50px;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
@@ -59,7 +59,7 @@
 
 .pop button{
     width: 80%;
-    margin-top: 364px;
+    margin-top: 10px;
     padding: 10px;
     border: 0;
     outline: none;
@@ -76,3 +76,56 @@
     color: #A4133C;
 }
 
+.pop form{
+    margin-top: 338px;
+    width: 100%;
+    position: relative;
+}
+
+.pop .input-box input{
+    width: 80%;
+    font-size: 20px;
+    margin: 5px;
+    outline: none;
+    padding: 2px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFF0F3;
+}
+
+.pop .input-box .l-place{
+    position: absolute;
+    left: 68px;
+    top: 10px;
+    font-size: 20px;
+    color: rgb(77, 80, 118);
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.pop .input-box .l1{
+    position: absolute;
+    left: 68px;
+    top: 47px;
+    font-size: 20px;
+    color: rgb(77, 80, 118);
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.pop .input-box .l2{
+    position: absolute;
+    left: 68px;
+    top: 85px;
+    font-size: 20px;
+    color: rgb(77, 80, 118);
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.pop .input-box input:focus + label,
+.pop .input-box input:valid + label{
+    
+    font-size: 18px;
+    color: #30343f3b;
+}
