@@ -1,5 +1,4 @@
 header{
-    
     display: flex;
     justify-content: center;
     background: #FF758F;
@@ -43,13 +42,10 @@ header{
     src: url("../fonts/libre-baskerville.regular.ttf") format("truetype");
 }
 
-
-
 @media screen and (min-width: 1600px){
     .form{
         left: 30% !important;
     }
-    
 }
 
 @media screen and (max-width: 1450px){
@@ -59,52 +55,9 @@ header{
     .hamberger-menu{
         display: flex !important;
     }
-
     header{
         background: none;
         box-shadow: none;
-    }
-
-    .posts-home{
-        margin-top: -150px !important;
-    }
-    
-    .posts{
-        margin-top: -150px !important;
-    }
-
-    .profile-side-bar{
-        margin-top: -150px !important;
-    }
-  
-}
-
-@media screen and (max-width: 1200px){
-    .posts-home{
-        grid-template-columns: 300px 300px !important;
-        grid-template-rows: auto !important;
-    }
-    
-}
-
-@media screen and (max-width: 880px){
-    .posts{
-        grid-template-columns: 300px !important;
-        grid-template-rows: auto !important;
-    }
-}
-
-@media screen and (max-width: 650px){
-    .side-bar{
-        display: none !important;
-    }
-    .posts{
-        grid-template-columns: 300px !important;
-        grid-template-rows: auto !important;
-    }
-    .posts-home{
-        grid-template-columns: 300px !important;
-        grid-template-rows: auto !important;
     }
 }
 
@@ -166,7 +119,6 @@ nav a{
 
 .profile-link{
     margin-top: -2px;
-    
     border-radius: 5%;
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
@@ -197,7 +149,6 @@ nav a{
 
 .form .input-text{
     width: 600px;
-    
 }
 
 .form .form-field input[type="text"]{
@@ -302,7 +253,6 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 .main-page{
     display: flex;
@@ -372,16 +322,11 @@ p {
     border: 2px solid #000000;
     background-color: #FFF0F3;
 }
-.single-post .post-text{
-    margin: 0 10px;
-    position: absolute;
-}
 .post-author{
     display: grid;
     grid-template-columns: 20% 80%;
     grid-template-rows: auto;
     place-items: left;
-
 }
 
 .post-image {
@@ -412,11 +357,9 @@ p {
 .fa-heart{
     content: "&#xf08a";
     color:rgb(255, 140, 140);
-
 }
 
 .fa-heart:active{
-    
     fill:rgb(243, 0, 0);
 }
 .fa-heart::after{
@@ -441,7 +384,6 @@ p {
     border-radius: 15px 15px 0px 0px;
     padding: 70px 0;
     width: 100%;
-    /*max-width: 1140px;*/
   }
 
   .col{
@@ -530,11 +472,6 @@ p {
 .post-like {
     font-size: 25px;  
 }
-
-.share-links i{
-    font-size: 23px;
-    color: #1B2021;
-}
 .post-like-button {
     border: none;
     background-color: #FFF0F3;
@@ -545,26 +482,7 @@ p {
     background-color: #FFF0F3;
     font-size: 20px;
 }
-.facebook-share {
-    height: 40px;
-    width: 40px;
-}
-.twitter-share {
-    height: 40px;
-    width: 40px;
-}
-.instagram-share {
-    height: 40px;
-    width: 40px;
-}
-.telegram-share {
-    height: 40px;
-    width: 40px;
-}
 h4 {
     font-size: 20px;
     width: 550px;
-}
-textarea {
-    display: none;
 }
