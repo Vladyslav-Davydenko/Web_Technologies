@@ -253,13 +253,9 @@ h1 {
     text-align: center;
 }
 h2 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     font-family: "Parisienne-Regular";
     text-align: center;
-    font-size: 40px;
-    margin: 10px 0px 25px 0px;
+    font-size: 52px;
     color: #A4133C;
 }
 h4{
@@ -287,7 +283,7 @@ img {
 }
 .post-meta {
     font-family: "Squealer";
-    position: sticky;
+    font-size: 27px;
     text-align: right;
     color: #ea638c;
 }
@@ -302,7 +298,7 @@ p {
     font-size: 22px;
     word-spacing: 4px;
     line-height: 1.4;
-    color: #1B2021;
+    color: #a04c5b;
     font-family: "Libre-Baskerville-Italic";
 }
 .main-name{
@@ -334,15 +330,35 @@ p {
     justify-content: center;
     flex-direction: column;
     align-items: flex-end;
-    margin-top: 2%;
     width: 1100px;
     background-color: #FFF0F3;
     border-radius: 15px;
+    margin-top: 30px;
     box-shadow: -4px 13px 34px -14px #A4133C;
     -webkit-box-shadow: -4px 6px 30px -1px #C9184A;
     padding: 20px;
 }
-
+.comment-section {
+    display: flex;
+    justify-content: center;
+    background-color: #FFF0F3;
+    flex-direction: column;
+    align-items: center;
+    width: 1100px;
+    height: 100px;
+    margin-top: 2%;
+    box-shadow: -4px 13px 34px -14px #a4133c;
+    -webkit-box-shadow: -4px 6px 30px -1px #c9184a;
+    border-radius: 15px;
+}
+.input-text-comment {
+    font-size: 20px;
+    outline: none;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    background-color: #FFF0F3;
+}
 .single-post .post-text{
     margin: 0 10px;
     position: absolute;
@@ -499,27 +515,21 @@ p {
     text-align: center;
 }
 .post-like {
-    padding-top: 17px;
-    font-size: 20px;
-    
-}
-.social-links {
-    height: 50px;
-    padding-top: 291px;
-    vertical-align: middle;
-    text-align: center;
+    font-size: 25px;  
 }
 
 .share-links i{
     font-size: 23px;
     color: #1B2021;
 }
-
 .post-like-button {
-    padding-right: 30px;
     border: none;
     background-color: #FFF0F3;
-    width: 30px;
+    font-size: 20px;
+}
+.post-comment-button {
+    border: none;
+    background-color: #FFF0F3;
     font-size: 20px;
 }
 .facebook-share {
@@ -541,4 +551,7 @@ p {
 h4 {
     font-size: 20px;
     width: 550px;
+}
+textarea {
+    display: none;
 }
