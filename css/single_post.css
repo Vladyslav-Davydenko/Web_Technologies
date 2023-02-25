@@ -504,8 +504,10 @@ p {
     font-size: 20px;
     
 }
-.share-links {
-    width: 344px;
+    height: 50px;
+    padding-top: 291px;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .share-links i{
@@ -539,11 +541,4 @@ p {
 h4 {
     font-size: 20px;
     width: 550px;
-}
-.button-previous-post {
-    font-size: 22px;
-    
-}
-.button-next-post {
-    font-size: 22px;
 }
