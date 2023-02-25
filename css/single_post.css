@@ -513,10 +513,17 @@ p {
     font-size: 20px;
     
 }
+<<<<<<< HEAD
 
 .social-links {
     
 
+=======
+.share-links {
+    width: 344px;
+.social-links {
+    width: 320px;
+>>>>>>> c3ed1c03f8bebbe8be7ec0eb293aa3a913d55b06
     height: 50px;
     padding-top: 291px;
     vertical-align: middle;
@@ -555,3 +562,13 @@ h4 {
     font-size: 20px;
     width: 550px;
 }
+<<<<<<< HEAD
+=======
+.button-previous-post {
+    font-size: 22px;
+    
+}
+.button-next-post {
+    font-size: 22px;
+}
+>>>>>>> c3ed1c03f8bebbe8be7ec0eb293aa3a913d55b06
