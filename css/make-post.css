@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFF0F3;
+    background-image: url('../img/magicpattern-svg-chart-1676719822925.png');
 }
 
 .butt{
@@ -30,17 +30,13 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    background: radial-gradient(#ed2550, #f797ac);
+    background-color: #FFF0F3;
     transform: translate(-50%, -50%);
     text-align: center;
     padding: 0 30px 30px;
-    
-}
-
-.pop h2{
-    color: white;
-    font-size: 28px;
-    margin: 20px 0px 10px;
+    box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    -webkit-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    -moz-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
     
 }
 
@@ -63,9 +59,8 @@
     left: 146px;
     top: -45px;
     font-size: 30px;
-    font-weight: 700;
-    color: white;
-    text-shadow: 4px 1px 2px #f15375;
+    font-weight: 500;
+    color: #30343F;
     pointer-events: none;
     
 }
@@ -89,14 +84,14 @@
     font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
-    color: #A4133C;
-    background-color: #FFF0F3;
+    background: linear-gradient(65deg , #FF4D6D , #A4133C);
+    border: none;
 
 }
 
 .pop button a{
     text-decoration: none;
-    color: #A4133C;
+    color: #30343F;
 }
 
 .pop form{
@@ -105,14 +100,13 @@
     position: relative;
 }
 
-.pop .input-box input{
+.pop .input-box input[type="text"]{
     width: 80%;
     font-size: 20px;
     margin: 10px;
     outline: none;
-    padding: 2px;
-    border: none;
-    border-radius: 5px;
+    border-width: 0px 0px 2px 0px;
+    border-color: #800F2F;
     background-color: #FFF0F3;
 }
 
@@ -136,19 +130,16 @@
     transition: 0.2s;
 }
 
-.pop .input-box .l2{
-    position: absolute;
-    left: 68px;
-    top: 85px;
-    font-size: 20px;
-    color: rgb(77, 80, 118);
-    pointer-events: none;
-    transition: 0.2s;
+.pop .input-box input:focus + .l-place,
+.pop .input-box input:valid + .l-place{
+    top: 5px;
+    font-size: 18px;
+    color: #30343f3b;
 }
 
-.pop .input-box input:focus + label,
-.pop .input-box input:valid + label{
-    
+.pop .input-box input:focus + .l1,
+.pop .input-box input:valid + .l1{
+    top: 53px;
     font-size: 18px;
     color: #30343f3b;
 }
