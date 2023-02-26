@@ -52,6 +52,9 @@
     .profile-side-bar{
         margin-top: -150px !important;
     }
+    .main-about{
+        margin-top: -150px !important;
+    }
   
 }
 
@@ -365,6 +368,7 @@ nav a{
 .main-about .about-post{
     display: flex;
     max-width: 900px;
+    align-items: center;
     background-color: #FFF0F3;
     border-radius: 15px;
     box-shadow: -4px 13px 34px -14px #A4133C;
