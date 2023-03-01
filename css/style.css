@@ -37,8 +37,8 @@
     }
 
     header{
-        background: none;
-        box-shadow: none;
+        background: none !important;
+        box-shadow: none !important;
     }
 
     .posts-home{
@@ -49,7 +49,10 @@
         margin-top: -150px !important;
     }
 
-    .profile-side-bar{
+    .side-bar .profile-side-bar{
+        margin-top: -150px !important;
+    }
+    .main-about {
         margin-top: -150px !important;
     }
   
@@ -68,11 +71,21 @@
         grid-template-columns: 300px !important;
         grid-template-rows: auto !important;
     }
+    .main-about .about-post{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .workers{
+        max-width: 300px !important;
+    }
 }
 
 @media screen and (max-width: 650px){
     .side-bar{
         display: none !important;
+    }
+    .posts .profile-side-bar{
+        display: flex !important;
     }
     .posts{
         grid-template-columns: 300px !important;
@@ -110,8 +123,10 @@ h2 {
     font-size: 40px;
 }
 h4{
-    color: #ea638c;
+    font-family: "Squealer";
     font-size: 15px;
+    text-align: right;
+    color: #ea638c;
 }
 body{
     background-image:
@@ -120,10 +135,9 @@ body{
     margin: 0%;
 }
 h3 {
+    font-family: "Parisienne-Regular";
+    font-size: 25px;
     color: #A4133C;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    font-family: 'Ubuntu', sans-serif;
 }
 img {
     object-fit: cover;
@@ -137,7 +151,8 @@ p {
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.4;
-    color: #1B2021;
+    color: #a04c5b;
+    font-family: "Libre-Baskerville-Italic";
 }
 
 a{
@@ -215,7 +230,13 @@ nav a{
 .profile-link path{
     fill: #800F2F;
 }
-
+.detail-info-post p{
+    font-size: 18px;
+    word-spacing: 4px;
+    line-height: 1.4;
+    color: #a04c5b;
+    font-family: "Libre-Baskerville-Italic";
+}
 .form{
     left: 25%;
     display: flex;
@@ -293,6 +314,9 @@ nav a{
     grid-template-columns: 300px 300px;
     grid-template-rows: auto;
 }
+.posts .profile-side-bar{
+    display: none;
+}
 .posts-home{
     display: grid;
     grid-gap: 30px;
@@ -356,7 +380,6 @@ nav a{
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    width: 100%;
     margin-bottom: 200px;
     flex-direction: column;
     gap: 50px;
@@ -364,7 +387,9 @@ nav a{
 
 .main-about .about-post{
     display: flex;
+    flex-direction: row;
     max-width: 900px;
+    align-items: center;
     background-color: #FFF0F3;
     border-radius: 15px;
     box-shadow: -4px 13px 34px -14px #A4133C;

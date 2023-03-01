@@ -1,4 +1,5 @@
 header{
+    
     display: flex;
     justify-content: center;
     background: #FF758F;
@@ -59,6 +60,48 @@ header{
         background: none;
         box-shadow: none;
     }
+
+    .posts-home{
+        margin-top: -150px !important;
+    }
+    
+    .posts{
+        margin-top: -150px !important;
+    }
+
+    .profile-side-bar{
+        margin-top: -150px !important;
+    }
+  
+}
+
+@media screen and (max-width: 1200px){
+    .posts-home{
+        grid-template-columns: 300px 300px !important;
+        grid-template-rows: auto !important;
+    }
+    
+}
+
+@media screen and (max-width: 880px){
+    .posts{
+        grid-template-columns: 300px !important;
+        grid-template-rows: auto !important;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .side-bar{
+        display: none !important;
+    }
+    .posts{
+        grid-template-columns: 300px !important;
+        grid-template-rows: auto !important;
+    }
+    .posts-home{
+        grid-template-columns: 300px !important;
+        grid-template-rows: auto !important;
+    }
 }
 
 a{
@@ -73,7 +116,57 @@ nav a{
     font-family: optima;
     transition: all 0.3s ease-in-out;
 }   
-
+h4 {
+    font-size: 20px;
+    width: 550px;
+}
+textarea {
+    display: none;
+}
+h1 {
+    color: #FFB3C1;
+    text-shadow: 4px 4px 0px #FF758F;
+    font-family: "Action-Is", cursive;
+    font-size: 100px;
+    font-weight: 800;
+    text-align: center;
+}
+h2 {
+    font-family: "Parisienne-Regular";
+    text-align: center;
+    font-size: 52px;
+    color: #A4133C;
+}
+h4{
+    color: #ea638c;
+    font-size: 15px;
+}
+body{
+    background-color: #ea638c;
+    background-image:
+    linear-gradient(65deg, #FF4D6Db2, #FF4D6Db2),
+    url('../img/istockphoto-538992590-612x612.jpg');
+    overflow-x: hidden;
+    margin: 0%;
+}
+h3 {
+    color: #A4133C;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: 20px;
+}
+img {
+    width: 100%;
+    border-radius: 10px 10px 10px 10px;
+}
+p {
+    font-size: 22px;
+    word-spacing: 4px;
+    line-height: 1.4;
+    color: #a04c5b;
+    font-family: "Libre-Baskerville-Italic";
+}
 .hamberger-menu{
     display: none;
 }
@@ -125,10 +218,6 @@ nav a{
     position: absolute;
     right: 5%;
     size: 20px;
-}
-
-.profile-link:hover{
-    color:#F9C5D1;
 }
 
 .profile-link svg{
@@ -191,44 +280,6 @@ nav a{
     cursor: pointer;
     color: #C9184A;
 }
-
-h1 {
-    color: #FFB3C1;
-    text-shadow: 4px 4px 0px #FF758F;
-    font-family: "Action-Is", cursive;
-    font-size: 100px;
-    font-weight: 800;
-    text-align: center;
-}
-h2 {
-    font-family: "Parisienne-Regular";
-    text-align: center;
-    font-size: 52px;
-    color: #A4133C;
-}
-h4{
-    color: #ea638c;
-    font-size: 15px;
-}
-body{
-    background-color: #ea638c;
-    background-image:
-    linear-gradient(65deg, #FF4D6Db2, #FF4D6Db2),
-    url('../img/istockphoto-538992590-612x612.jpg');
-    overflow-x: hidden;
-    margin: 0%;
-}
-h3 {
-    color: #A4133C;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    font-family: 'Ubuntu', sans-serif;
-    margin-top: 20px;
-}
-img {
-    width: 100%;
-    border-radius: 10px 10px 10px 10px;
-}
 .post-meta {
     font-family: "Squealer";
     font-size: 27px;
@@ -242,17 +293,11 @@ img {
     margin-top: 3%;
     
 }
-p {
-    font-size: 22px;
-    word-spacing: 4px;
-    line-height: 1.4;
-    color: #a04c5b;
-    font-family: "Libre-Baskerville-Italic";
-}
 .main-name{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .main-page{
     display: flex;
@@ -306,7 +351,7 @@ p {
     display: flex;
     background-color: #FFF0F3;
     align-items: center;
-    width: 1150px;
+    padding-right: 2.7rem;
     height: 100px;
     margin-top: 2%;
     box-shadow: -4px 13px 34px -14px #a4133c;
@@ -332,27 +377,11 @@ p {
 .post-image {
     margin: 5px;
 }
-.tag {
-    padding: 2px 2px;
-    margin: 5px 5px;
-}
 .fa {
     text-align: center;
 }
 .fa:hover {
     opacity: 0.5;
-}
-.fa-facebook::before {
-    content: "\f082";
-}
-.fa-twitter::before {
-    content: "\f099";
-}
-.fa-instagram::before {
-    content: "\f16d";
-}
-.fa-telegram::before {
-    content: "\f2c6";
 }
 .fa-heart{
     content: "&#xf08a";
@@ -482,7 +511,26 @@ p {
     background-color: #FFF0F3;
     font-size: 20px;
 }
+.facebook-share {
+    height: 40px;
+    width: 40px;
+}
+.twitter-share {
+    height: 40px;
+    width: 40px;
+}
+.instagram-share {
+    height: 40px;
+    width: 40px;
+}
+.telegram-share {
+    height: 40px;
+    width: 40px;
+}
 h4 {
     font-size: 20px;
     width: 550px;
+}
+textarea {
+    display: none;
 }
