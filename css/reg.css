@@ -154,9 +154,10 @@ i{
     font-size: 23px;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
--webkit-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
--moz-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    text-decoration: none;
+    color: #30343F;
+    display: block;
+    text-align: center;
 
 } 
 

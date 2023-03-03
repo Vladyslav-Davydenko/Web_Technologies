@@ -149,6 +149,10 @@ i{
     font-size: 23px;
     border-radius: 10px;
     cursor: pointer; 
+    text-decoration: none;
+    color: #30343F;
+    display: block;
+    text-align: center;
 } 
 
 .sign-box .submit-but:active{
