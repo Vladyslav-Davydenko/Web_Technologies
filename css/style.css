@@ -87,6 +87,9 @@
     .posts .profile-side-bar{
         display: flex !important;
     }
+    .posts .create-btn{
+        display: flex !important;
+    }
     .posts{
         grid-template-columns: 300px !important;
         grid-template-rows: auto !important;
@@ -125,7 +128,6 @@ h2 {
 h4{
     font-family: "Squealer";
     font-size: 15px;
-    text-align: right;
     color: #ea638c;
 }
 body{
@@ -315,6 +317,9 @@ nav a{
     grid-template-rows: auto;
 }
 .posts .profile-side-bar{
+    display: none;
+}
+.posts .create-btn{
     display: none;
 }
 .posts-home{
