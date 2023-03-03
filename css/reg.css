@@ -53,6 +53,13 @@ form i{
     bottom: -10px;
 }
 
+i{
+    float: right;
+    margin-right: -5px;
+    margin-top: -75px;
+    color: #A4133C;
+}
+
 .sign-box .input-box{
     width: 100%;
     position: relative;
@@ -112,8 +119,9 @@ form i{
     justify-content: flex-end;
     color:#30343F;
     position: absolute;
-    top: 30%;
+    top: 20%;
     right: 2%;
+    cursor: pointer;
     /*<!--color: #c7d6f8;-->*/
 
 }

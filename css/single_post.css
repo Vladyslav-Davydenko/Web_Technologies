@@ -103,8 +103,9 @@ h2 {
     color: #A4133C;
 }
 h4{
+    font-family: "Squealer";
+    font-size: 20px;
     color: #ea638c;
-    font-size: 15px;
 }
 body{
     background-color: #ea638c;
