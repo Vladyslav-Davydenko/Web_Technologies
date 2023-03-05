@@ -72,7 +72,7 @@ Describe what kind of data types each page contains:
 
 
 ### Page Templates
-
+```text
 HOME - index.html
 PROFILE - profile.html
 LOGIN - login.html
@@ -81,8 +81,10 @@ SINGLE POST - single_post.html
 REGISTARTION - registartion.html
 
 NavBar is including in HOME, PROFILE, SINGLE POST, ABOUT
+```
 ## Design
 
+```text
 CSS
     +--hamburger-menu.css (Menu for mobile devices; index.html, profile.html, about.html, single_post.html)
     +--login.css (login-post.html)
@@ -90,7 +92,7 @@ CSS
     +--reg.css (reg.css)
     +--single_post.css (single_post.html)
     +--style.css (index.html, profile.html)
-
+```
 
 ## Functionality
 
