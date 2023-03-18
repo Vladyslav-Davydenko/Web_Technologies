@@ -1,7 +1,7 @@
 <div class="main-page">
     <div class="posts-home">
         <div class="single-post">
-            <a href="single_post.html"><img src="img/posts/beach.jpeg"></a>
+            <a href="single_post.php"><img src="img/posts/beach.jpeg"></a>
             <div class="post-text">
                 <div class="post-author">
                     <div class="post-author-img">
