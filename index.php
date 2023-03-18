@@ -14,16 +14,18 @@
 </head>
 
 <body>
-    <div class="main-name">
-        <h1>Travel Memories</h1>
+    <h1>Travel Memories</h1>
+    <header>
         <nav>
             <?php include "navigation.php" ?>
         </nav>
+    </header>
+    <div class="main-name">
         <div>
             <?php include "main_paige.php" ?>
         </div>
-        <?php include "footer.php" ?>
     </div>
+    <?php include "footer.php" ?>
 </body>
 
 </html>
