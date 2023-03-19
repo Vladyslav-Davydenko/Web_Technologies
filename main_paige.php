@@ -1,7 +1,7 @@
 <div class="main-page">
     <div class="posts-home">
         <div class="single-post">
-            <a href="single_post.html"><img src="img/posts/beach.jpeg"></a>
+            <a href="single_post.php"><img src="img/posts/beach.jpeg"></a>
             <div class="post-text">
                 <div class="post-author">
                     <div class="post-author-img">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="single-post">
-            <a href="single_post.html"><img src="img/posts/italy.jpeg"></a>
+            <a href="single_post.php"><img src="img/posts/italy.jpeg"></a>
             <div class="post-text">
                 <div class="post-author">
                     <div class="post-author-img">
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="single-post">
-            <a href="single_post.html"><img src="img/posts/island.jpeg"></a>
+            <a href="single_post.php"><img src="img/posts/island.jpeg"></a>
             <div class="post-text">
                 <div class="post-author">
                     <div class="post-author-img">
@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="single-post">
-            <a href="single_post.html"><img src="img/posts/german.jpeg"></a>
+            <a href="single_post.php"><img src="img/posts/german.jpeg"></a>
             <div class="post-text">
                 <div class="post-author">
                     <div class="post-author-img">
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="single-post">
-            <a href="single_post.html"><img src="img/posts/singapore.jpeg"></a>
+            <a href="single_post.php"><img src="img/posts/singapore.jpeg"></a>
             <div class="post-text">
                 <div class="post-author">
                     <div class="post-author-img">
@@ -130,7 +130,7 @@
             </div>
         </div>
         <div class="single-post">
-            <a href="single_post.html"><img src="img/posts/france.jpeg"></a>
+            <a href="single_post.php"><img src="img/posts/france.jpeg"></a>
             <div class="post-text">
                 <div class="post-author">
                     <div class="post-author-img">

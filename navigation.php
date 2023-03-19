@@ -5,7 +5,7 @@
                 </label>
 
                 <ul class="menu-box">
-                    <li><a class="menu-item" href="index.html">Home</a></li>
+                    <li><a class="menu-item" href="index.php">Home</a></li>
                     <li><a class="menu-item" href="profile.html">Profile</a></li>
                     <li><a class="menu-item" href="about.html">About</a></li>
                     <li><a class="menu-item" href="registration.html">Register</a></li>
@@ -13,7 +13,7 @@
                 </ul>
             </div>
             <div class="nav-link">
-                <a class="home-link" href="index.html">Home</a>
+                <a class="home-link" href="index.php">Home</a>
                 <a class="about-link" href="about.html">About</a>
 
                 <a class="login-link" href="login.html">Login</a>
