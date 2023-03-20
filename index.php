@@ -6,9 +6,9 @@ const TEMPLATE_PATH = "templates";
 
 $t = new Template(TEMPLATE_PATH. "/index_tpl.php");
 
-$navBar = file_get_contents("navigation.php");
+$navBar = file_get_contents("navigation.html");
 
-$footer = file_get_contents("footer.php");
+$footer = file_get_contents("footer.html");
 
 $t -> assign("TITLE", "Travel Memories");
 $t -> assign("NAVBAR", $navBar);
