@@ -187,9 +187,6 @@ h2 {
     .input-text-comment {
         width: 500px !important;
     }
-    .btn {
-        max-width: 250px !important;
-    }
 }
 @media only screen and (max-width: 500px) {
     .nav-link{
@@ -589,6 +586,7 @@ p {
 }
 .single-post{
     max-width: 300px;
+    max-height: 400px;
     background-color: #FFF0F3;
     border-radius: 15px;
     box-shadow: -4px 13px 34px -14px #A4133C;
@@ -625,14 +623,6 @@ p {
     width: 45px;
     height: 45px;
     border-radius: 100%;
-}
-
-.profile-text {
-    text-align: center;
-    font-family: optima;
-    white-space: normal;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 .side-bar{
@@ -686,7 +676,7 @@ p {
 }
 
 .create-btn .btn{
-    padding: 20px 73px;
+    padding: 0px 73px;
     border-radius: 25px;
 }
 

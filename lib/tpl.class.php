@@ -95,7 +95,7 @@ class Template
         $sidebar = '';
         if (!empty($searchFor)) {
             if (!empty($replaceWith)) {
-                $sidebar .= ' <div class="side-bar">
+                $sidebar .= '
                 <div class="profile-side-bar">
                     <img class="avatar" src="'. $replaceWith->owner_image.'">
                     <h3>'. $replaceWith->username.'</h3>
@@ -119,8 +119,7 @@ class Template
                     <a href="make-post.html">
                     <input class="btn" type="submit" value="&#43 Add New Post" />
                     </a>
-                </div>
-            </div>';
+                </div>';
             }
             $this->assign($searchFor, $sidebar);
         }

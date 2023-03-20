@@ -20,8 +20,11 @@
     </header>
     <p></p>
     <div class="main-page">
+        <div class="side-bar">
         {{SIDEBAR}}
+        </div>
         <div class="posts">
+            {{SIDEBAR}}
             {{POSTS}}
         </div>
     </div> 
