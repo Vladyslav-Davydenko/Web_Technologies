@@ -30,14 +30,14 @@ class Template
                 if ($rows > 0) {
                     for ($i = 0; $i < $rows; $i++) { 
                         $singlePost .= ' <div class="single-post">
-                        <a href="single_post.html"><img src="'.$replaceWith[$i]->image.'"></a>
+                        <a href="single_post.php?title'. $replaceWith[$i]->title .'"><img src="'.$replaceWith[$i]->image.'"></a>
                         <div class="post-text">
                             <div class="post-author">
                                 <div class="post-author-img">
-                                    <a href="profile.html"><img class="avatar-small" src="'.$replaceWith[$i]->owner_image.'"></a>
+                                    <a href="profile.php?username='. $replaceWith[$i]->owner .'"><img class="avatar-small" src="'.$replaceWith[$i]->owner_image.'"></a>
                                 </div>
                                 <div class="post-author-text">
-                                    <a href="profile.html">
+                                    <a href="profile.php?username='. $replaceWith[$i]->owner .'">
                                         <h4>'. $replaceWith[$i]->owner.'</h4>
                                     </a>
                                 </div>
@@ -60,6 +60,71 @@ class Template
             </div>';
             $this->assign($searchFor, $singlePost);
         }
+
+    function createPostProfile($searchFor, $replaceWith){
+        $profilePost = '';
+        if (!empty($searchFor)) {
+            if (!empty($replaceWith)) {
+                $rows = count($replaceWith);
+                if ($rows > 0) {
+                    for ($i = 0; $i < $rows; $i++) { 
+                        if($replaceWith[$i]->owner == $_GET['username'] || empty($_GET['username'])){
+                            $profilePost .='<div class="single-post">
+                            <a href="single_post.html"><img src="'.$replaceWith[$i]->image.'"></a>
+                            <div class="post-text">
+                                <span class="btn-edit"><a href="#"><i class="fa fa-edit"></i></a></span>
+                                <h3>'. $replaceWith[$i]->title.'</h3>
+                                <p>
+                                '. $replaceWith[$i]->description.'
+                                </p>
+                                <div class="posted">
+                                    <h4>'. $replaceWith[$i]->created.' minutes ago</h4>
+                                </div>
+                            </div>
+                        </div>';
+                        }
+                        }
+                    }
+                }
+            }
+            $this->assign($searchFor, $profilePost);
+
+    }
+
+    function createProfileSideBar($searchFor, $replaceWith){
+        $sidebar = '';
+        if (!empty($searchFor)) {
+            if (!empty($replaceWith)) {
+                $sidebar .= ' <div class="side-bar">
+                <div class="profile-side-bar">
+                    <img class="avatar" src="'. $replaceWith->owner_image.'">
+                    <h3>'. $replaceWith->username.'</h3>
+                    <p class="profile-text">'. $replaceWith->bio. '</p>
+                    <ul class="prof-social">
+                        <li>
+                        <a title="Blog" href="#" target="_blank"><i class="fa fa-globe"></i></a>
+                        </li>
+                        <li>
+                            <a title="Twitter" href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a title="Facebook" href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a title="Instagram" href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="create-btn">
+                    <a href="make-post.html">
+                    <input class="btn" type="submit" value="&#43 Add New Post" />
+                    </a>
+                </div>
+            </div>';
+            }
+            $this->assign($searchFor, $sidebar);
+        }
+    }
 
     function render()
     {
