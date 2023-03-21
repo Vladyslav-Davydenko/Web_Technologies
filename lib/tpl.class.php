@@ -124,6 +124,11 @@ class Template
                     <a href="make-post.html">
                     <input class="btn" type="submit" value="&#43 Add New Post" />
                     </a>
+                </div>
+                <div class="create-btn">
+                    <a href="make-post.html">
+                    <input class="btn" type="submit" value="Edit Your Profile" />
+                    </a>
                 </div>';
             }
             $this->assign($searchFor, $sidebar);
