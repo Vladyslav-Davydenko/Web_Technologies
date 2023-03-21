@@ -30,7 +30,7 @@ class Template
                 if ($rows > 0) {
                     for ($i = 0; $i < $rows; $i++) { 
                         $singlePost .= ' <div class="single-post">
-                        <a href="single_post.php?title'. $replaceWith[$i]->title .'"><img src="'.$replaceWith[$i]->image.'"></a>
+                        <a href="single_post.php?title='. $replaceWith[$i]->title .'"><img src="'.$replaceWith[$i]->image.'"></a>
                         <div class="post-text">
                             <div class="post-author">
                                 <div class="post-author-img">
@@ -68,7 +68,12 @@ class Template
                 $rows = count($replaceWith);
                 if ($rows > 0) {
                     for ($i = 0; $i < $rows; $i++) { 
-                        if($replaceWith[$i]->owner == $_GET['username'] || empty($_GET['username'])){
+                        if(empty($_GET['username'])){
+                            $username = "Vilsivul";
+                        } else{
+                            $username = $_GET['username'];
+                        }
+                        if($replaceWith[$i]->owner == $username){
                             $profilePost .='<div class="single-post">
                             <a href="single_post.html"><img src="'.$replaceWith[$i]->image.'"></a>
                             <div class="post-text">
