@@ -11,9 +11,7 @@
 </head>
 <body>
 
-    <div class="main-header">
         <h1>Travel Memories</h1>
-    </div>
 
     <header>
         <nav>
