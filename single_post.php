@@ -15,7 +15,7 @@
 
     <header>
         <nav>
-            <?php include "navigation.html" ?>
+            <?php include "includes/navigation.html" ?>
         </nav>
     </header>
 
@@ -108,6 +108,6 @@
             </div>
         </div>
     </div>
-    <?php include "footer.html" ?>
+    <?php include "includes/footer.html" ?>
 </body>
 </html>

@@ -660,12 +660,13 @@ p {
     height: 300px;
 }
 
-.about-post h3{
+.about-post p, .about-post h3{
     display: flex;
     align-items: center;
     padding: 50px;
     text-align: center;
 }
+
 .create-btn{
     margin-top: 20px;
 }
