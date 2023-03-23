@@ -1,3 +1,54 @@
+<?php
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) {
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $errors = [];
+
+    $pattern = "/^([A-Za-z' _]+)$/";
+    if ($name) {
+        if (!preg_match($pattern, $name)) {
+            $errors[] = "First Name contains wrong symbol.";
+        }
+    } else {
+        $errors[] = "First name is required";
+    }
+
+    if ($email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Please enter a valid email address.";
+        }
+    } else {
+        $errors[] = "Email address is required";
+    }
+
+    if ($password) {
+        if (strlen($password) < 4) {
+            $errors[] = 'Password is too short ;(';
+        }
+    } else {
+        $errors[] = 'Password is required';
+    }
+
+    if (empty($errors)) {
+        $data = array(
+            $_POST['name'],
+            $_POST['email'],
+            $_POST['password']
+        );
+
+        $dataFile = fopen('users.csv', 'a');
+        fputcsv($dataFile, $data, ';');
+        fclose($dataFile);
+
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
