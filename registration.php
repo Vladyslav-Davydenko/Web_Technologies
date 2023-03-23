@@ -39,10 +39,18 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
             $_POST['password']
         );
 
-        $dataFile = fopen('users.csv', 'a');
+        $dataFile = fopen('./data/registration_info.csv', 'a');
         fputcsv($dataFile, $data, ';');
         fclose($dataFile);
 
+    } else {
+        echo "<p>Some information was not entered correctly!</p>";
+        echo "<p>The following errors occurred:</p>";
+        echo "<ul>";
+        foreach ($errors as $error) {
+            echo "<li>{$error}</li>";
+        }
+        echo "</ul>";
     }
 }
 ?>
