@@ -21,90 +21,93 @@ class Template
             $this->assignedValues[strtoupper($searchFor)] = $replaceWith;
         }
     }
-    function createPost($searchFor, $replaceWith){
+    function createPost($searchFor, $replaceWith)
+    {
         $singlePost = '<div class="main-page">
         <div class="posts-home">';
         if (!empty($searchFor)) {
             if (!empty($replaceWith)) {
                 $rows = count($replaceWith);
                 if ($rows > 0) {
-                    for ($i = 0; $i < $rows; $i++) { 
+                    for ($i = 0; $i < $rows; $i++) {
                         $singlePost .= ' <div class="single-post">
-                        <a href="single_post.php?title='. $replaceWith[$i]->title .'"><img src="'.$replaceWith[$i]->image.'"></a>
+                        <a href="single_post.php?title=' . $replaceWith[$i]->title . '"><img src="' . $replaceWith[$i]->image . '"></a>
                         <div class="post-text">
                             <div class="post-author">
                                 <div class="post-author-img">
-                                    <a href="profile.php?username='. $replaceWith[$i]->owner .'"><img class="avatar-small" src="'.$replaceWith[$i]->owner_image.'"></a>
+                                    <a href="profile.php?username=' . $replaceWith[$i]->owner . '"><img class="avatar-small" src="' . $replaceWith[$i]->owner_image . '"></a>
                                 </div>
                                 <div class="post-author-text">
-                                    <a href="profile.php?username='. $replaceWith[$i]->owner .'">
-                                        <h4>'. $replaceWith[$i]->owner.'</h4>
+                                    <a href="profile.php?username=' . $replaceWith[$i]->owner . '">
+                                        <h4>' . $replaceWith[$i]->owner . '</h4>
                                     </a>
                                 </div>
                             </div>
-                            <h3>'. $replaceWith[$i]->title.'</h3>
+                            <h3>' . $replaceWith[$i]->title . '</h3>
                             <div class="detail-info-post">
-                                <p>'. $replaceWith[$i]->description.'
+                                <p>' . $replaceWith[$i]->description . '
                                 </p>
                             </div>
                             <div class="posted">
-                                <h4>'. $replaceWith[$i]->created.' minutes ago</h4>
+                                <h4>' . $replaceWith[$i]->created . ' minutes ago</h4>
                             </div>
                         </div>
                     </div>';
-                        }
                     }
                 }
             }
-            $singlePost .= '</div>
-            </div>';
-            $this->assign($searchFor, $singlePost);
         }
+        $singlePost .= '</div>
+            </div>';
+        $this->assign($searchFor, $singlePost);
+    }
 
-    function createPostProfile($searchFor, $replaceWith){
+    function createPostProfile($searchFor, $replaceWith)
+    {
         $profilePost = '';
         if (!empty($searchFor)) {
             if (!empty($replaceWith)) {
                 $rows = count($replaceWith);
                 if ($rows > 0) {
-                    for ($i = 0; $i < $rows; $i++) { 
-                        if(empty($_GET['username'])){
+                    for ($i = 0; $i < $rows; $i++) {
+                        if (empty($_GET['username'])) {
                             $username = "Vilsivul";
-                        } else{
+                        } else {
                             $username = $_GET['username'];
                         }
-                        if($replaceWith[$i]->owner == $username){
-                            $profilePost .='<div class="single-post">
-                            <a href="single_post.html"><img src="'.$replaceWith[$i]->image.'"></a>
+                        if ($replaceWith[$i]->owner == $username) {
+                            $profilePost .= '<div class="single-post">
+                            <a href="single_post.html"><img src="' . $replaceWith[$i]->image . '"></a>
                             <div class="post-text">
                                 <span class="btn-edit"><a href="#"><i class="fa fa-edit"></i></a></span>
-                                <h3>'. $replaceWith[$i]->title.'</h3>
+                                <h3>' . $replaceWith[$i]->title . '</h3>
                                 <p>
-                                '. $replaceWith[$i]->description.'
+                                ' . $replaceWith[$i]->description . '
                                 </p>
                                 <div class="posted">
-                                    <h4>'. $replaceWith[$i]->created.' minutes ago</h4>
+                                    <h4>' . $replaceWith[$i]->created . ' minutes ago</h4>
                                 </div>
                             </div>
                         </div>';
                         }
-                        }
                     }
                 }
             }
-            $this->assign($searchFor, $profilePost);
+        }
+        $this->assign($searchFor, $profilePost);
 
     }
 
-    function createProfileSideBar($searchFor, $replaceWith){
+    function createProfileSideBar($searchFor, $replaceWith)
+    {
         $sidebar = '';
         if (!empty($searchFor)) {
             if (!empty($replaceWith)) {
                 $sidebar .= '
                 <div class="profile-side-bar">
-                    <img class="avatar" src="'. $replaceWith->owner_image.'">
-                    <h3>'. $replaceWith->username.'</h3>
-                    <p class="profile-text">'. $replaceWith->bio. '</p>
+                    <img class="avatar" src="' . $replaceWith->owner_image . '">
+                    <h3>' . $replaceWith->username . '</h3>
+                    <p class="profile-text">' . $replaceWith->bio . '</p>
                     <ul class="prof-social">
                         <li>
                         <a title="Blog" href="#" target="_blank"><i class="fa fa-globe"></i></a>
@@ -126,7 +129,7 @@ class Template
                     </a>
                 </div>
                 <div class="create-btn">
-                    <a href="make-post.html">
+                    <a href="edit_form.php">
                     <input class="btn" type="submit" value="Edit Your Profile" />
                     </a>
                 </div>';
