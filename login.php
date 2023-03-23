@@ -1,3 +1,54 @@
+<?php
+if (isset($_POST['email']) && isset($_POST['password'])) {
+
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $errors = [];
+
+    if ($email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Please enter a valid email address.";
+        }
+    } else {
+        $errors[] = "Email address is required";
+    }
+
+    if ($password) {
+        if (strlen($password) < 4) {
+            $errors[] = 'Password is too short ;(';
+        }
+    } else {
+        $errors[] = 'Password is required';
+    }
+
+    if (empty($errors)) {
+        $data = array(
+            $_POST['email'],
+            $_POST['password']
+        );
+
+        $dataFile = fopen('./data/registration_info.csv', 'r');
+        while (!feof($dataFile)) {
+            if (strpos($dataFile, $_POST['email'], )) {
+                echo 'you have an account';
+            }
+
+        }
+
+    } else {
+        echo "<p>Some information was not entered correctly!</p>";
+        echo "<p>The following errors occurred:</p>";
+        echo "<ul>";
+        foreach ($errors as $error) {
+            echo "<li>{$error}</li>";
+        }
+        echo "</ul>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +89,7 @@
                             fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"></svg>
                     </div>
                 </div>
-                <button type="submit" id="loginSubmitButton" name="loginSubmitButton" href="profile."
+                <button type="submit" id="loginSubmitButton" name="loginSubmitButton" href="profile.php"
                     class="submit-but">Log in</button>
                 <div class="login-link"><a href="registration.php">Don't have an account?</a></div>
 

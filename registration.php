@@ -105,7 +105,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
                 </div>
                 <button id="createAccountButton" name="createAccountButton" href="./index.php" class="submit-but">Create
                     account</button>
-                <div class="login-link"><a href="login.html">Already have an account?</a></div>
+                <div class="login-link"><a href="login.php">Already have an account?</a></div>
 
             </form>
         </div>
