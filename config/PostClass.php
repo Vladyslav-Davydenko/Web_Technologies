@@ -57,4 +57,27 @@ function getPosts()
     return $filtered_courses;
 }
 
-?>
+function getSinglePost() {
+        
+        $posts_list = array();
+
+        if (($handle = fopen("data/posts.csv", "r")) !== FALSE) {
+            $nrows = count(file("data/posts.csv"));
+            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                $post = new Post($data[0], $data[1], (int)$data[2], $data[3], (int)$data[4], $data[5], $data[6]);
+                $posts_list[] = $post;
+            }
+            fclose($handle);
+
+            for($i = 0; $i < $nrows; $i++) {
+                if(strpos($posts_list[$i], $_GET['title']) !== FALSE) {
+                    $single_post = $posts_list[$i];
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        return $single_post;
+
+}

@@ -182,6 +182,72 @@ class Template
         $this->assign($searchFor, $infoAbout);
     }
 
+    function createSinglePost($searchFor, $replaceWith) {
+        $singlePost = '
+        <div class="single-post-kiril">
+
+            <div class="post-header">
+
+                <div class="post-meta">';
+        if(!empty($searchFor)) {
+            if(!empty($replaceWith)) {
+                        if(!empty($_GET['title'])) {
+                            $titlePost = $_GET['title'];
+                        }
+                        if($replaceWith ->title == $titlePost) {
+                            $singlePost .= '<span class="author">'.$replaceWith -> owner.'</span><br>
+                            <span class="date">'.$replaceWith -> created.'</span>
+                            </div>
+                                <h2 class="post-title">'.$replaceWith -> title.'</h2>
+                                <div class="post-image-single">
+                                    <img src="'.$replaceWith -> image.'">
+                                </div>
+                            </div>
+                            <div class="post-body">
+                                <div class="entry-desc">
+                                    <p>'.$replaceWith -> description.'</p>
+                                </div>
+                            </div>
+                            <div class="post-image-reply-section">
+                                 <div class="post-like">
+                                    <span class="number-of-likes">'.$replaceWith -> likes.'</span>
+                                    <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                                    <span class="number-of-comments">2</span>
+                                    <a class="post-comment-button"><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-section">
+                            <form class="form-for-comment" action="#" method="get">
+                                <div class="form-field-comment">
+                                    <input class="input-text-comment" type="textarea" cols="90" rows="15" name="text" placeholder="Enter your Comment" />
+                                </div>
+                                <input class="btn" type="submit" value="Send a Comment" />
+                            </form>
+                         </div>
+                        <div class="comment-post">
+                            <div class="comment-info">
+                                <div class="post-author-img">
+                                    <a href="profile.html"><img class="avatar-small" src="img/avatars/Visl.jpg"></a>
+                                </div>
+                                <div class="post-author-text">
+                                    <a href="profile.html"><h4>by Jone Doe</h4></a>
+                                </div>
+                            </div>
+                            <div class="comment">
+                            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
+                            the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley 
+                            of type and scrambled it to make a type specimen book. It has survived not only five 
+                            centuries,but also
+                            </p>
+                            </div>
+                        </div>';
+                        }
+            }
+        }
+        $this -> assign($searchFor, $replaceWith);
+    }
+
     function render()
     {
         if (count($this->assignedValues) > 0) {
