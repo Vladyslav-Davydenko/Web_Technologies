@@ -95,7 +95,6 @@ class Template
             }
         }
         $this->assign($searchFor, $profilePost);
-
     }
 
     function createProfileSideBar($searchFor, $replaceWith)
@@ -138,6 +137,51 @@ class Template
         }
     }
 
+
+    function createAboutPost($searchFor)
+    {
+        $infoAbout = '';
+        if (!empty($searchFor)) {
+            $infoAbout .= '
+                <div class="main-about">
+                <div class="about-post">
+                    <h3>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                        Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
+                        quibusdam quas beatae in doloribus. Sed, iste!
+                    </h3>
+                </div>
+                <div class="workers">
+                    <div class="about-post">
+                        <img class="about-img" src="img/avatars/kiril.jpg">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                            Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
+                            quibusdam quas beatae in doloribus. Sed, iste!
+                        </p>
+                    </div>
+                    <div class="about-post">
+                        <img class="about-img" src="img/avatars/Visl.jpg">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                            Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
+                            quibusdam quas beatae in doloribus. Sed, iste!
+                        </p>
+                    </div>
+                    <div class="about-post">
+                        <img class="about-img" src="img/avatars/masha.jpg">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                            Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
+                            quibusdam quas beatae in doloribus. Sed, iste!
+                        </p>
+                    </div>
+                </div>
+                </div>';
+        }
+        $this->assign($searchFor, $infoAbout);
+    }
+
     function render()
     {
         if (count($this->assignedValues) > 0) {
@@ -148,4 +192,3 @@ class Template
         return $this->tpl;
     }
 }
-?>
