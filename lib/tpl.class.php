@@ -77,7 +77,7 @@ class Template
                         }
                         if ($replaceWith[$i]->owner == $username) {
                             $profilePost .= '<div class="single-post">
-                            <a href="single_post.html"><img src="' . $replaceWith[$i]->image . '"></a>
+                            <a href="single_post.php"><img src="' . $replaceWith[$i]->image . '"></a>
                             <div class="post-text">
                                 <span class="btn-edit"><a href="#"><i class="fa fa-edit"></i></a></span>
                                 <h3>' . $replaceWith[$i]->title . '</h3>
@@ -205,7 +205,7 @@ class Template
                         <div class="post-like">
                         <span class="number-of-likes">'.$replaceWith[0]->likes.'</span>
                         <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                        <span class="number-of-comments">2</span>
+                        <span class="number-of-comments">'.$replaceWith[0]->comments.'</span>
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
                 </div>
@@ -217,27 +217,37 @@ class Template
                     </div>
                     <input class="btn" type="submit" value="Send a Comment" />
                 </form>
-                </div>
-            <div class="comment-post">
-                <div class="comment-info">
-                    <div class="post-author-img">
-                        <a href="profile.html"><img class="avatar-small" src="img/avatars/Visl.jpg"></a>
-                    </div>
-                    <div class="post-author-text">
-                        <a href="profile.html"><h4>by Jone Doe</h4></a>
-                    </div>
-                </div>
-                <div class="comment">
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
-                the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley 
-                of type and scrambled it to make a type specimen book. It has survived not only five 
-                centuries,but also
-                </p>
-                </div>
             </div>';
             }
         }
         $this -> assign($searchFor, $singlePost);
+    }
+    
+    function createPostComments($searchFor, $replaceWith) {
+        $commentInfo = '';
+        if(!empty($searchFor)) {
+            if(!empty($replaceWith)) {
+                $nrows = count(file("data/comments.csv"));
+                if ($nrows > 0) {
+                    for ($i = 0; $i < $nrows; $i++) {
+                        $commentInfo .= '<div class="comment-post">
+                        <div class="comment-info">
+                            <div class="post-author-img">
+                                <a href="profile.php"><img class="avatar-small" src="img/avatars/Visl.jpg"></a>
+                            </div>
+                            <div class="post-author-text">
+                                <a href="profile.php"><h4>by Jone Doe</h4></a>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <p> Lorem </p>
+                        </div>
+                    </div>';
+                    }
+                }
+            }
+        }
+        $this->assign($searchFor, $commentInfo);
     }
 
     function render()
