@@ -877,10 +877,10 @@ form i{
     color: #30343F;
 }
 
-i{
+.login-header i, .register-header i{
     float: right;
     margin-right: -5px;
-    margin-top: -75px;
+    margin-top: -100px;
     color: #A4133C;
 }
 
@@ -895,9 +895,36 @@ i{
     
 }
 
-.sign-box{
+.log-form {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/magicpattern-svg-chart-1676719822925.png');
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.log-form .sign-box{
     position: absolute;
     width: 350px;
+    height: 350px;
+    box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    -webkit-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    -moz-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    top: 50%;
+    left: 50%;
+    transform: translate( -50% , -50% );
+    background-color: #FFF0F3;
+    padding: 25px 25px 45px 25px;
+    border-radius: 25px;
+}
+
+.reg-form .sign-box{
+    position: absolute;
+    width: 350px;
+    height: 400px;
     box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
     -webkit-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
     -moz-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
@@ -911,8 +938,8 @@ i{
 
 .reg-text-login{
     text-align: center;
-    font-size: 40px;
     margin-bottom: 20px;
+    margin-top: 20px;
     position: relative;
     font-weight: 400;
     color: #30343F;
@@ -930,7 +957,7 @@ i{
 
 .reg-text-registr{
     text-align: center;
-    font-size: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
     position: relative;
     font-weight: 400;
