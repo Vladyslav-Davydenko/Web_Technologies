@@ -28,7 +28,7 @@ class PostActions
     {
         $filteredPosts = array();
         foreach($posts as $post){
-            if (stripos($post->title, $text) !== false){
+            if ((stripos($post->title, $text) !== false) || (stripos($post->owner, $text) !== false)){
                 $filteredPosts[] = $post;
             } 
         }
