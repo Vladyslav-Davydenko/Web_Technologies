@@ -1,6 +1,7 @@
 <?php
 require_once('lib/tpl.class.php');
 require_once('config/PostClass.php');
+require_once('config/PostCommentsClass.php');
 
 const TEMPLATE_PATH = "templates";
 
@@ -14,8 +15,8 @@ $t -> assign("title", "Travel Memories");
 $t -> assign("navbar", $navBar);
 $t -> assign("footer", $footer);
 $t -> assign("head", $head);
-$t -> createSinglePost("single", getSinglePost());
-$t -> createPostComments("comments", getSinglePost());  // problem here
+$t -> createSinglePost("single", getSinglePost(), countSinglePostComments());
+$t -> createPostComments("comments", getSinglePostComments());  // problem here
 $output = $t->render(); 
 
 echo $output;

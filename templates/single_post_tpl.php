@@ -13,7 +13,8 @@
         </nav>
     </header>
     <div class="main-paige">
-        {{SINGLE}}    
+        {{SINGLE}} 
+        {{COMMENTS}}   
     </div>
     {{FOOTER}}
 </body>
