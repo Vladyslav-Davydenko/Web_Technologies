@@ -211,9 +211,9 @@ class Template
                 </div>
             </div>
             <div class="comment-section">
-                <form class="form-for-comment" action="#" method="get">
+                <form class="form-for-comment" action="make-comment.php" method="get">
                     <div class="form-field-comment">
-                        <input class="input-text-comment" type="textarea" cols="90" rows="15" name="text" placeholder="Enter your Comment" />
+                        <input type="textarea" cols="90" rows="15" name="text" class="input-text-comment" placeholder="Enter your Comment">
                     </div>
                     <input class="btn" type="submit" value="Send a Comment" />
                 </form>
