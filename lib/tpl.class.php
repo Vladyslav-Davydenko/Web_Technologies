@@ -77,7 +77,7 @@ class Template
                         }
                         if ($replaceWith[$i]->owner == $username) {
                             $profilePost .= '<div class="single-post">
-                            <a href="single_post.php"><img src="' . $replaceWith[$i]->image . '"></a>
+                            <a href="single_post.php?title='.$replaceWith[$i]->title.'"><img src="' . $replaceWith[$i]->image . '"></a>
                             <div class="post-text">
                                 <span class="btn-edit"><a href="#"><i class="fa fa-edit"></i></a></span>
                                 <h3>' . $replaceWith[$i]->title . '</h3>
@@ -230,19 +230,19 @@ class Template
                 $nrows = count(file("data/comments.csv"));
                 if ($nrows > 0) {
                     for ($i = 0; $i < $nrows; $i++) {
-                        if (empty($_GET['title'])) {
-                            $title = "German";
-                        } else {
+                        if (!empty($_GET['title'])) {
                             $title = $_GET['title'];
+                        } else {
+                            $title = "German";
                         }
                         if ($replaceWith[$i]->title == $title) {
                             $commentInfo .= '<div class="comment-post"> 
                             <div class="comment-info"> 
                                 <div class="post-author-img"> 
-                                    <a href="profile.php"><img class="avatar-small" src="'.$replaceWith[$i]->comment_owner_image.'"></a> 
+                                    <a href="profile.php?username='.$replaceWith[$i]->comment_owner.'"><img class="avatar-small" src="'.$replaceWith[$i]->comment_owner_image.'"></a> 
                                 </div> 
                             <div class="post-author-text"> 
-                                <a href="profile.php"><h4>by '.$replaceWith[$i]->comment_owner.'</h4></a> 
+                                <a href="profile.php?username='.$replaceWith[$i]->comment_owner.'"><h4>by '.$replaceWith[$i]->comment_owner.'</h4></a> 
                             </div>
                         </div>
                         <div class="comment"> 

@@ -39,7 +39,7 @@ function getSinglePostComments()
 
     if (($handle = fopen("data/comments.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-            $postComments = new PostComments($data[0], $data[1], $data[2], $data[3], (int)$data[4]);
+            $postComments = new PostComments($data[0], $data[1], $data[2], $data[3], $data[4]);
             $postCommentsList[] = $postComments;
         }
         fclose($handle);
