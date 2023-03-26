@@ -5,13 +5,12 @@ class Post
     public string $title;
     public string $description;
     public int $likes;
-    public int $comments;  // added field for number of comments into a class Post
     public string $owner;
     public string $owner_image;
     public int $created;
     public string $image;
 
-    public function __construct(string $title, string $description, int $likes, string $owner, int $created, string $image, string $owner_image, int $comments)
+    public function __construct(string $title, string $description, int $likes, string $owner, int $created, string $image, string $owner_image)
     {
         $this->title = $title;
         $this->description = $description;
@@ -20,7 +19,6 @@ class Post
         $this->created = $created;
         $this->image = $image;
         $this->owner_image = $owner_image;
-        $this->comments = $comments;
     }
 }
 
@@ -44,7 +42,7 @@ function getPosts()
 
     if (($handle = fopen("data/posts.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-            $post = new Post($data[0], $data[1], (int)$data[2], $data[3], (int)$data[4], $data[5], $data[6], (int)$data[7]);
+            $post = new Post($data[0], $data[1], (int)$data[2], $data[3], (int)$data[4], $data[5], $data[6]);
             $posts_list[] = $post;
         }
         fclose($handle);
@@ -69,7 +67,7 @@ function getSinglePost()
 
     if (($handle = fopen("data/posts.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-            $post = new Post($data[0], $data[1], (int)$data[2], $data[3], (int)$data[4], $data[5], $data[6], (int)$data[7]);
+            $post = new Post($data[0], $data[1], (int)$data[2], $data[3], (int)$data[4], $data[5], $data[6]);
             $posts_list[] = $post;
         }
         fclose($handle);

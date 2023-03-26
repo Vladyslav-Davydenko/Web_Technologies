@@ -61,25 +61,9 @@ function getSinglePostComments()
 
 function countSinglePostComments() 
 {
-    $postCommentsList = array();
 
-    if (($handle = fopen("data/comments.csv", "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-            $postComments = new PostComments($data[0], $data[1], $data[2], $data[3], (int)$data[4]);
-            $postCommentsList[] = $postComments;
-        }
-        fclose($handle);
-    }
-
-    $commentsArray = array();
-    $counterForComments = 0;
-
-    foreach($postCommentsList as $postComments) {
-        if (stripos($postComments->title, $_GET['title']) !== FALSE) {
-            $commentsArray[] = $postComments;
-            $counterForComments++; 
-        }
-    }
+    $commentsArray = getSinglePostComments();
+    $counterForComments = count($commentsArray);
 
     return $counterForComments;
 }
