@@ -19,20 +19,6 @@ class PostComments
     }
 }
 
-class PostCommentsActions
-{
-    function filteringData($text, $posts)
-    {
-        $filteredPosts = array();
-        foreach($posts as $post){
-            if ((stripos($post->title, $text) !== false) || (stripos($post->owner, $text) !== false)){
-                $filteredPosts[] = $post;
-            } 
-        }
-        return $filteredPosts;
-    }
-}
-
 function getSinglePostComments() 
 {
     $postCommentsList = array();
