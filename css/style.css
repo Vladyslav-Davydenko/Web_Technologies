@@ -413,7 +413,11 @@ p {
 .post-image-reply-section {
     display: flex;
     justify-content: flex-end;
-}  
+} 
+.created {
+    display: flex;
+    justify-content: flex-end;
+} 
 
 .main-page h3{
     margin-top: 20px;
