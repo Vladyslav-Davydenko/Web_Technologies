@@ -822,6 +822,7 @@ p {
   .col .social-links a svg{
     width: 25px;
     height: auto;
+    margin: 10px auto;
   }
 
   .col .social-links a:hover{
