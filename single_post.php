@@ -15,6 +15,7 @@ $t -> assign("navbar", $navBar);
 $t -> assign("footer", $footer);
 $t -> assign("head", $head);
 $t -> createSinglePost("single", getSinglePost());
+$t -> createPostComments("comments", getSinglePost());  // problem here
 $output = $t->render(); 
 
 echo $output;
