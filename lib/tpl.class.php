@@ -182,14 +182,14 @@ class Template
         $this->assign($searchFor, $infoAbout);
     }
 
-    function createSinglePost($searchFor, $replaceWith) {
+    function createSinglePost($searchFor, $replaceWith, $counterOfComments) {
         $singlePost = '';
         if(!empty($searchFor)) {
             if(!empty($replaceWith)) {
                 $singlePost .= '<div class="single-post-kiril">
                 <div class="post-header">
                     <div class="post-meta"><span class="author">'.$replaceWith[0]->owner.'</span><br>
-                <span class="date">'.$replaceWith[0]->created.'</span>
+                <span class="date">'.$replaceWith[0]->created.' minutes ago</span>
                 </div>
                     <h2 class="post-title">'.$replaceWith[0]->title.'</h2>
                     <div class="post-image-single">
@@ -205,7 +205,7 @@ class Template
                         <div class="post-like">
                         <span class="number-of-likes">'.$replaceWith[0]->likes.'</span>
                         <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                        <span class="number-of-comments">'.$replaceWith[0]->comments.'</span>
+                        <span class="number-of-comments">'.$counterOfComments.'</span>
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
                 </div>
@@ -230,19 +230,27 @@ class Template
                 $nrows = count(file("data/comments.csv"));
                 if ($nrows > 0) {
                     for ($i = 0; $i < $nrows; $i++) {
-                        $commentInfo .= '<div class="comment-post">
-                        <div class="comment-info">
-                            <div class="post-author-img">
-                                <a href="profile.php"><img class="avatar-small" src="img/avatars/Visl.jpg"></a>
-                            </div>
-                            <div class="post-author-text">
-                                <a href="profile.php"><h4>by Jone Doe</h4></a>
+                        if (empty($_GET['title'])) {
+                            $title = "German";
+                        } else {
+                            $title = $_GET['title'];
+                        }
+                        if ($replaceWith[$i]->title == $title) {
+                            $commentInfo .= '<div class="comment-post"> 
+                            <div class="comment-info"> 
+                                <div class="post-author-img"> 
+                                    <a href="profile.php"><img class="avatar-small" src="'.$replaceWith[$i]->comment_owner_image.'"></a> 
+                                </div> 
+                            <div class="post-author-text"> 
+                                <a href="profile.php"><h4>by '.$replaceWith[$i]->comment_owner.'</h4></a> 
                             </div>
                         </div>
-                        <div class="comment">
-                            <p> Lorem </p>
+                        <div class="comment"> 
+                            <p>'.$replaceWith[$i]->comment_desc.'</p> 
                         </div>
-                    </div>';
+                        <div class="created"><h4>'.$replaceWith[$i]->comment_created.' minutes ago</h4></div> 
+                    </div>'; 
+                        }
                     }
                 }
             }
