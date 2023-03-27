@@ -1,5 +1,5 @@
 <?php 
-    if (isset($_GET['text'])) {
+    if (isset($_GET['text-comment'], $_GET['title-comment'])) {
         
     }
 ?>
