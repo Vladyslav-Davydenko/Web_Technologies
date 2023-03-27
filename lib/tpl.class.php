@@ -211,9 +211,10 @@ class Template
                 </div>
             </div>
             <div class="comment-section">
-                <form class="form-for-comment" action="#" method="get">
+                <form class="form-for-comment" action="make-comment.php" method="get">
                     <div class="form-field-comment">
-                        <input class="input-text-comment" type="textarea" cols="90" rows="15" name="text" placeholder="Enter your Comment" />
+                        <input type="textarea" cols="90" rows="15" name="text-comment" class="input-text-comment" placeholder="Enter your Comment">
+                        <input type="hidden" name="title-comment" value="'.$replaceWith[0]->title.'">
                     </div>
                     <input class="btn" type="submit" value="Send a Comment" />
                 </form>
@@ -227,34 +228,31 @@ class Template
         $commentInfo = '';
         if(!empty($searchFor)) {
             if(!empty($replaceWith)) {
-                $nrows = count(file("data/comments.csv"));
-                if ($nrows > 0) {
-                    for ($i = 0; $i < $nrows; $i++) {
+                    foreach($replaceWith as $comment) {
                         if (!empty($_GET['title'])) {
                             $title = $_GET['title'];
                         } else {
                             $title = "German";
                         }
-                        if ($replaceWith[$i]->title == $title) {
+                        if ($comment->title == $title) {
                             $commentInfo .= '<div class="comment-post"> 
                             <div class="comment-info"> 
                                 <div class="post-author-img"> 
-                                    <a href="profile.php?username='.$replaceWith[$i]->comment_owner.'"><img class="avatar-small" src="'.$replaceWith[$i]->comment_owner_image.'"></a> 
+                                    <a href="profile.php?username='.$comment->comment_owner.'"><img class="avatar-small" src="'.$comment->comment_owner_image.'"></a> 
                                 </div> 
                             <div class="post-author-text"> 
-                                <a href="profile.php?username='.$replaceWith[$i]->comment_owner.'"><h4>by '.$replaceWith[$i]->comment_owner.'</h4></a> 
+                                <a href="profile.php?username='.$comment->comment_owner.'"><h4>by '.$comment->comment_owner.'</h4></a> 
                             </div>
                         </div>
                         <div class="comment"> 
-                            <p>'.$replaceWith[$i]->comment_desc.'</p> 
+                            <p>'.$comment->comment_desc.'</p> 
                         </div>
-                        <div class="created"><h4>'.$replaceWith[$i]->comment_created.' minutes ago</h4></div> 
+                        <div class="created"><h4>'.$comment->comment_created.' minutes ago</h4></div> 
                     </div>'; 
                         }
                     }
                 }
             }
-        }
         $this->assign($searchFor, $commentInfo);
     }
 
