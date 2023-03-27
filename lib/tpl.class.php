@@ -211,7 +211,7 @@ class Template
                 </div>
             </div>
             <div class="comment-section">
-                <form class="form-for-comment" action="make-comment.php" method="get">
+                <form class="form-for-comment" action="make-post-comments.php" method="get">
                     <div class="form-field-comment">
                         <input type="textarea" cols="90" rows="15" name="text-comment" class="input-text-comment" placeholder="Enter your Comment">
                         <input type="hidden" name="title-comment" value="'.$replaceWith[0]->title.'">
