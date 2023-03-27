@@ -892,7 +892,7 @@ form i{
     color: #A4133C;
 }
 
-.reg-form {
+.reg-form, .edit-profile {
     width: 100%;
     height: 100vh;
     background-image: url('../img/magicpattern-svg-chart-1676719822925.png');
@@ -929,7 +929,7 @@ form i{
     border-radius: 25px;
 }
 
-.reg-form .sign-box{
+.reg-form .sign-box, .edit-profile .sign-box{
     position: absolute;
     width: 350px;
     height: 400px;
@@ -942,6 +942,29 @@ form i{
     background-color: #FFF0F3;
     padding: 25px 25px 45px 25px;
     border-radius: 25px;
+}
+
+.edit-profile .sign-box{
+    height: 600px;
+}
+
+.select-photo{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    position: relative;
+    font-weight: 400;
+    color: #30343F;
+}
+
+.select-photo::before{
+    position: absolute;
+    content: '';
+    width: 57%;
+    height: 5px;
+    border-radius: 30px;
+    background: linear-gradient(65deg , #FF4D6D , #A4133C);
+    bottom: -10px;
 }
 
 .reg-text-login{
@@ -1017,22 +1040,28 @@ form i{
     background-color: #FFF0F3;
 }
 
+.sign-box .input-box input[type="file"]{
+    font-size: 16px;
+    width: 100px;
+    margin: 8px 0px;
+    margin-left: 257px;
+    outline: none;
+    border-width: 0px 0px 2px 0px;
+    border-color: #800F2F;
+    background-color: #FFF0F3;
+}
+
 .sign-box .input-box label{
     position: absolute;
     left: 0;
     top: 8px;
     font-size: 20px;
-    color: rgb(77, 80, 118);
+    color:#30343F;
     pointer-events: none;
     transition: 0.2s;
 }
 
-.sign-box .input-box input:focus + label,
-.sign-box .input-box input:valid + label{
-    top: -7px;
-    font-size: 18px;
-    color: #30343F;
-}
+
 
 .sign-box .input-box .password-checkbox{
     width: 10%;
@@ -1059,6 +1088,15 @@ form i{
 
 .sign-box .input-box .password-checkbox .show-text{
     margin-left: 5px;
+}
+
+.pop .submit-but{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: 25px;
+    font-size: 23px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .sign-box .submit-but{
@@ -1128,7 +1166,6 @@ form i{
 
 .pop{
     width: 650px;
-    height: 570px;
     border-radius: 25px;
     position: absolute;
     top: 50%;
@@ -1145,11 +1182,10 @@ form i{
 
 .pop form .box{
     width: 470px;
-    height: 300px;
-    cursor: pointer;
-    padding: 50px;
+    height: 280px;
+    padding: 25px;
     position: absolute;
-    top: -190%;
+    top: -130%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
@@ -1158,9 +1194,6 @@ form i{
 }
 
 .pop form .box label{
-    position: absolute;
-    left: 146px;
-    top: -45px;
     font-size: 30px;
     font-weight: 500;
     color: #30343F;
@@ -1218,7 +1251,7 @@ form i{
     left: 68px;
     top: 15px;
     font-size: 20px;
-    color: rgb(77, 80, 118);
+    color:#30343F;
     pointer-events: none;
     transition: 0.2s;
 }
@@ -1228,7 +1261,7 @@ form i{
     left: 68px;
     top: 63px;
     font-size: 20px;
-    color: rgb(77, 80, 118);
+    color:#30343F;
     pointer-events: none;
     transition: 0.2s;
 }
