@@ -1129,11 +1129,13 @@ form i{
     font-size: 17px;
     margin-top: 23px;
     text-align: center;
+    padding: 4px 10px;
 }
 
 .sign-box .login-link a{
     color: #30343F;
     text-decoration: none;
+    
 }
 
 .sign-box .login-link a:hover{
