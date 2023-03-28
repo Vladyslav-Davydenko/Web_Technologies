@@ -15,18 +15,18 @@
     <div class="conteiner">
         <button type="submit " class="butt">Create New Post</button>
         <div class="pop">
-            <form action="#">
+            <form action="make-post-comments.php" method="POST" enctype="multipart/form-data">
                 <div class="box">
                     <h2 class="select-photo">Select a photo</h2>
                     <input type="file" id="myfile" name="myfile" />
                 </div>
                 <div class="input-box">
-                    <input type="text" placeholder="Add your Location">
+                    <input type="text" name="title-of-post" placeholder="Add your Location">
                 </div>
                 <div class="input-box">
-                    <input type="text" placeholder="Add description">
+                    <input type="text" name="post-desc" placeholder="Add description">
                 </div>
-                <button type="submit" class="submit-but"><a href="profile.php">Add to Profile</a></button>
+                <button type="submit" class="submit-but">Add to Profile</button>
             </form>
             <button type="button" class="submit-but"><a href="profile.php">Back Home</a></button>
         </div>
