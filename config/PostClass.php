@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Post{
+class Post
+{
     public string $title;
     public string $description;
     public int $likes;
@@ -25,12 +26,12 @@ class PostActions
 {
     function filteringData($text, $posts)
     {
-            $filteredPosts = array_filter($posts, function($obj) use ($text) {
-                return stripos($obj->title, $text) !== false;
-            });
-        usort($filteredPosts, function ($a, $b) {
-            return $b->likes - $a->likes;
-        });
+        $filteredPosts = array();
+        foreach($posts as $post){
+            if ((stripos($post->title, $text) !== false) || (stripos($post->owner, $text) !== false)){
+                $filteredPosts[] = $post;
+            } 
+        }
         return $filteredPosts;
     }
 }
@@ -46,15 +47,44 @@ function getPosts()
         }
         fclose($handle);
     }
-
+    usort($posts_list, function ($a, $b) {
+        return $a->created - $b->created;
+    });
     $postActions = new PostActions;
-    if(!empty($_GET['text'])){
+    if (!empty($_GET['text'])) {
         $filtered_courses = $postActions->filteringData($_GET['text'], $posts_list);
-    } else{
+    } else {
         $filtered_courses = $posts_list;
     }
 
     return $filtered_courses;
+}
+
+function getSinglePost()
+{
+
+    $posts_list = array();
+
+    if (($handle = fopen("data/posts.csv", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+            $post = new Post($data[0], $data[1], (int)$data[2], $data[3], (int)$data[4], $data[5], $data[6]);
+            $posts_list[] = $post;
+        }
+        fclose($handle);
+    }
+
+    $title = '';
+    if (!empty($_GET['title'])){
+        $title = $_GET['title'];
+    }
+    $r = array();
+    foreach ($posts_list as $post) {
+        if (stripos($post->title, $title) !== FALSE) {
+            $r[] = $post;
+        }
+    }
+
+    return $r;
 }
 
 ?>

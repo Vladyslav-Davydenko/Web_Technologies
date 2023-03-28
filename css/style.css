@@ -292,7 +292,7 @@ h2 {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: flex-end;
+    /*align-items: flex-end;*/
     width: 1100px;
     background-color: #FFF0F3;
     border-radius: 15px;
@@ -410,7 +410,14 @@ p {
     height: 100% !important;
     border-radius: 10px 10px 10px 10px;
 }
-  
+.post-image-reply-section {
+    display: flex;
+    justify-content: flex-end;
+} 
+.created {
+    display: flex;
+    justify-content: flex-end;
+} 
 
 .main-page h3{
     margin-top: 20px;
@@ -420,7 +427,7 @@ p {
     display: none;
 }
 
- .home-link{
+.home-link{
     padding: 10px 15px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
@@ -815,6 +822,7 @@ p {
   .col .social-links a svg{
     width: 25px;
     height: auto;
+    margin: 10px auto;
   }
 
   .col .social-links a:hover{
@@ -877,14 +885,14 @@ form i{
     color: #30343F;
 }
 
-i{
+.login-header i, .register-header i{
     float: right;
     margin-right: -5px;
-    margin-top: -75px;
+    margin-top: -100px;
     color: #A4133C;
 }
 
-.reg-form {
+.reg-form, .edit-profile {
     width: 100%;
     height: 100vh;
     background-image: url('../img/magicpattern-svg-chart-1676719822925.png');
@@ -895,9 +903,21 @@ i{
     
 }
 
-.sign-box{
+.log-form {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/magicpattern-svg-chart-1676719822925.png');
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.log-form .sign-box{
     position: absolute;
     width: 350px;
+    height: 350px;
     box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
     -webkit-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
     -moz-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
@@ -909,10 +929,48 @@ i{
     border-radius: 25px;
 }
 
+.reg-form .sign-box, .edit-profile .sign-box{
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    -webkit-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    -moz-box-shadow: -5px -1px 72px -5px rgba(128,15,47,0.75);
+    top: 50%;
+    left: 50%;
+    transform: translate( -50% , -50% );
+    background-color: #FFF0F3;
+    padding: 25px 25px 45px 25px;
+    border-radius: 25px;
+}
+
+.edit-profile .sign-box{
+    height: 600px;
+}
+
+.select-photo{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    position: relative;
+    font-weight: 400;
+    color: #30343F;
+}
+
+.select-photo::before{
+    position: absolute;
+    content: '';
+    width: 57%;
+    height: 5px;
+    border-radius: 30px;
+    background: linear-gradient(65deg , #FF4D6D , #A4133C);
+    bottom: -10px;
+}
+
 .reg-text-login{
     text-align: center;
-    font-size: 40px;
     margin-bottom: 20px;
+    margin-top: 20px;
     position: relative;
     font-weight: 400;
     color: #30343F;
@@ -930,7 +988,7 @@ i{
 
 .reg-text-registr{
     text-align: center;
-    font-size: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
     position: relative;
     font-weight: 400;
@@ -982,22 +1040,28 @@ i{
     background-color: #FFF0F3;
 }
 
+.sign-box .input-box input[type="file"]{
+    font-size: 16px;
+    width: 100px;
+    margin: 8px 0px;
+    margin-left: 257px;
+    outline: none;
+    border-width: 0px 0px 2px 0px;
+    border-color: #800F2F;
+    background-color: #FFF0F3;
+}
+
 .sign-box .input-box label{
     position: absolute;
     left: 0;
     top: 8px;
     font-size: 20px;
-    color: rgb(77, 80, 118);
+    color:#30343F;
     pointer-events: none;
     transition: 0.2s;
 }
 
-.sign-box .input-box input:focus + label,
-.sign-box .input-box input:valid + label{
-    top: -7px;
-    font-size: 18px;
-    color: #30343F;
-}
+
 
 .sign-box .input-box .password-checkbox{
     width: 10%;
@@ -1024,6 +1088,15 @@ i{
 
 .sign-box .input-box .password-checkbox .show-text{
     margin-left: 5px;
+}
+
+.pop .submit-but{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: 25px;
+    font-size: 23px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .sign-box .submit-but{
@@ -1093,7 +1166,6 @@ i{
 
 .pop{
     width: 650px;
-    height: 570px;
     border-radius: 25px;
     position: absolute;
     top: 50%;
@@ -1110,11 +1182,10 @@ i{
 
 .pop form .box{
     width: 470px;
-    height: 300px;
-    cursor: pointer;
-    padding: 50px;
+    height: 280px;
+    padding: 25px;
     position: absolute;
-    top: -190%;
+    top: -130%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
@@ -1123,9 +1194,6 @@ i{
 }
 
 .pop form .box label{
-    position: absolute;
-    left: 146px;
-    top: -45px;
     font-size: 30px;
     font-weight: 500;
     color: #30343F;
@@ -1183,7 +1251,7 @@ i{
     left: 68px;
     top: 15px;
     font-size: 20px;
-    color: rgb(77, 80, 118);
+    color:#30343F;
     pointer-events: none;
     transition: 0.2s;
 }
@@ -1193,7 +1261,7 @@ i{
     left: 68px;
     top: 63px;
     font-size: 20px;
-    color: rgb(77, 80, 118);
+    color:#30343F;
     pointer-events: none;
     transition: 0.2s;
 }

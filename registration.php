@@ -64,7 +64,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login-reg-makepost.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,7 +103,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
                             fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"></svg>
                     </div>
                 </div>
-                <button id="createAccountButton" name="createAccountButton" href="./index.php" class="submit-but">Create
+                <button id="createAccountButton" name="createAccountButton" href="index.php" class="submit-but">Create
                     account</button>
                 <div class="login-link"><a href="login.php">Already have an account?</a></div>
 
