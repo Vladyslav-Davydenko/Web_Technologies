@@ -1,6 +1,6 @@
 <?php
 require_once('lib/tpl.class.php');
-require_once('config/PostClass.php');
+require_once('base/PostClass.php');
 
 const TEMPLATE_PATH = "templates";
 
