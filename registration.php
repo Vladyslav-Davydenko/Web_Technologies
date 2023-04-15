@@ -77,27 +77,26 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
     <div class="reg-form">
 
         <div class="sign-box">
+            <a href="index.php">
+                <div class="back-to-home">
+                    <i class="fa fa-arrow-left fa-lg"></i>
+                </div>
+            </a>
             <div class="register-header">
                 <h2 class="reg-text-registr">Registration</h2>
-                <a href="index.php">
-                    <div><i class="fa fa-arrow-left fa-lg"></i></div>
-                </a>
             </div>
             <form method="POST" action="#">
 
                 <div class="input-box">
-                    <input type="text" class="name" id="name" name="name" required>
-                    <label for="name">Username</label>
+                    <input type="text" class="name" id="name" name="name" placeholder="Username" required>
                 </div>
 
                 <div class="input-box">
-                    <input type="email" id="email" name="email" class="email" required>
-                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="email" placeholder="Email" required>
                 </div>
 
                 <div class="input-box">
-                    <input type="password" id="password" name="password" class="password" required>
-                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="password" placeholder="Password" required>
                     <div class="password-checkbox">
                         <svg style="color: rgb(25, 38, 66);" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"></svg>
@@ -105,7 +104,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
                 </div>
                 <button id="createAccountButton" name="createAccountButton" href="index.php" class="submit-but">Create
                     account</button>
-                <div class="login-link"><a href="login.php">Already have an account?</a></div>
+                <div class="question-link"><a href="login.php">Already have an account?</a></div>
 
             </form>
         </div>

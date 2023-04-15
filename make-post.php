@@ -62,7 +62,7 @@ if (isset($_POST['myfile'])) {
                 </div>
                 <button type="submit" class="submit-but">Add to Profile</button>
             </form>
-            <button type="button" class="submit-but"><a href="profile.php">Back Home</a></button>
+            <a href="profile.php"><button type="button" class="submit-but">Back Home</button></a>
         </div>
     </div>
 </body>

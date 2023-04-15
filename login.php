@@ -68,22 +68,23 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 <body>
     <div class="log-form">
         <div class="sign-box">
+            <a href="index.php">
+                <div class="back-to-home">
+                    <i class="fa fa-arrow-left fa-lg"></i>
+                </div>
+            </a>
             <div class="login-header">
                 <h2 class="reg-text-login">Login</h2>
-                <a href="index.php">
-                    <div><i class="fa fa-arrow-left fa-lg"></i></div>
-                </a>
+                
             </div>
             <form method="POST" action="#">
 
                 <div class="input-box">
-                    <input type="email" id="loginEmail" name="loginEmail" class="email" required>
-                    <label>Email</label>
+                    <input type="email" id="loginEmail" name="loginEmail" class="email" placeholder="Email" required>
                 </div>
 
                 <div class="input-box">
-                    <input type="password" id="loginPassword" name="loginPassword" class="password" required>
-                    <label>Password</label>
+                    <input type="password" id="loginPassword" name="loginPassword" class="password" placeholder="Password" required>
                     <div class="password-checkbox">
                         <svg style="color: rgb(25, 38, 66);" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"></svg>
@@ -91,7 +92,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 </div>
                 <button type="submit" id="loginSubmitButton" name="loginSubmitButton" href="profile.php"
                     class="submit-but">Log in</button>
-                <div class="login-link"><a href="registration.php">Don't have an account?</a></div>
+                <div class="question-link"><a href="registration.php">Don't have an account?</a></div>
 
             </form>
         </div>

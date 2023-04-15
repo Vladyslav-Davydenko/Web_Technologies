@@ -123,7 +123,7 @@ class Template
                     </ul>
                 </div>
                 <div class="create-btn">
-                    <a href="make-post.html">
+                    <a href="make-post.php">
                     <input class="btn" type="submit" value="&#43 Add New Post" />
                     </a>
                 </div>
