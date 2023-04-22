@@ -1,5 +1,8 @@
 <?php
 
+include_once "data/db_connection.php";
+$link = mysqli_connect($server, $user, $password, $database);
+
 class Post
 {
     public string $title;
@@ -36,9 +39,18 @@ class PostActions
     }
 }
 
-function getPosts()
+function getPosts($link)
 {
     $posts_list = array();
+
+    $query = "select P.*, U.ID, U.username, U.avatar from Post P inner join User U on P.owner = U.ID;";
+    $query1 = "SELECT COUNT(*) AS num_likes FROM Likes WHERE user_id = 'your_user_id';";
+    $result = mysqli_query($link, $query);
+    $result1 = mysqli_query($link, $query1);
+    while($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
+        $post = new Post($row["title"], $row["description"], (int)$row[2], (int)$row["owner"], (int)$row["created"], $row["image"], $row["avatar"]);
+        $posts_list[] = $post;
+    }
 
     if (($handle = fopen("data/posts.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
@@ -60,7 +72,7 @@ function getPosts()
     return $filtered_courses;
 }
 
-function getSinglePost()
+function getSinglePost($link)
 {
 
     $posts_list = array();
@@ -87,4 +99,5 @@ function getSinglePost()
     return $r;
 }
 
+mysqli_close($link);
 ?>
