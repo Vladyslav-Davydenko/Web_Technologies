@@ -1,10 +1,14 @@
 <?php
+    require_once('data/db_connection.php');
+
+    $conn = mysqli_connect($server, $user, $password, $database);
+
     error_reporting(0);
     session_start();
         // TODO: check if session is the right one
-    // if(isset($_SESSION["email"]) && isset($_SESSION["password"])){
-    //     echo "<script>window.location.href='index.php';</script>";
-    // }
+    if(isset($_SESSION["email"]) && isset($_SESSION["password"])){
+        echo "<script>window.location.href='index.php';</script>";
+    }
     
     if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["createAccountButton"])) {
         $email = $_POST['email'];
@@ -44,29 +48,29 @@
 
         // Writing into DB
         if(empty($error)){
-            // $sql1 = "SELECT * FROM User WHERE email = '$email'";
-            // $check = mysqli_query($conn, $sql1);
-            // if (mysqli_num_rows($check) > 0) {
-            //     echo "<script type='text/javascript'>alert('User already exist with such email');</script>";
-            //     echo "<script>window.location.href='login.php';</script>";
-            // }
-            // else{
-            //     $sql = "INSERT INTO User (username, email, password) VALUES ($username, $email, $password);";
-            //     $result = mysqli_query($conn, $sql);
+            $sql1 = "SELECT * FROM User WHERE email = '$email'";
+            $check = mysqli_query($conn, $sql1);
+            if (mysqli_num_rows($check) > 0) {
+                echo "<script type='text/javascript'>alert('User already exist with such email');</script>";
+                echo "<script>window.location.href='login.php';</script>";
+            }
+            else{
+                $sql = "INSERT INTO User (username, email, password) VALUES ('$username', '$email', '$password');";
+                $result = mysqli_query($conn, $sql);
 
-            //     $_SESSION['email'] = $email;
-            //     $_SESSION['password'] = $password;
-            //     echo "<script>window.location.href='index.php';</script>";
-            //     // Close the database connection
-            //     mysqli_close($conn);
-            // }
-            echo "<script>window.location.href='index.php';</script>";
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+                echo "<script>window.location.href='index.php';</script>";
+            }
+            // echo "<script>window.location.href='index.php';</script>";
         }    
         else{
             echo "<script type='text/javascript'>alert('$error');</script>";
             echo "<script>window.location.href='registration.php';</script>";
 
-        }      
+        } 
+        // Close the database connection
+        mysqli_close($conn);     
     }
 ?>
 

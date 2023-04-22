@@ -23,9 +23,6 @@
       <div class="sign-box">
         <div class="register-header">
         <a href="index.php">
-            <div class="back-to-home">
-                <i class="fa fa-arrow-left fa-lg"></i>
-            </div>
           </a>
           <h2 class="reg-text-registr">Edit Profile</h2>
         </div>
@@ -132,6 +129,7 @@
             Edit
           </button>
         </form>
+        <a href="profile.php"><button type="button" class="submit-but">Back Home</button></a>
       </div>
     </div>
   </body>

@@ -1,10 +1,14 @@
 <?php
+    require_once('data/db_connection.php');
+
+    $conn = mysqli_connect($server, $user, $password, $database);
+
     error_reporting(0);
     session_start();
     // TODO: check if session is the right one
-    // if(isset($_SESSION["email"]) && isset($_SESSION["password"])){
-    //     echo "<script>window.location.href='index.php';</script>";
-    // }
+    if(isset($_SESSION["email"]) && isset($_SESSION["password"])){
+        echo "<script>window.location.href='index.php';</script>";
+    }
     if ((($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["loginSubmitButton"]))) {
         $email = $_POST['loginEmail'];
         $password = $_POST['loginPassword'];
@@ -32,30 +36,29 @@
 
         // Writing into DB
         if(empty($error)){
-            echo "<script>window.location.href='index.php';</script>";
-            // $sql = "SELECT * FROM User WHERE email = '$email' AND password = '$password'";
-            // $result = mysqli_query($conn, $sql);
+            $sql = "SELECT * FROM User WHERE email = '$email' AND password = '$password'";
+            $result = mysqli_query($conn, $sql);
 
-            // // Check if any rows were returned
-            // if (mysqli_num_rows($result) > 0) {
-            // // User exists and the password is correct
-            // session_start();
-            // $_SESSION['email'] = $email;
-            // $_SESSION['password'] = $password;
-            // echo "<script>window.location.href='index.php';</script>";
-            // } else {
-            // // User does not exist or the password is incorrect
-            // echo "<script type='text/javascript'>alert('User does not exist or password is incorrect');</script>";
-            // echo "<script>window.location.href='login.php';</script>";
-            // }
-            // // Close the database connection
-            // mysqli_close($conn);
+            // Check if any rows were returned
+            if (mysqli_num_rows($result) > 0) {
+            // User exists and the password is correct
+            session_start();
+            $_SESSION['email'] = $email;
+            $_SESSION['password'] = $password;
+            echo "<script>window.location.href='index.php';</script>";
+            } else {
+            // User does not exist or the password is incorrect
+            echo "<script type='text/javascript'>alert('User does not exist or password is incorrect');</script>";
+            echo "<script>window.location.href='login.php';</script>";
+            }
         }    
         else{
             echo "<script type='text/javascript'>alert('$error');</script>";
             echo "<script>window.location.href='login.php';</script>";
 
-        }      
+        }   
+        // Close the database connection
+        mysqli_close($conn);    
     }
 ?>
 
