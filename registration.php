@@ -96,10 +96,10 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
                 </div>
 
                 <div class="input-box">
-                    <input type="password" id="password" name="password" class="password" placeholder="Password" required>
+                    <input type="password" id="password" name="password" class="password" placeholder="Password"
+                        required>
                     <div class="password-checkbox">
-                        <svg style="color: rgb(25, 38, 66);" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"></svg>
+                        <img class="eye" src="img/icons/hide.png" alt="eye" id="close-eye">
                     </div>
                 </div>
                 <button id="createAccountButton" name="createAccountButton" href="index.php" class="submit-but">Create
@@ -110,4 +110,20 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
         </div>
 
     </div>
+    <script>
+        let eyeIcon = document.getElementById("close-eye")
+        let password = document.getElementById("password")
+
+        eyeIcon.onclick = function () {
+            if (password.type == "password") {
+                password.type = "text"
+                eyeIcon.src = "img/icons/view.png"
+            } else {
+                password.type = "password"
+                eyeIcon.src = "img/icons/hide.png"
+
+            }
+        }
+
+    </script>
 </body>
