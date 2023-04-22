@@ -88,7 +88,7 @@
             </a>
             <div class="login-header">
                 <h2 class="reg-text-login">Login</h2>
-                
+
             </div>
             <form method="POST">
 
@@ -97,10 +97,10 @@
                 </div>
 
                 <div class="input-box">
-                    <input type="password" id="loginPassword" name="loginPassword" class="password" placeholder="Password" required>
+                    <input type="password" id="loginPassword" name="loginPassword" class="password"
+                        placeholder="Password" required>
                     <div class="password-checkbox">
-                        <svg style="color: rgb(25, 38, 66);" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16"></svg>
+                        <img class="eye" src="img/icons/hide.png" alt="eye" id="close-eye">
                     </div>
                 </div>
                 <button type="submit" id="loginSubmitButton" name="loginSubmitButton" href="profile.php"
@@ -111,4 +111,20 @@
         </div>
 
     </div>
+    <script>
+        let eyeIcon = document.getElementById("close-eye")
+        let password = document.getElementById("loginPassword")
+
+        eyeIcon.onclick = function () {
+            if (password.type == "password") {
+                password.type = "text"
+                eyeIcon.src = "img/icons/view.png"
+            } else {
+                password.type = "password"
+                eyeIcon.src = "img/icons/hide.png"
+
+            }
+        }
+
+    </script>
 </body>
