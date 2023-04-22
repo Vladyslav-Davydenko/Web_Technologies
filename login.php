@@ -1,52 +1,62 @@
 <?php
-if (isset($_POST['email']) && isset($_POST['password'])) {
+    error_reporting(0);
+    session_start();
+    // TODO: check if session is the right one
+    // if(isset($_SESSION["email"]) && isset($_SESSION["password"])){
+    //     echo "<script>window.location.href='index.php';</script>";
+    // }
+    if ((($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["loginSubmitButton"]))) {
+        $email = $_POST['loginEmail'];
+        $password = $_POST['loginPassword'];
+        $error = '';
 
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $errors = [];
-
-    if ($email) {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Please enter a valid email address.";
-        }
-    } else {
-        $errors[] = "Email address is required";
-    }
-
-    if ($password) {
-        if (strlen($password) < 4) {
-            $errors[] = 'Password is too short ;(';
-        }
-    } else {
-        $errors[] = 'Password is required';
-    }
-
-    if (empty($errors)) {
-        $data = array(
-            $_POST['email'],
-            $_POST['password']
-        );
-
-        $dataFile = fopen('./data/registration_info.csv', 'r');
-        while (!feof($dataFile)) {
-            if (strpos($dataFile, $_POST['email'], )) {
-                echo 'you have an account';
+        // Password Validation
+        $password = trim($password);
+        if (empty($password)) {
+            $error = 'Password Field is Empty';
+        } else {
+            if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/", $password)){
+                $error = 'Password must be minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:';
             }
-
         }
 
-    } else {
-        echo "<p>Some information was not entered correctly!</p>";
-        echo "<p>The following errors occurred:</p>";
-        echo "<ul>";
-        foreach ($errors as $error) {
-            echo "<li>{$error}</li>";
+        //E-mail Validation
+        $email = trim($email);
+        if (empty($email) || empty($email)) {
+            $error = 'E-mail is empty';
+        } else {
+            if (!preg_match('/^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._%+-]+@(?![_.])[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}+(?<![_.])$/i', $email)){
+                $error = 'Invalid E-mail';
+            }
         }
-        echo "</ul>";
+
+        // Writing into DB
+        if(empty($error)){
+            echo "<script>window.location.href='index.php';</script>";
+            // $sql = "SELECT * FROM User WHERE email = '$email' AND password = '$password'";
+            // $result = mysqli_query($conn, $sql);
+
+            // // Check if any rows were returned
+            // if (mysqli_num_rows($result) > 0) {
+            // // User exists and the password is correct
+            // session_start();
+            // $_SESSION['email'] = $email;
+            // $_SESSION['password'] = $password;
+            // echo "<script>window.location.href='index.php';</script>";
+            // } else {
+            // // User does not exist or the password is incorrect
+            // echo "<script type='text/javascript'>alert('User does not exist or password is incorrect');</script>";
+            // echo "<script>window.location.href='login.php';</script>";
+            // }
+            // // Close the database connection
+            // mysqli_close($conn);
+        }    
+        else{
+            echo "<script type='text/javascript'>alert('$error');</script>";
+            echo "<script>window.location.href='login.php';</script>";
+
+        }      
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +87,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 <h2 class="reg-text-login">Login</h2>
                 
             </div>
-            <form method="POST" action="#">
+            <form method="POST">
 
                 <div class="input-box">
                     <input type="email" id="loginEmail" name="loginEmail" class="email" placeholder="Email" required>

@@ -1,61 +1,74 @@
 <?php
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) {
+    error_reporting(0);
+    session_start();
+        // TODO: check if session is the right one
+    // if(isset($_SESSION["email"]) && isset($_SESSION["password"])){
+    //     echo "<script>window.location.href='index.php';</script>";
+    // }
+    
+    if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["createAccountButton"])) {
+        $email = $_POST['email'];
+        $username = $_POST['name'];
+        $password = $_POST['password'];
+        $error = '';
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $errors = [];
-
-    $pattern = "/^([A-Za-z' _]+)$/";
-    if ($name) {
-        if (!preg_match($pattern, $name)) {
-            $errors[] = "First Name contains wrong symbol.";
+        // Password Validation
+        $password = trim($password);
+        if (empty($password)) {
+            $error = 'Password Field is Empty';
+        } else {
+            if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/", $password)){
+                $error = 'Password is Invalid';
+            }
         }
-    } else {
-        $errors[] = "First name is required";
-    }
 
-    if ($email) {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Please enter a valid email address.";
+        //E-mail Validation
+        $email = trim($email);
+        if (empty($email) || empty($email)) {
+            $error = 'E-mail is empty';
+        } else {
+            if (!preg_match('/^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._%+-]+@(?![_.])[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}+(?<![_.])$/i', $email)){
+                $error = 'Invalid E-mail';
+            }
         }
-    } else {
-        $errors[] = "Email address is required";
-    }
 
-    if ($password) {
-        if (strlen($password) < 4) {
-            $errors[] = 'Password is too short ;(';
+        // Username Validation
+        $username = trim($username);
+        if (empty($username)) {
+            $error = 'Username field is Empty';
+        } else {
+            if(!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $username)){
+                $error = 'Username is Invalid';
+            }
         }
-    } else {
-        $errors[] = 'Password is required';
+
+        // Writing into DB
+        if(empty($error)){
+            // $sql1 = "SELECT * FROM User WHERE email = '$email'";
+            // $check = mysqli_query($conn, $sql1);
+            // if (mysqli_num_rows($check) > 0) {
+            //     echo "<script type='text/javascript'>alert('User already exist with such email');</script>";
+            //     echo "<script>window.location.href='login.php';</script>";
+            // }
+            // else{
+            //     $sql = "INSERT INTO User (username, email, password) VALUES ($username, $email, $password);";
+            //     $result = mysqli_query($conn, $sql);
+
+            //     $_SESSION['email'] = $email;
+            //     $_SESSION['password'] = $password;
+            //     echo "<script>window.location.href='index.php';</script>";
+            //     // Close the database connection
+            //     mysqli_close($conn);
+            // }
+            echo "<script>window.location.href='index.php';</script>";
+        }    
+        else{
+            echo "<script type='text/javascript'>alert('$error');</script>";
+            echo "<script>window.location.href='registration.php';</script>";
+
+        }      
     }
-
-    if (empty($errors)) {
-        $data = array(
-            $_POST['name'],
-            $_POST['email'],
-            $_POST['password']
-        );
-
-        $dataFile = fopen('./data/registration_info.csv', 'a');
-        fputcsv($dataFile, $data, ';');
-        fclose($dataFile);
-
-    } else {
-        echo "<p>Some information was not entered correctly!</p>";
-        echo "<p>The following errors occurred:</p>";
-        echo "<ul>";
-        foreach ($errors as $error) {
-            echo "<li>{$error}</li>";
-        }
-        echo "</ul>";
-    }
-}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +98,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
             <div class="register-header">
                 <h2 class="reg-text-registr">Registration</h2>
             </div>
-            <form method="POST" action="#">
+            <form method="POST">
 
                 <div class="input-box">
                     <input type="text" class="name" id="name" name="name" placeholder="Username" required>
