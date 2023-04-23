@@ -18,7 +18,8 @@ $t -> assign("navbar", $navBar);
 $t -> assign("footer", $footer);
 $t -> assign("head", $head);
 $t -> createSinglePost("single", getSinglePost($link), countSinglePostComments());
-$t -> createPostComments("comments", getSinglePostComments());  // problem here
+$t -> createPostComments("comments", getSinglePostComments());
+$t -> logInlogOutScript("script");
 $output = $t->render(); 
 
 echo $output;

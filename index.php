@@ -18,6 +18,7 @@ $t -> assign("navbar", $navBar);
 $t -> assign("footer", $footer);
 $t -> assign("head", $head);
 $t -> createPost("posts", getPosts($conn));
+$t -> logInlogOutScript("script");
 $output = $t->render(); 
 
 echo $output;

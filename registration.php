@@ -6,7 +6,7 @@
     error_reporting(0);
     session_start();
         // TODO: check if session is the right one
-    if(isset($_SESSION["email"]) && isset($_SESSION["password"])){
+    if(isset($_SESSION["email"])){
         echo "<script>window.location.href='index.php';</script>";
     }
     
@@ -59,7 +59,6 @@
                 $result = mysqli_query($conn, $sql);
 
                 $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
                 echo "<script>window.location.href='index.php';</script>";
             }
             // echo "<script>window.location.href='index.php';</script>";

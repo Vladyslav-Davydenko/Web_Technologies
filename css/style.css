@@ -129,6 +129,10 @@ header {
   z-index: 1;
 }
 
+li {
+  list-style: none;
+}
+
 h1 {
   color: #ffb3c1;
   text-shadow: 4px 4px 0px #ff758f;
@@ -461,6 +465,7 @@ p {
   font-family: "Ubuntu", sans-serif;
   position: absolute;
   right: 12%;
+  cursor: pointer;
 }
 
 .login-link:hover {
@@ -1282,10 +1287,20 @@ input::placeholder {
   left: 105%;
 }
 
-
-.eye{
-
+.eye {
   width: 25px;
   height: 25px;
+}
 
+#login,
+#logout {
+  display: none;
+}
+
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
 }

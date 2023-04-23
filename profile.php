@@ -19,6 +19,7 @@ $t -> assign("footer", $footer);
 $t -> assign("head", $head);
 $t -> createPostProfile("posts", getPosts($conn));
 $t -> createProfileSideBar("sidebar", getUser());
+$t -> logInlogOutScript("script");
 $output = $t->render(); 
 
 echo $output;

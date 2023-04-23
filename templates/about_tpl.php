@@ -16,6 +16,6 @@
     <p></p>
     {{INFO}}
     {{FOOTER}}
-    
+    {{SCRIPT}}
 </body>
 </html>

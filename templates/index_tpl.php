@@ -19,6 +19,6 @@
         </div>
     </div>
     {{FOOTER}}
+    {{SCRIPT}} 
 </body>
-
 </html>

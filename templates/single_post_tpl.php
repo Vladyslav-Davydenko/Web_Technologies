@@ -17,6 +17,7 @@
         {{COMMENTS}}   
     </div>
     {{FOOTER}}
+    {{SCRIPT}}
 </body>
 
 </html>

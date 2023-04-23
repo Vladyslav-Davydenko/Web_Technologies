@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class Template
 {
     public $assignedValues = array();
@@ -254,6 +256,41 @@ class Template
                 }
             }
         $this->assign($searchFor, $commentInfo);
+    }
+
+    function logInlogOutScript($searchFor){
+        $script = '<script type="text/javascript">
+        const loginBtnHam = document.querySelector("#loginHamb");
+        const logoutBtnHam = document.querySelector("#logoutHamb");
+        const loginBtn = document.querySelector("#login");
+        const logoutBtn = document.querySelector("#logout");';
+        if(!empty($searchFor)) {
+            if (isset($_SESSION["email"])){
+                $script .= 'loginBtn.style.display = "none";
+                logoutBtn.style.display = "block";
+                loginBtnHam.style.display = "none";
+                logoutBtnHam.style.display = "block";
+                
+                logoutBtn.addEventListener("click", () => {
+                    fetch("./logout.php")
+                        .then(response => {
+                            window.location.href="login.php";
+                        })
+                        .catch(error => {
+                            console.error("Something went wrong")
+                        });
+                });';
+            }else{
+                $script .= '
+                loginBtnHam.style.display = "block";
+                logoutBtnHam.style.display = "none";
+                loginBtn.style.display = "block";
+                logoutBtn.style.display = "none";
+                ';
+            }
+        }
+        $script .= "</script>";
+        $this->assign($searchFor, $script);
     }
 
     function render()
