@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 class Template
 {
     public $assignedValues = array();
@@ -106,23 +107,32 @@ class Template
             if (!empty($replaceWith)) {
                 $sidebar .= '
                 <div class="profile-side-bar">
-                    <img class="avatar" src="' . $replaceWith->owner_image . '">
+                    <img class="avatar" src="' . $replaceWith->avatar . '">
                     <h3>' . $replaceWith->username . '</h3>
                     <p class="profile-text">' . $replaceWith->bio . '</p>
-                    <ul class="prof-social">
-                        <li>
-                        <a title="Blog" href="#" target="_blank"><i class="fa fa-globe"></i></a>
-                        </li>
-                        <li>
-                            <a title="Twitter" href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a title="Facebook" href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a title="Instagram" href="#" target="_blank"><i class="fa fa-instagram"></i></a>
-                        </li>
-                    </ul>
+                    <ul class="prof-social">';
+                    if(isset($replaceWith->social)){
+                        $sidebar .= '<li>
+                        <a title="Blog" href="' . $replaceWith->social . '" target="_blank"><i class="fa fa-globe"></i></a>
+                        </li>';
+                    }
+                    if(isset($replaceWith->twitter)){
+                        $sidebar .= '<li>
+                        <a title="Twitter" href="' . $replaceWith->twitter . '" target="_blank"><i class="fa fa-twitter"></i></a>
+                    </li>';
+                    }
+                    if(isset($replaceWith->facebook)){
+                        $sidebar .= '<li>
+                        <a title="Facebook" href="' . $replaceWith->facebook . '" target="_blank"><i class="fa fa-facebook"></i></a>
+                    </li>';
+                    }
+                    if(isset($replaceWith->instagram)){
+                        $sidebar .= '<li>
+                        <a title="Instagram" href="' . $replaceWith->instagram . '" target="_blank"><i class="fa fa-instagram"></i></a>
+                    </li>';
+                    }       
+                    
+                $sidebar .= '</ul>
                 </div>
                 <div class="create-btn">
                     <a href="make-post.php">
@@ -260,16 +270,18 @@ class Template
 
     function logInlogOutScript($searchFor){
         $script = '<script type="text/javascript">
-        const loginBtnHam = document.querySelector("#loginHamb");
-        const logoutBtnHam = document.querySelector("#logoutHamb");
+        const loginBtnHamb = document.querySelector("#loginHamb");
+        const logoutBtnHamb = document.querySelector("#logoutHamb");
         const loginBtn = document.querySelector("#login");
-        const logoutBtn = document.querySelector("#logout");';
+        const logoutBtn = document.querySelector("#logout");
+        const profileBtn = document.querySelector("#profileBtn");
+        const profileBtnHamb = document.querySelector("#profileHamb");';
         if(!empty($searchFor)) {
             if (isset($_SESSION["email"])){
                 $script .= 'loginBtn.style.display = "none";
                 logoutBtn.style.display = "block";
-                loginBtnHam.style.display = "none";
-                logoutBtnHam.style.display = "block";
+                loginBtnHamb.style.display = "none";
+                logoutBtnHamb.style.display = "block";
                 
                 logoutBtn.addEventListener("click", () => {
                     fetch("./logout.php")
@@ -279,13 +291,35 @@ class Template
                         .catch(error => {
                             console.error("Something went wrong")
                         });
+                });
+                logoutBtnHamb.addEventListener("click", () => {
+                    fetch("./logout.php")
+                        .then(response => {
+                            window.location.href="login.php";
+                        })
+                        .catch(error => {
+                            console.error("Something went wrong")
+                        });
+                });
+                profileBtn.addEventListener("click", () => {
+                    window.location.href="profile.php";
+                });
+                profileBtnHamb.addEventListener("click", () => {
+                    window.location.href="profile.php";
                 });';
             }else{
                 $script .= '
-                loginBtnHam.style.display = "block";
-                logoutBtnHam.style.display = "none";
+                loginBtnHamb.style.display = "block";
+                logoutBtnHamb.style.display = "none";
                 loginBtn.style.display = "block";
                 logoutBtn.style.display = "none";
+                
+                profileBtn.addEventListener("click", () => {
+                    window.location.href="login.php";
+                });
+                profileBtnHamb.addEventListener("click", () => {
+                    window.location.href="login.php";
+                });
                 ';
             }
         }

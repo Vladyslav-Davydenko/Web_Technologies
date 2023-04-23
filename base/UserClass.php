@@ -1,53 +1,51 @@
 <?php 
-
+session_start();
 class User{
-    public string $username;
     public string $email;
+    public string $username;
     public string $bio;
-    public string $owner_image;
+    public string $avatar;
+    public string $twitter;
+    public string $instagram;
+    public string $facebook;
+    public string $social;
 
-    public function __construct(string $username, string $email, string $bio, string $owner_image)
+    public function __construct(string $username, string $email, string $bio, string $avatar, string $twitter, string $instagram, string $facebook, string $social)
     {
         $this->username = $username;
         $this->email = $email;
         $this->bio = $bio;
-        $this->owner_image = $owner_image;
+        $this->avatar = $avatar;
+        $this->twitter = $twitter;
+        $this->instagram = $instagram;
+        $this->facebook = $facebook;
+        $this->social = $social;
     }
 }
 
-class UserActions
+function getUser($conn)
 {
-    function filteringData($username, $users)
-    {
-        foreach ($users as $user) {
-            if ($user->username === $username) {
-                return $user;
-            }
-        }
-        return null;
-    }
-}
+    $email = $_SESSION["email"];
+    $stmt = $conn->prepare("SELECT * FROM User WHERE email = '$email'");
+    $stmt->execute();
 
-function getUser()
-{
-    $users_list = array();
+    $result = $stmt->get_result();
+    $user_data = $result->fetch_assoc();
+    $username = $user_data["username"];
+    $email = $user_data["email"];
+    $bio = isset($user_data["bio"]) ? $user_data["bio"] : "";
+    $avatar = isset($user_data["avatar"]) ? $user_data["avatar"] : "img/avatars/default.png";
+    $twitter = isset($user_data["twitter"]) ? $user_data["twitter"] : "";
+    $instagram = isset($user_data["instagram"]) ? $user_data["instagram"] : "";
+    $facebook = isset($user_data["facebook"]) ? $user_data["facebook"] : "";
+    $social = isset($user_data["social"]) ? $user_data["social"] : "";
 
-    if (($handle = fopen("data/users.csv", "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-            $user = new User($data[0], $data[1], $data[2], $data[3]);
-            $users_list[] = $user;
-        }
-        fclose($handle);
-    }
+    $user = new User($username, $email, $bio, $avatar, $twitter, $instagram, $facebook, $social);
 
-    $userActions = new UserActions;
-    if(!empty($_GET['username'])){
-        $user = $userActions->filteringData($_GET['username'], $users_list);
-    } else{
-        $user = $userActions->filteringData('Vilsivul', $users_list);
-    }
-
+    $stmt->close();
+    $conn->close();
     return $user;
+
 }
 
 ?>

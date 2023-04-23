@@ -2,7 +2,10 @@
     require_once('data/db_connection.php');
 
     $conn = mysqli_connect($server, $user, $password, $database);
-
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    
     error_reporting(0);
     session_start();
     // TODO: check if session is the right one
