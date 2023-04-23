@@ -14,6 +14,7 @@ $t -> assign("navbar", $navBar);
 $t -> assign("footer", $footer);
 $t -> assign("head", $head);
 $t -> createAboutPost("info");
+$t -> logInlogOutScript("script");
 $output = $t->render(); 
 
 echo $output;
