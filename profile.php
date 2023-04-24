@@ -20,7 +20,7 @@ $t -> assign("title", "Travel Memories");
 $t -> assign("navbar", $navBar);
 $t -> assign("footer", $footer);
 $t -> assign("head", $head);
-$t -> createPostProfile("posts", getPosts($conn));
+$t -> createPostProfile("posts", getPostsForUser($conn));
 $t -> createProfileSideBar("sidebar", getUser($conn));
 $t -> logInlogOutScript("script");
 $output = $t->render(); 
