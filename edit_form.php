@@ -1,3 +1,109 @@
+<?php 
+  require_once('data/db_connection.php');
+  require_once('base/UserClass.php');
+
+  $conn = mysqli_connect($server, $user, $password, $database);
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+  if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["editAccountButton"])) {
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $bio = isset($_POST['bio']) ? $_POST['bio'] : "";
+    $avatar = "img/avatars/default.png";
+    if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] == UPLOAD_ERR_OK) {
+      $uploaded_file = $_FILES['avatar']['tmp_name'];
+      //$destination = 'img/avatars/'. $email. '_avatar.jpg';
+      $destination = 'img/avatars/'. $email .'.jpg';
+
+      if (move_uploaded_file($uploaded_file, $destination)) {
+        $avatar = $destination;
+      }  
+  }
+    echo $avatar;
+    $twitter = isset($_POST['twitter']) ? $_POST['twitter'] : "";
+    $instagram = isset($_POST['instagram']) ? $_POST['instagram'] : "";
+    $facebook = isset($_POST['facebook']) ? $_POST['facebook'] : "";
+    $social = isset($_POST['web']) ? $_POST['web'] : "";
+    $error = '';
+
+    //E-mail Validation
+    $email = trim($email);
+    if (empty($email)) {
+        $error = 'E-mail is empty';
+    } else {
+        if (!preg_match('/^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._%+-]+@(?![_.])[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}+(?<![_.])$/i', $email)){
+            $error = 'Invalid E-mail';
+        }
+    }
+
+    // Username Validation
+    $username = trim($username);
+    if (empty($username)) {
+        $error = 'Username field is Empty';
+    } else {
+        if(!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $username)){
+            $error = 'Username is Invalid';
+        }
+    }
+    // Writing into DB
+    if(empty($error)){
+        $userId = $_SESSION['email'];
+       echo $username ." ". $email ." ". $bio ." ". $avatar ." ". $social ." ". $instagram ." ". $facebook ." ". $twitter ." ". $userId;
+        $sql = "UPDATE User SET username='$username', email='$email', bio='$bio', avatar='$avatar', social='$social', instagram='$instagram', facebook='$facebook', twitter='$twitter' WHERE email='$userId';";
+        $result = mysqli_query($conn, $sql);
+        echo "<script>window.location.href='profile.php';</script>";
+        
+    }    
+    else{
+        echo "<script type='text/javascript'>alert('$error');</script>";
+        echo "<script>window.location.href='edit_form.php';</script>";
+
+    } 
+    // Close the database connection
+    mysqli_close($conn);     
+}
+  
+  error_reporting(0);
+  session_start();
+  $script = "";
+  if(isset($_SESSION["email"])){
+    $email = $_SESSION["email"];
+    $sql = "SELECT * FROM User WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+
+    // Check if any rows were returned
+    if (mysqli_num_rows($result) > 0) {
+      $user = getUser($conn);
+      $script = '<script>
+      const username = document.querySelector("#username");
+      const email = document.querySelector("#email");
+      const bio = document.querySelector("#bio");
+      // const avatar = document.querySelector("#avatar");
+      const web = document.querySelector("#web");
+      const instagram = document.querySelector("#instagram");
+      const facebook = document.querySelector("#facebook");
+      const twitter = document.querySelector("#twitter");
+      username.value = "' . $user->username. '";
+      email.value = "' . $user->email. '";
+      bio.value = "' . $user->bio. '";
+      // avatar.value = "' . $user->avatar. '";
+      web.value = "' . $user->social. '";
+      instagram.value = "' . $user->instagram. '";
+      facebook.value = "' . $user->facebook. '";
+      twitter.value = "' . $user->twitter. '";
+      </script>';
+
+    } else {
+    // User does not exist or the password is incorrect
+    echo "<script type='text/javascript'>alert('Some problems with Session, can not find user');</>";
+    } 
+  }
+  else{
+    echo "<script type='text/javascript'>alert('Something went wrong');</script>";
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,13 +132,14 @@
           </a>
           <h2 class="reg-text-registr">Edit Profile</h2>
         </div>
-        <form method="POST" action="#">
+        <form method="POST" action="#" enctype="multipart/form-data">
           <div class="input-box">
             <input
               type="text"
               class="name"
-              id="name"
-              name="name"
+              id="username"
+              name="username"
+              value=""
               placeholder="Username"
               required
             />
@@ -43,6 +150,7 @@
               type="email"
               id="email"
               name="email"
+              value=""
               class="email"
               placeholder="Email"
               required
@@ -55,13 +163,14 @@
               class="bio"
               id="bio"
               name="bio"
+              value=""
               placeholder="Bio"
             />
           </div>
 
           <div class="input-box">
             <label
-              for="profile_img"
+              for="avatar"
               style="
                 font-family: 'Libre-Baskerville-Italic';
                 font-size: 20px;
@@ -75,8 +184,9 @@
             <input
               type="file"
               class="profile_img"
-              id="profile_img"
-              name="profile_img"
+              id="avatar"
+              name="avatar"
+              value=""
             />
           </div>
 
@@ -86,6 +196,7 @@
               class="web"
               id="web"
               name="web"
+              value=""
               placeholder="Web"
             />
           </div>
@@ -96,6 +207,7 @@
               class="instagram"
               id="instagram"
               name="instagram"
+              value=""
               placeholder="Instagram"
             />
           </div>
@@ -106,6 +218,7 @@
               class="facebook"
               id="facebook"
               name="facebook"
+              value=""
               placeholder="Facebook"
             />
           </div>
@@ -116,14 +229,14 @@
               class="twitter"
               id="twitter"
               name="twitter"
+              value=""
               placeholder="Twitter"
             />
           </div>
 
           <button
-            id="createAccountButton"
-            name="createAccountButton"
-            href="index.php"
+            id="editAccountButton"
+            name="editAccountButton"
             class="submit-but"
           >
             Edit
@@ -132,5 +245,6 @@
         <a href="profile.php"><button type="button" class="submit-but">Back Home</button></a>
       </div>
     </div>
+    <?php echo $script?>
   </body>
 </html>

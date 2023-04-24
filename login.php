@@ -15,52 +15,25 @@
     if ((($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["loginSubmitButton"]))) {
         $email = $_POST['loginEmail'];
         $password = $_POST['loginPassword'];
-        $error = '';
-
-        // Password Validation
-        $password = trim($password);
-        if (empty($password)) {
-            $error = 'Password Field is Empty';
-        } else {
-            if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/", $password)){
-                $error = 'Password must be minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:';
-            }
-        }
-
-        //E-mail Validation
-        $email = trim($email);
-        if (empty($email) || empty($email)) {
-            $error = 'E-mail is empty';
-        } else {
-            if (!preg_match('/^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._%+-]+@(?![_.])[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}+(?<![_.])$/i', $email)){
-                $error = 'Invalid E-mail';
-            }
-        }
 
         // Writing into DB
-        if(empty($error)){
-            $sql = "SELECT * FROM User WHERE email = '$email' AND password = '$password'";
-            $result = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM User WHERE email = '$email' AND password = '$password'";
+        $result = mysqli_query($conn, $sql);
 
-            // Check if any rows were returned
-            if (mysqli_num_rows($result) > 0) {
-            // User exists and the password is correct
-            session_start();
-            $_SESSION['email'] = $email;
-            echo "<script>window.location.href='index.php';</script>";
-            } else {
-            // User does not exist or the password is incorrect
-            echo "<script type='text/javascript'>alert('User does not exist or password is incorrect');</script>";
-            echo "<script>window.location.href='login.php';</script>";
-            }
-        }    
-        else{
-            echo "<script type='text/javascript'>alert('$error');</script>";
-            echo "<script>window.location.href='login.php';</script>";
-
-        }   
-        // Close the database connection
-        mysqli_close($conn);    
+        // Check if any rows were returned
+        if (mysqli_num_rows($result) > 0) {
+        // User exists and the password is correct
+        session_start();
+        $_SESSION['email'] = $email;
+        echo "<script>window.location.href='index.php';</script>";
+        } else {
+        // User does not exist or the password is incorrect
+        echo "<script type='text/javascript'>alert('User does not exist or password is incorrect');</script>";
+        echo "<script>window.location.href='login.php';</script>";
+        } 
+        
+    // Close the database connection
+    mysqli_close($conn);    
     }
 ?>
 

@@ -8,7 +8,7 @@
     
     error_reporting(0);
     session_start();
-        // TODO: check if session is the right one
+
     if(isset($_SESSION["email"])){
         echo "<script>window.location.href='index.php';</script>";
     }

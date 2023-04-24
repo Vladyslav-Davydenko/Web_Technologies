@@ -111,22 +111,22 @@ class Template
                     <h3>' . $replaceWith->username . '</h3>
                     <p class="profile-text">' . $replaceWith->bio . '</p>
                     <ul class="prof-social">';
-                    if(isset($replaceWith->social)){
+                    if($replaceWith->social != ""){
                         $sidebar .= '<li>
                         <a title="Blog" href="' . $replaceWith->social . '" target="_blank"><i class="fa fa-globe"></i></a>
                         </li>';
                     }
-                    if(isset($replaceWith->twitter)){
+                    if($replaceWith->twitter != ""){
                         $sidebar .= '<li>
                         <a title="Twitter" href="' . $replaceWith->twitter . '" target="_blank"><i class="fa fa-twitter"></i></a>
                     </li>';
                     }
-                    if(isset($replaceWith->facebook)){
+                    if($replaceWith->facebook != ""){
                         $sidebar .= '<li>
                         <a title="Facebook" href="' . $replaceWith->facebook . '" target="_blank"><i class="fa fa-facebook"></i></a>
                     </li>';
                     }
-                    if(isset($replaceWith->instagram)){
+                    if($replaceWith->instagram != ""){
                         $sidebar .= '<li>
                         <a title="Instagram" href="' . $replaceWith->instagram . '" target="_blank"><i class="fa fa-instagram"></i></a>
                     </li>';
