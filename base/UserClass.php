@@ -1,6 +1,7 @@
 <?php 
 session_start();
 class User{
+    public int $userID;
     public string $email;
     public string $username;
     public string $bio;
@@ -10,8 +11,9 @@ class User{
     public string $facebook;
     public string $social;
 
-    public function __construct(string $username, string $email, string $bio, string $avatar, string $twitter, string $instagram, string $facebook, string $social)
+    public function __construct(int $userID, string $username, string $email, string $bio, string $avatar, string $twitter, string $instagram, string $facebook, string $social)
     {
+        $this->userID = $userID;
         $this->username = $username;
         $this->email = $email;
         $this->bio = $bio;
@@ -31,6 +33,7 @@ function getUser($conn)
 
     $result = $stmt->get_result();
     $user_data = $result->fetch_assoc();
+    $userID = $user_data["ID"];
     $username = $user_data["username"];
     $email = $user_data["email"];
     $bio = isset($user_data["bio"]) ? $user_data["bio"] : "";
@@ -40,7 +43,7 @@ function getUser($conn)
     $facebook = isset($user_data["facebook"]) ? $user_data["facebook"] : "";
     $social = isset($user_data["social"]) ? $user_data["social"] : "";
 
-    $user = new User($username, $email, $bio, $avatar, $twitter, $instagram, $facebook, $social);
+    $user = new User($userID, $username, $email, $bio, $avatar, $twitter, $instagram, $facebook, $social);
 
     $stmt->close();
     $conn->close();

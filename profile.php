@@ -11,17 +11,18 @@ if ($conn->connect_error) {
 const TEMPLATE_PATH = "templates";
 
 $t = new Template(TEMPLATE_PATH. "/profile_tpl.php");
-
+echo "Hi";
 $navBar = file_get_contents("includes/navigation.html");
 $head = file_get_contents("includes/head.html");
 $footer = file_get_contents("includes/footer.html");
-
+echo "<script>console.log('Eblan0000')</script>";
 $t -> assign("title", "Travel Memories");
 $t -> assign("navbar", $navBar);
 $t -> assign("footer", $footer);
 $t -> assign("head", $head);
-$t -> createPostProfile("posts", getPostsForUser($conn));
+print_r(getPostsForUser($conn));
 $t -> createProfileSideBar("sidebar", getUser($conn));
+$t -> createPostProfile("posts", getPostsForUser($conn));
 $t -> logInlogOutScript("script");
 $output = $t->render(); 
 

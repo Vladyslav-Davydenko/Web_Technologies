@@ -75,22 +75,22 @@ class Template
                     for ($i = 0; $i < $rows; $i++) {
                         if (!empty($_SESSION['id'])) {
                             $username = $_SESSION['id'];
+                        } else{
+                            $username = $_GET['username'];
                         }
-                        if ($replaceWith[$i]->owner == $username) {
-                            $profilePost .= '<div class="single-post">
-                            <a href="single_post.php?id='.$replaceWith[$i]->postID.'"><img src="' . $replaceWith[$i]->image . '"></a>
-                            <div class="post-text">
-                                <span class="btn-edit"><a href="#"><i class="fa fa-edit"></i></a></span>
-                                <h3>' . $replaceWith[$i]->title . '</h3>
-                                <p>
-                                ' . $replaceWith[$i]->description . '
-                                </p>
-                                <div class="posted">
-                                    <h4>' . $replaceWith[$i]->created . ' minutes ago</h4>
-                                </div>
+                        $profilePost .= '<div class="single-post">
+                        <a href="single_post.php?id='.$replaceWith[$i]->postID.'"><img src="' . $replaceWith[$i]->image . '"></a>
+                        <div class="post-text">
+                            <span class="btn-edit"><a href="#"><i class="fa fa-edit"></i></a></span>
+                            <h3>' . $replaceWith[$i]->title . '</h3>
+                            <p>
+                            ' . $replaceWith[$i]->description . '
+                            </p>
+                            <div class="posted">
+                                <h4> 20 minutes ago</h4>
                             </div>
-                        </div>';
-                        }
+                        </div>
+                    </div>';
                     }
                 }
             }
