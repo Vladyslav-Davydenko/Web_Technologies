@@ -1,19 +1,18 @@
 <?php
-require_once('data/db_connection.php');
+include('data/db_connection.php');
 session_start();
 
-$conn = mysqli_connect($server, $user, $password, $database);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $conn = mysqli_connect($server, $user, $password, $database);
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST["title-of-post"];
     $description = $_POST["post-desc"];
     $image = "img/posts/default.jpg";
     if (isset($_FILES['myfile']) && $_FILES['myfile']['error'] == UPLOAD_ERR_OK) {
       $uploaded_file = $_FILES['myfile']['tmp_name'];
-      $destination = 'img/posts/'. $title .'.jpg';
+      $destination = 'img/posts/'. mysqli_insert_id($conn) .'.jpg';
 
       if (move_uploaded_file($uploaded_file, $destination)) {
         $image = $destination;
@@ -30,8 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<script>window.location.href='profile.php';</script>";
 
 
-    // Close the database connection
-    mysqli_close($conn);     
+    // Close the database connection    
 }
 
 ?>

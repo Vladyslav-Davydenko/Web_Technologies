@@ -26,6 +26,11 @@ class Template
     }
     function createPost($searchFor, $replaceWith)
     {
+        include('data/db_connection.php');
+        $conn = mysqli_connect($server, $user, $password, $database);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
         $singlePost = '<div class="main-page">
         <div class="posts-home">';
         if (!empty($searchFor)) {
@@ -33,16 +38,21 @@ class Template
                 $rows = count($replaceWith);
                 if ($rows > 0) {
                     for ($i = 0; $i < $rows; $i++) {
+                        $id = $replaceWith[$i]->owner;
+                        $stmt = $conn->prepare("SELECT * FROM User WHERE ID = $id");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $user_data = $result->fetch_assoc();
                         $singlePost .= ' <div class="single-post">
                         <a href="single_post.php?id=' . $replaceWith[$i]->postID . '"><img src="' . $replaceWith[$i]->image . '"></a>
                         <div class="post-text">
                             <div class="post-author">
                                 <div class="post-author-img">
-                                    <a href="profile.php?username=' . $replaceWith[$i]->owner . '"><img class="avatar-small" src="' . $replaceWith[$i]->owner_image . '"></a>
+                                    <a href="profile.php?username=' . $user_data["ID"] . '"><img class="avatar-small" src="' . $user_data["avatar"] . '"></a>
                                 </div>
                                 <div class="post-author-text">
-                                    <a href="profile.php?username=' . $replaceWith[$i]->owner . '">
-                                        <h4>' . $replaceWith[$i]->owner . '</h4>
+                                    <a href="profile.php?username=' . $user_data["ID"] . '">
+                                        <h4>' . $user_data["username"] . '</h4>
                                     </a>
                                 </div>
                             </div>
@@ -52,10 +62,11 @@ class Template
                                 </p>
                             </div>
                             <div class="posted">
-                                <h4>' . $replaceWith[$i]->created . ' minutes ago</h4>
+                                <h4> 20 minutes ago</h4>
                             </div>
                         </div>
                     </div>';
+                    $stmt->close();
                     }
                 }
             }
@@ -193,29 +204,39 @@ class Template
     }
 
     function createSinglePost($searchFor, $replaceWith) {
+        include('data/db_connection.php');
+        $conn = mysqli_connect($server, $user, $password, $database);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
         $singlePost = '';
         if(!empty($searchFor)) {
             if(!empty($replaceWith)) {
+                $id = $replaceWith->owner;
+                $stmt = $conn->prepare("SELECT * FROM User WHERE ID = $id");
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $user_data = $result->fetch_assoc();
                 $singlePost .= '<div class="single-post-kiril">
                 <div class="post-header">
-                    <div class="post-meta"><span class="author">'.$replaceWith[0]->owner.'</span><br>
-                <span class="date">'.$replaceWith[0]->created.' minutes ago</span>
+                    <div class="post-meta"><span class="author">'.$user_data["username"].'</span><br>
+                <span class="date"> 20 minutes ago</span>
                 </div>
-                    <h2 class="post-title">'.$replaceWith[0]->title.'</h2>
+                    <h2 class="post-title">'.$replaceWith->title.'</h2>
                     <div class="post-image-single">
-                        <img src="'.$replaceWith[0]->image.'">
+                        <img src="'.$replaceWith->image.'">
                     </div>
                 </div>
                 <div class="post-body">
                     <div class="entry-desc">
-                        <p>'.$replaceWith[0]->description.'</p>
+                        <p>'.$replaceWith->description.'</p>
                     </div>
                 </div>
                 <div class="post-image-reply-section">
                         <div class="post-like">
-                        <span class="number-of-likes">'.$replaceWith[0]->likes.'</span>
+                        <span class="number-of-likes">8</span>
                         <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                        <span class="number-of-comments">'./*$counterOfComments*/$replaceWith[0]->likes.'</span>
+                        <span class="number-of-comments">8</span>
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
                 </div>
@@ -224,7 +245,7 @@ class Template
                 <form class="form-for-comment" action="make-post-comments.php" method="get">
                     <div class="form-field-comment">
                         <input type="textarea" cols="90" rows="15" name="text-comment" class="input-text-comment" placeholder="Enter your Comment">
-                        <input type="hidden" name="title-comment" value="'.$replaceWith[0]->title.'">
+                        <input type="hidden" name="title-comment" value="'.$replaceWith->postID.'">
                     </div>
                     <input class="btn" type="submit" value="Send a Comment" />
                 </form>

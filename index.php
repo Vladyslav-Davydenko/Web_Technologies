@@ -17,7 +17,7 @@ $t -> assign("title", "Travel Memories");
 $t -> assign("navbar", $navBar);
 $t -> assign("footer", $footer);
 $t -> assign("head", $head);
-$t -> createPost("posts", getPosts($conn));
+$t -> createPost("posts", getPosts());
 $t -> logInlogOutScript("script");
 $output = $t->render(); 
 echo $output;
