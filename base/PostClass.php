@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include_once "data/db_connection.php";
 $link = mysqli_connect($server, $user, $password, $database);
 
@@ -41,29 +42,47 @@ class PostActions
     }
 }
 
-function getPosts($link)
+function getPosts($link) { // for index.php
+
+}
+
+function getPostsForUser($link) // for profile.php
 {
     $posts_list = array();
 
-    // $query = "select P.*, U.ID, U.username, U.avatar from Post P inner join User U on P.owner = U.ID;";
-    
-    // $result = mysqli_query($link, $query);
-    
-    // if(mysqli_num_rows($result) > 0) {
-    //     while($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
-    //         $query1 = mysqli_prepare($link, "SELECT COUNT(*) AS num_likes FROM Likes WHERE ownerID = '?' and postID = '?';");
-    //         mysqli_stmt_bind_param($query1, "ii", $row["postID"], (int)$row["owner"]);
-    //         mysqli_stmt_execute($query1);
-    //         mysqli_stmt_bind_result($query1, $likes);
-    //         echo $likes;
-    //         while(mysqli_stmt_fetch($query1)) {
-    //             $post = new Post($row["postID"], $row["title"], $row["description"], (int)$likes, (int)$row["owner"], (int)$row["created"], $row["image"], $row["avatar"]);
-    //             $posts_list[] = $post;
-    //         }
-    //     }        
-    //     mysqli_stmt_close($query1);
-    //     mysqli_close($link);
+    /*Check if it works for profile.php*/
+    // if(isset($_SESSION['email']) && $_SESSION['email'] != '') {
+    //     $email = $_SESSION['email'];
+    //     $getUserQuery = mysqli_prepare($link, "SELECT ID, username, avatar FROM User WHERE email = '?';");
+    //     mysqli_stmt_bind_param($getUserQuery, 's', $email);
+    //     mysqli_stmt_execute($getUserQuery);
+    //     mysqli_stmt_bind_result($getUserQuery, $ID, $username, $avatar);
+    //     mysqli_stmt_fetch($getUserQuery);
+    //     mysqli_stmt_close($getUserQuery);
+    //     session_start();
+    //     $_SESSION['ID'] = $ID;
     // }
+
+    // $query = mysqli_prepare($link, "select P.*, U.ID, U.username, U.avatar from Post P inner join User U on P.? = U.?;");
+    // mysqli_stmt_bind_param($query, 'ii', $ID, $ID);
+    // mysqli_stmt_execute($query);
+    // mysqli_stmt_bind_result($query, $postID, $title, $image, $description, $created, $comments, $username, $avatar);
+    
+    // $queryLikes = mysqli_prepare($link, "SELECT COUNT(*) AS num_likes FROM Likes WHERE ownerID = '?' and postID = '?';");
+    // mysqli_stmt_bind_param($queryLikes, "ii", $ID, $postID);
+    // mysqli_stmt_execute($queryLikes);
+    // mysqli_stmt_bind_result($queryLikes, $likes);
+
+    // mysqli_stmt_fetch($queryLikes);
+
+    // while(mysqli_stmt_fetch($query)) {
+    //     $post = new Post($postID, $title, $description, (int)$likes, $username, (int)$created, $image, $avatar);
+    //     $posts_list[] = $post;
+    // }
+
+    // mysqli_stmt_close($query);
+    // mysqli_stmt_close($queryLikes);
+    // mysqli_close($link);
 
     if (($handle = fopen("data/posts.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
@@ -90,7 +109,7 @@ function getSinglePost($link)
 
     $posts_list = array();
 
-    // $query = "select P.*, U.ID, U.username, U.avatar from Post P inner join User U on P.owner = U.ID;";
+    // $query = "select P.*, U.ID, U.username, from Post P inner join User U on P.owner = U.ID;";
     
     // $result = mysqli_query($link, $query);
     
