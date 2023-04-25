@@ -1195,6 +1195,7 @@ input::placeholder {
   transform: translate(-50%, -50%);
   border-radius: 5px;
   border: dashed #a4133c;
+  background-size: cover;
 }
 
 .pop form .box label {
@@ -1304,4 +1305,8 @@ input::placeholder {
 
 .hide {
   display: none !important;
+}
+
+.hidden{
+  visibility: hidden;
 }
