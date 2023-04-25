@@ -9,7 +9,7 @@
     error_reporting(0);
     session_start();
 
-    if(isset($_SESSION["email"])){
+    if(isset($_SESSION["id"])){
         echo "<script>window.location.href='index.php';</script>";
     }
     
@@ -58,10 +58,12 @@
                 echo "<script>window.location.href='login.php';</script>";
             }
             else{
-                $sql = "INSERT INTO User (username, email, password) VALUES ('$username', '$email', '$password');";
-                $result = mysqli_query($conn, $sql);
-
-                $_SESSION['email'] = $email;
+                $sql = "INSERT INTO User (username, email, password) VALUES (?, ?, ?)";
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt, "sss", $username, $email, $password);
+                mysqli_stmt_execute($stmt);
+                $user_id = mysqli_insert_id($conn);
+                $_SESSION['id'] = $user_id;
                 echo "<script>window.location.href='index.php';</script>";
             }
             // echo "<script>window.location.href='index.php';</script>";

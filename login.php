@@ -9,7 +9,7 @@
     error_reporting(0);
     session_start();
     // TODO: check if session is the right one
-    if(isset($_SESSION["email"])){
+    if(isset($_SESSION["id"])){
         echo "<script>window.location.href='index.php';</script>";
     }
     if ((($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["loginSubmitButton"]))) {
@@ -17,14 +17,17 @@
         $password = $_POST['loginPassword'];
 
         // Writing into DB
-        $sql = "SELECT * FROM User WHERE email = '$email' AND password = '$password'";
-        $result = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM User WHERE email = ? AND password = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
         // Check if any rows were returned
         if (mysqli_num_rows($result) > 0) {
         // User exists and the password is correct
-        session_start();
-        $_SESSION['email'] = $email;
+        $row = mysqli_fetch_assoc($result) ;
+        $_SESSION['id'] = $row['ID'];
         echo "<script>window.location.href='index.php';</script>";
         } else {
         // User does not exist or the password is incorrect

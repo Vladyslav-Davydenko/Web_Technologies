@@ -277,7 +277,7 @@ class Template
         const profileBtn = document.querySelector("#profileBtn");
         const profileBtnHamb = document.querySelector("#profileHamb");';
         if(!empty($searchFor)) {
-            if (isset($_SESSION["email"])){
+            if (isset($_SESSION["id"])){
                 $script .= 'loginBtn.style.display = "none";
                 logoutBtn.style.display = "block";
                 loginBtnHamb.style.display = "none";

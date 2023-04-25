@@ -25,8 +25,8 @@ class User{
 
 function getUser($conn)
 {
-    $email = $_SESSION["email"];
-    $stmt = $conn->prepare("SELECT * FROM User WHERE email = '$email'");
+    $id = $_SESSION["id"];
+    $stmt = $conn->prepare("SELECT * FROM User WHERE id = '$id'");
     $stmt->execute();
 
     $result = $stmt->get_result();

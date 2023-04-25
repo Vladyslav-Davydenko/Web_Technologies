@@ -14,13 +14,12 @@
     if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] == UPLOAD_ERR_OK) {
       $uploaded_file = $_FILES['avatar']['tmp_name'];
       //$destination = 'img/avatars/'. $email. '_avatar.jpg';
-      $destination = 'img/avatars/'. $email .'.jpg';
+      $destination = 'img/avatars/'. $_SESSION["id"] .'.jpg';
 
       if (move_uploaded_file($uploaded_file, $destination)) {
         $avatar = $destination;
       }  
   }
-    echo $avatar;
     $twitter = isset($_POST['twitter']) ? $_POST['twitter'] : "";
     $instagram = isset($_POST['instagram']) ? $_POST['instagram'] : "";
     $facebook = isset($_POST['facebook']) ? $_POST['facebook'] : "";
@@ -48,12 +47,14 @@
     }
     // Writing into DB
     if(empty($error)){
-        $userId = $_SESSION['email'];
-       echo $username ." ". $email ." ". $bio ." ". $avatar ." ". $social ." ". $instagram ." ". $facebook ." ". $twitter ." ". $userId;
-        $sql = "UPDATE User SET username='$username', email='$email', bio='$bio', avatar='$avatar', social='$social', instagram='$instagram', facebook='$facebook', twitter='$twitter' WHERE email='$userId';";
-        $result = mysqli_query($conn, $sql);
-        echo "<script>window.location.href='profile.php';</script>";
-        
+      $userId = $_SESSION["id"];
+      $sql = "UPDATE User SET username=?, email=?, bio=?, avatar=?, social=?, instagram=?, facebook=?, twitter=? WHERE id=?";
+      $stmt = mysqli_prepare($conn, $sql);
+      mysqli_stmt_bind_param($stmt, "sssssssss", $username, $email, $bio, $avatar, $social, $instagram, $facebook, $twitter, $userId);
+      $result = mysqli_stmt_execute($stmt);
+      mysqli_stmt_close($stmt);
+      echo "<script>window.location.href='profile.php';</script>";
+      
     }    
     else{
         echo "<script type='text/javascript'>alert('$error');</script>";
@@ -67,9 +68,9 @@
   error_reporting(0);
   session_start();
   $script = "";
-  if(isset($_SESSION["email"])){
-    $email = $_SESSION["email"];
-    $sql = "SELECT * FROM User WHERE email = '$email'";
+  if(isset($_SESSION["id"])){
+    $userId = $_SESSION["id"];
+    $sql = "SELECT * FROM User WHERE id = '$userId'";
     $result = mysqli_query($conn, $sql);
 
     // Check if any rows were returned
