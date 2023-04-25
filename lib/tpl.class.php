@@ -34,7 +34,7 @@ class Template
                 if ($rows > 0) {
                     for ($i = 0; $i < $rows; $i++) {
                         $singlePost .= ' <div class="single-post">
-                        <a href="single_post.php?title=' . $replaceWith[$i]->title . '"><img src="' . $replaceWith[$i]->image . '"></a>
+                        <a href="single_post.php?id=' . $replaceWith[$i]->postID . '"><img src="' . $replaceWith[$i]->image . '"></a>
                         <div class="post-text">
                             <div class="post-author">
                                 <div class="post-author-img">
@@ -73,14 +73,12 @@ class Template
                 $rows = count($replaceWith);
                 if ($rows > 0) {
                     for ($i = 0; $i < $rows; $i++) {
-                        if (empty($_GET['username'])) {
-                            $username = "Vilsivul";
-                        } else {
-                            $username = $_GET['username'];
+                        if (!empty($_SESSION['id'])) {
+                            $username = $_SESSION['id'];
                         }
                         if ($replaceWith[$i]->owner == $username) {
                             $profilePost .= '<div class="single-post">
-                            <a href="single_post.php?title='.$replaceWith[$i]->title.'"><img src="' . $replaceWith[$i]->image . '"></a>
+                            <a href="single_post.php?id='.$replaceWith[$i]->postID.'"><img src="' . $replaceWith[$i]->image . '"></a>
                             <div class="post-text">
                                 <span class="btn-edit"><a href="#"><i class="fa fa-edit"></i></a></span>
                                 <h3>' . $replaceWith[$i]->title . '</h3>
@@ -194,7 +192,7 @@ class Template
         $this->assign($searchFor, $infoAbout);
     }
 
-    function createSinglePost($searchFor, $replaceWith, $counterOfComments) {
+    function createSinglePost($searchFor, $replaceWith) {
         $singlePost = '';
         if(!empty($searchFor)) {
             if(!empty($replaceWith)) {
@@ -217,7 +215,7 @@ class Template
                         <div class="post-like">
                         <span class="number-of-likes">'.$replaceWith[0]->likes.'</span>
                         <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                        <span class="number-of-comments">'.$counterOfComments.'</span>
+                        <span class="number-of-comments">'./*$counterOfComments*/$replaceWith[0]->likes.'</span>
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
                 </div>
