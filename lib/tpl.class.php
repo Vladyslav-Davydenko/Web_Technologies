@@ -61,6 +61,7 @@ class Template
                                 <p>' . $replaceWith[$i]->description . '
                                 </p>
                             </div>
+                            <h4>'.$replaceWith[$i]->created.'</h4>
                         </div>
                     </div>';
                     $stmt->close();
@@ -89,6 +90,7 @@ class Template
                             <p>
                             ' . $replaceWith[$i]->description . '
                             </p>
+                            <h4>'.$replaceWith[$i]->created.'</h4>
                         </div>
                     </div>';
                     }
@@ -277,6 +279,7 @@ class Template
                         <div class="comment"> 
                             <p>'.$comment->commentText.'</p> 
                         </div>
+                        <h4>'.$comment->created.'</h4>
                     </div>'; 
                         }
                     }
