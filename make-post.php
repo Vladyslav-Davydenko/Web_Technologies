@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
+    $created = date('Y-m-d H:i:s');
     $title = $_POST["title-of-post"];
     $description = $_POST["post-desc"];
     $image = "img/posts/default.jpg";
@@ -21,9 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = $_SESSION["id"];
     // Writing into DB
-    $sql = "INSERT INTO Post (title, image, description, owner) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO Post (title, image, description, created, owner) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssi", $title, $image, $description, $user);
+    mysqli_stmt_bind_param($stmt, "ssssi", $title, $image, $description, $created, $user);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     echo "<script>window.location.href='profile.php';</script>";
