@@ -2,47 +2,42 @@
 
 class PostComments 
 {
-        public string $title;
-        public string $comment_desc;
-        public string $comment_owner;
-        public string $comment_owner_image;
-        public int $comment_created;
+        public int $postID;
+        public int $ownerID;
+        public string $commentText;
     
 
-    public function __construct(string $title, string $comment_desc, string $comment_owner, string $comment_owner_image, int $comment_created) 
+    public function __construct(int $postID, int $ownerID, string $commentText) 
     {
-        $this->title = $title;
-        $this->comment_desc = $comment_desc;
-        $this->comment_owner = $comment_owner;
-        $this->comment_owner_image = $comment_owner_image;
-        $this->comment_created = $comment_created;
+        $this->postID = $postID;
+        $this->ownerID = $ownerID;
+        $this->commentText = $commentText;
+        
     }
 }
 
 function getSinglePostComments() 
 {
     $postCommentsList = array();
-
-    if (($handle = fopen("data/comments.csv", "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-            $postComments = new PostComments($data[0], $data[1], $data[2], $data[3], $data[4]);
-            $postCommentsList[] = $postComments;
-        }
-        fclose($handle);
+    include('data/db_connection.php');
+    $conn = mysqli_connect($server, $user, $password, $database);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-
-    $r = array();
-    foreach($postCommentsList as $postComments) {
-        if (stripos($postComments->title, $_GET['title']) !== FALSE) {
-            $r[] = $postComments;
-        }
-    }
-
-    usort($r, function ($a, $b) {
-        return $a->comment_created - $b->comment_created;
-    });
-
-    return $r;
+      $id = $_GET["id"];
+      $stmt = $conn->prepare("SELECT * FROM Comment WHERE postID = ?");
+      $stmt->bind_param("i", $id);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      while ($row = $result->fetch_assoc()) {
+        $postID = $row["postID"];
+        $ownerID = $row["ownerID"];
+        $commentText = $row["commentText"];
+        $comment = new PostComments($postID, $ownerID, $commentText);
+        $postCommentsList[] = $comment;
+      }
+    $stmt->close();
+    return $postCommentsList;
 }
 
 function countSinglePostComments() 

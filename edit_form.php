@@ -47,7 +47,6 @@
     }
     // Writing into DB
     if(empty($error)){
-
       $userId = $_SESSION["id"];
       $sql = "UPDATE User SET username=?, email=?, bio=?, avatar=?, social=?, instagram=?, facebook=?, twitter=? WHERE ID=?";
       $stmt = mysqli_prepare($conn, $sql);
@@ -65,7 +64,6 @@
     // Close the database connection    
 }
   
-  error_reporting(0);
   session_start();
   $script = "";
   if(isset($_SESSION["id"])){
@@ -82,19 +80,18 @@
       const bio = document.querySelector("#bio");
       // const avatar = document.querySelector("#avatar");
       const web = document.querySelector("#web");
+      const avatar = document.querySelector("#image-src-input")
       const instagram = document.querySelector("#instagram");
       const facebook = document.querySelector("#facebook");
       const twitter = document.querySelector("#twitter");
       username.value = "' . $user->username. '";
       email.value = "' . $user->email. '";
       bio.value = "' . $user->bio. '";
-      // avatar.value = "' . $user->avatar. '";
       web.value = "' . $user->social. '";
       instagram.value = "' . $user->instagram. '";
       facebook.value = "' . $user->facebook. '";
       twitter.value = "' . $user->twitter. '";
       </script>';
-
     } else {
     // User does not exist or the password is incorrect
     echo "<script type='text/javascript'>alert('Some problems with Session, can not find user');</>";
@@ -189,6 +186,11 @@
               name="avatar"
               value=""
             />
+            <input 
+            type="hidden" 
+            name="image-src" 
+            value="" 
+            id="image-src-input">
           </div>
 
           <div class="input-box">

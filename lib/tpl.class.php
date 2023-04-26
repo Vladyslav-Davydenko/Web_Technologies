@@ -61,9 +61,6 @@ class Template
                                 <p>' . $replaceWith[$i]->description . '
                                 </p>
                             </div>
-                            <div class="posted">
-                                <h4> 20 minutes ago</h4>
-                            </div>
                         </div>
                     </div>';
                     $stmt->close();
@@ -84,22 +81,14 @@ class Template
                 $rows = count($replaceWith);
                 if ($rows > 0) {
                     for ($i = 0; $i < $rows; $i++) {
-                        if (!empty($_SESSION['id'])) {
-                            $username = $_SESSION['id'];
-                        } else{
-                            $username = $_GET['username'];
-                        }
                         $profilePost .= '<div class="single-post">
                         <a href="single_post.php?id='.$replaceWith[$i]->postID.'"><img src="' . $replaceWith[$i]->image . '"></a>
                         <div class="post-text">
-                            <span class="btn-edit"><a href="#"><i class="fa fa-edit"></i></a></span>
+                        <form action="submit.php" method="post">
                             <h3>' . $replaceWith[$i]->title . '</h3>
                             <p>
                             ' . $replaceWith[$i]->description . '
                             </p>
-                            <div class="posted">
-                                <h4> 20 minutes ago</h4>
-                            </div>
                         </div>
                     </div>';
                     }
@@ -174,7 +163,7 @@ class Template
                 </div>
                 <div class="workers">
                     <div class="about-post">
-                        <img class="about-img" src="img/avatars/kiril.jpg">
+                        <img class="about-img" src="img/avatars/kirill.jpg">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                             Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
@@ -220,7 +209,6 @@ class Template
                 $singlePost .= '<div class="single-post-kiril">
                 <div class="post-header">
                     <div class="post-meta"><span class="author">'.$user_data["username"].'</span><br>
-                <span class="date"> 20 minutes ago</span>
                 </div>
                     <h2 class="post-title">'.$replaceWith->title.'</h2>
                     <div class="post-image-single">
@@ -234,9 +222,9 @@ class Template
                 </div>
                 <div class="post-image-reply-section">
                         <div class="post-like">
-                        <span class="number-of-likes">8</span>
+                        <span class="number-of-likes"></span>
                         <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                        <span class="number-of-comments">8</span>
+                        <span class="number-of-comments"></span>
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
                 </div>
@@ -252,33 +240,43 @@ class Template
             </div>';
             }
         }
+        mysqli_close($conn);
         $this -> assign($searchFor, $singlePost);
     }
     
     function createPostComments($searchFor, $replaceWith) {
+        include('data/db_connection.php');
+        $conn = mysqli_connect($server, $user, $password, $database);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
         $commentInfo = '';
         if(!empty($searchFor)) {
             if(!empty($replaceWith)) {
                     foreach($replaceWith as $comment) {
-                        if (!empty($_GET['title'])) {
-                            $title = $_GET['title'];
+                        if (!empty($_GET['id'])) {
+                            $id = $_GET['id'];
                         } else {
-                            $title = "German";
+                            echo "<script>window.location.href='index.php';</script>";
                         }
-                        if ($comment->title == $title) {
+                        $ownerID = $comment->ownerID;
+                        $stmt = $conn->prepare("SELECT * FROM User WHERE ID = $ownerID");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $user_data = $result->fetch_assoc();
+                        if ($comment->postID == $id) {
                             $commentInfo .= '<div class="comment-post"> 
                             <div class="comment-info"> 
                                 <div class="post-author-img"> 
-                                    <a href="profile.php?username='.$comment->comment_owner.'"><img class="avatar-small" src="'.$comment->comment_owner_image.'"></a> 
+                                    <a href="profile.php?username='.$user_data["id"].'"><img class="avatar-small" src="'.$user_data["avatar"].'"></a> 
                                 </div> 
                             <div class="post-author-text"> 
-                                <a href="profile.php?username='.$comment->comment_owner.'"><h4>by '.$comment->comment_owner.'</h4></a> 
+                                <a href="profile.php?username='.$user_data["id"].'"><h4>by '.$user_data["username"].'</h4></a> 
                             </div>
                         </div>
                         <div class="comment"> 
-                            <p>'.$comment->comment_desc.'</p> 
+                            <p>'.$comment->commentText.'</p> 
                         </div>
-                        <div class="created"><h4>'.$comment->comment_created.' minutes ago</h4></div> 
                     </div>'; 
                         }
                     }
@@ -294,7 +292,12 @@ class Template
         const loginBtn = document.querySelector("#login");
         const logoutBtn = document.querySelector("#logout");
         const profileBtn = document.querySelector("#profileBtn");
-        const profileBtnHamb = document.querySelector("#profileHamb");';
+        const profileBtnHamb = document.querySelector("#profileHamb");
+        const searchBtn = document.querySelector("#searchBtn");
+        searchBtn.disabled = false;
+        if (window.location.pathname !== "/index.php") {
+            searchBtn.disabled = true;
+          }';
         if(!empty($searchFor)) {
             if (isset($_SESSION["id"])){
                 $script .= 'loginBtn.style.display = "none";

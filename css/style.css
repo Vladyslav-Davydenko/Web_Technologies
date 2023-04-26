@@ -139,7 +139,7 @@ h1 {
   font-family: "Action-Is", cursive;
   font-size: 100px;
   text-align: center;
-  padding: 100px;
+  padding: 100px 10px;
 }
 h2 {
   font-family: "Parisienne-Regular";
@@ -207,16 +207,16 @@ h2 {
     box-shadow: none !important;
   }
   .single-post-kiril {
-    width: 300px !important;
+    width: 400px !important;
   }
   .post-meta {
     font-size: 20px !important;
   }
   .comment-post {
-    width: 300px !important;
+    width: 400px !important;
   }
   .comment-section {
-    width: 300px !important;
+    width: 400px !important;
     height: 200px !important;
   }
   .form-field-comment {
@@ -497,7 +497,7 @@ p {
 .detail-info-post > p {
   font-size: 16px;
   word-spacing: 4px;
-  margin: 20px 0px;
+  margin: 20px 0px 40px 0px;
   line-height: 1.4;
   color: #a04c5b;
   font-family: "Libre-Baskerville-Italic";
@@ -544,7 +544,7 @@ p {
   background-color: #ff4d6d;
 }
 
-.btn-edit {
+.btn-del {
   margin-top: -20px;
   float: right;
   margin-right: 12px;
@@ -552,12 +552,12 @@ p {
   transition: all ease-in;
 }
 
-.btn-edit i {
+.btn-del i {
   text-decoration: none;
   color: #800f2f;
 }
 
-.btn-edit:hover {
+.btn-del:hover {
   cursor: pointer;
   color: #c9184a;
 }
@@ -619,6 +619,7 @@ p {
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: auto;
+  margin-top: 20px;
   place-items: left;
 }
 
@@ -1307,6 +1308,6 @@ input::placeholder {
   display: none !important;
 }
 
-.hidden{
+.hidden {
   visibility: hidden;
 }

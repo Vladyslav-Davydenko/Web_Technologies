@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST["title-of-post"];
     $description = $_POST["post-desc"];
     $image = "img/posts/default.jpg";
-    if (isset($_FILES['myfile']) && $_FILES['myfile']['error'] == UPLOAD_ERR_OK) {
-      $uploaded_file = $_FILES['myfile']['tmp_name'];
+    if (isset($_FILES['file-input']) && $_FILES['file-input']['error'] == UPLOAD_ERR_OK) {
+      $uploaded_file = $_FILES['file-input']['tmp_name'];
       $destination = 'img/posts/'. mysqli_insert_id($conn) .'.jpg';
 
       if (move_uploaded_file($uploaded_file, $destination)) {
@@ -28,8 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_stmt_close($stmt);
     echo "<script>window.location.href='profile.php';</script>";
 
-
-    // Close the database connection    
+   
 }
 
 ?>
@@ -57,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" enctype="multipart/form-data">
                 <div class="box" id="image-preview">
                     <h2 class="select-photo" id="h2">Select a photo</h2>
-                    <input type="file" id="file-input" name="myfile" required />
+                    <input type="file" id="file-input" name="myfile" accept="image/png, image/jpg, image/jpeg"/>
                 </div>
                 <div class="input-box">
                     <input type="text" name="title-of-post" id="title-of-post" placeholder="Add your Location">
@@ -70,5 +69,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="profile.php"><button type="button" class="submit-but">Back Home</button></a>
         </div>
     </div>
-    <script src="./make-post.js"></script>
+    <script src="scripts/make-post.js"></script>
 </body>

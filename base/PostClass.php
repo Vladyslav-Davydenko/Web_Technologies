@@ -63,14 +63,19 @@ function getPosts() {
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
-      $postID = $row["postID"];
-      $title = $row["title"];
-      $description = isset($row["description"]) ? $row["description"] : "";
-      $image = isset($row["image"]) ? $row["image"] : "img/posts/default.jpg";
-      $owner = $row["owner"];
-
-      $post = new Post($postID, $title, $description, $owner, $image);
-      $posts_list[] = $post;
+        $postID = $row["postID"];
+        $title = $row["title"];
+        $description = isset($row["description"]) ? $row["description"] : "";
+        $image = isset($row["image"]) ? $row["image"] : "img/posts/default.jpg";
+        $owner = $row["owner"];
+        if(isset($_GET['text']) && strpos(strtolower($title), strtolower($_GET['text'])) !== false){
+            $post = new Post($postID, $title, $description, $owner, $image);
+            $posts_list[] = $post;
+        }
+        if(!isset($_GET['text'])){
+            $post = new Post($postID, $title, $description, $owner, $image);
+            $posts_list[] = $post;
+        }
     }
     $stmt->close();
     return $posts_list;
