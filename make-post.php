@@ -1,30 +1,35 @@
 <?php
-if (isset($_POST['myfile'])) {
+include('data/db_connection.php');
+session_start();
 
-    $myfile = $_POST['myfile'];
-    $location = $_POST['title-of-post'];
-    $description = $_POST['post-desc'];
-    $errors[] = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $conn = mysqli_connect($server, $user, $password, $database);
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+    $title = $_POST["title-of-post"];
+    $description = $_POST["post-desc"];
+    $image = "img/posts/default.jpg";
+    if (isset($_FILES['myfile']) && $_FILES['myfile']['error'] == UPLOAD_ERR_OK) {
+      $uploaded_file = $_FILES['myfile']['tmp_name'];
+      $destination = 'img/posts/'. mysqli_insert_id($conn) .'.jpg';
 
-    if (file_exists($myfile)) {
+      if (move_uploaded_file($uploaded_file, $destination)) {
+        $image = $destination;
+      }  
+  }
 
-    } else {
-        $error[] = "File is required";
-    }
+    $user = $_SESSION["id"];
+    // Writing into DB
+    $sql = "INSERT INTO Post (title, image, description, owner) VALUES (?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "sssi", $title, $image, $description, $user);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    echo "<script>window.location.href='profile.php';</script>";
 
-    if (empty($errors)) {
-        $data = array(
-            $_POST['myfile'],
-            $_POST['title-of-post'],
-            $_POST['post-desc']
-        );
 
-        $dataFile = fopen('./data/posts.csv', 'a');
-        fputcsv($dataFile, $data, ';');
-        fclose($dataFile);
-
-    }
-
+    // Close the database connection    
 }
 
 ?>
@@ -49,7 +54,7 @@ if (isset($_POST['myfile'])) {
     <div class="conteiner">
         <button type="submit" class="butt">Create New Post</button>
         <div class="pop">
-            <form action="make-post-comments.php" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="box" id="image-preview">
                     <h2 class="select-photo" id="h2">Select a photo</h2>
                     <input type="file" id="file-input" name="myfile" required />
@@ -60,7 +65,7 @@ if (isset($_POST['myfile'])) {
                 <div class="input-box">
                     <input type="text" name="post-desc" id="post-desc" placeholder="Add description">
                 </div>
-                <button type="submit" class="submit-but">Add to Profile</button>
+                <button type="submit" class="submit-but" id="addToProfile">Add to Profile</button>
             </form>
             <a href="profile.php"><button type="button" class="submit-but">Back Home</button></a>
         </div>

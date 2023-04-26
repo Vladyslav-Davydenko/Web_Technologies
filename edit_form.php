@@ -47,10 +47,11 @@
     }
     // Writing into DB
     if(empty($error)){
+
       $userId = $_SESSION["id"];
-      $sql = "UPDATE User SET username=?, email=?, bio=?, avatar=?, social=?, instagram=?, facebook=?, twitter=? WHERE id=?";
+      $sql = "UPDATE User SET username=?, email=?, bio=?, avatar=?, social=?, instagram=?, facebook=?, twitter=? WHERE ID=?";
       $stmt = mysqli_prepare($conn, $sql);
-      mysqli_stmt_bind_param($stmt, "sssssssss", $username, $email, $bio, $avatar, $social, $instagram, $facebook, $twitter, $userId);
+      mysqli_stmt_bind_param($stmt, "ssssssssi", $username, $email, $bio, $avatar, $social, $instagram, $facebook, $twitter, $userId);
       $result = mysqli_stmt_execute($stmt);
       mysqli_stmt_close($stmt);
       echo "<script>window.location.href='profile.php';</script>";
@@ -61,8 +62,7 @@
         echo "<script>window.location.href='edit_form.php';</script>";
 
     } 
-    // Close the database connection
-    mysqli_close($conn);     
+    // Close the database connection    
 }
   
   error_reporting(0);

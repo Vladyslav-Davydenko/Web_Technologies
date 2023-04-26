@@ -15,6 +15,7 @@
     if ((($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["loginSubmitButton"]))) {
         $email = $_POST['loginEmail'];
         $password = $_POST['loginPassword'];
+        
 
         // Writing into DB
         $sql = "SELECT * FROM User WHERE email = ? AND password = ?";
@@ -35,8 +36,7 @@
         echo "<script>window.location.href='login.php';</script>";
         } 
         
-    // Close the database connection
-    mysqli_close($conn);    
+    // Close the database connection  
     }
 ?>
 
