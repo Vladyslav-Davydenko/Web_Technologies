@@ -4,18 +4,22 @@
 
 The idea of this projects is to create a website that will allow people to share their memories with others about their travel experience
 
-Our website is aim for all audience. 
+Our website is aim for all audience.
 
 ## Team
 
 ### Vladyslav Davydenko (vldavy)
+
 Team Leader. Responsible for whole project, but mainly for main pages (index, profile, about, edit-profile), their optimisation, styling and logic
 
 ### Mariia Boiko (marboi)
+
 Main designer. Responsible for design for whole project, for pages with forms (login, register, add-post), their optimisation and validation logic
 
 ### Kiril Boiko (kiboik)
+
 Rsponsible for single post and comments there, its optimisation, logic and styling
+
 ## Goals, Objectives and Phases
 
 ### Objective
@@ -25,11 +29,12 @@ The website supposed to achive the simplest interface for different users, nice 
 ### Goals
 
 Make it:
-* simple
-* understandable
-* accessible
-* popular
-* unique
+
+- simple
+- understandable
+- accessible
+- popular
+- unique
 
 ### Phases
 
@@ -38,7 +43,6 @@ Web technologies `ISC0008` milestone #1.
 ## Content Structure
 
 ### Site map
-
 
 ```text
 HOME
@@ -66,15 +70,15 @@ HOME
 
 Each page contains:
 
-* description
-* images
-* people
-* comments
-* date
-* likes
-
+- description
+- images
+- people
+- comments
+- date
+- likes
 
 ### Page Templates
+
 ```text
 
 Web_Technologies
@@ -82,14 +86,13 @@ Web_Technologies
   |    +--POSTCLASS.CSS
   |    +--POSTCOMMENTSCLASS.CSS
   |    +--USERCLASS.PHP
+  +--SCRIPTS
+  |    +--MAKE-POST.JS
   +--CSS
   |    +--STYLE.CSS
   |    +--HAMBURGER-MENU.CSS
   +--DATA
-  |    +--COMMENTS.CSV
-  |    +--POSTS.CSV
-  |    +--REGISTRATION_INFO.CSV
-  |    +--USERS.CSV
+  |    +--DB_CONNECTION.PHP
   +--FONTS
   +--IMG
   +--INCLUDES
@@ -105,9 +108,10 @@ Web_Technologies
   |    +--SINGLE_POST_TPL.PHP
   +--INDEX.PHP
   +--ABOUT.PHP
-  +--PROFILE.PHP 
+  +--PROFILE.PHP
   +--EDIT_FORM.PHP
   +--LOGIN.PHP
+  +--LOGOUT.PHP
   +--MAKE-POST-COMMENTS.PHP
   +--MAKE-POST.PHP
   +--REGISTRATION.PHP
@@ -116,6 +120,7 @@ Web_Technologies
 
 NAVIGATION, FOOTER, HEAD are including in INDEX, PROFILE, SINGLE_POST, ABOUT
 ```
+
 ## Design
 
 ```text
@@ -126,16 +131,16 @@ CSS
 
 ## Functionality
 
-* For sign-in users are required email, username and password
-* Users have ability to post, leave comments, like posts
-* Users use this website to chare their travel memories
-* Users do not need well performed devices
+- For sign-in users are required email, username and password
+- Users have ability to post, leave comments, like posts
+- Users use this website to chare their travel memories
+- Users do not need well performed devices
 
 ## Browser Support
 
-* Chrome/Chromium
-* Firefox
-* mobile browsers (Chrome, Firefox, Safari)
+- Chrome/Chromium
+- Firefox
+- mobile browsers (Chrome, Firefox, Safari)
 
 ## Hosting
 
