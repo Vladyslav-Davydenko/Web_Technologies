@@ -4,10 +4,10 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = mysqli_connect($server, $user, $password, $database);
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  }
-    $created = date('Y-m-d H:i:s');
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $created = date('Y-m-d');
     $title = $_POST["title-of-post"];
     $description = $_POST["post-desc"];
     $image = "img/posts/default.jpg";

@@ -288,7 +288,7 @@ h2 {
   align-items: center;
   margin-top: 50px;
   width: 100%;
-  margin-bottom: 200px;
+  /*margin-bottom: 200px;*/
 }
 .comment-info {
   display: grid;
@@ -304,7 +304,7 @@ h2 {
   width: 1100px;
   background-color: #fff0f3;
   border-radius: 15px;
-  margin-top: 30px;
+  /*margin-top: 30px;*/
   box-shadow: -4px 13px 34px -14px #a4133c;
   -webkit-box-shadow: -4px 6px 30px -1px #c9184a;
   padding: 20px;
@@ -319,6 +319,7 @@ h2 {
   box-shadow: -4px 13px 34px -14px #a4133c;
   -webkit-box-shadow: -4px 6px 30px -1px #c9184a;
   padding: 20px;
+  margin-bottom: 2%;
 }
 .comment-section {
   display: flex;
@@ -372,6 +373,8 @@ h4 {
   font-family: "Squealer";
   font-size: 18px;
   color: #ea638c;
+  text-align: right;
+  margin-bottom: 2%;
 }
 body {
   background-image: linear-gradient(65deg, #ff4d6db2, #ff4d6db2),
@@ -506,7 +509,7 @@ p {
   margin-left: 25px;
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.6rem;
 }
 .form /*> .input-text*/ {
   display: flex;
@@ -713,7 +716,7 @@ p {
 .post-meta {
   font-family: "Squealer";
   font-weight: normal;
-  padding-right: 20px;
+  /*padding-right: 20px;*/
   text-align: right;
   color: #ea638c;
   font-size: 27px;
@@ -768,7 +771,7 @@ ul {
   background-color: #a4133c;
   border-radius: 15px 15px 0px 0px;
   padding: 70px 0;
-  /*width: 100%;*/
+  width: 100%;
 }
 
 .col {

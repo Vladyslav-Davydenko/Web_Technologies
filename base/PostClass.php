@@ -90,14 +90,18 @@ function getSinglePost() {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $id = $_GET["id"];
-    $stmt = $conn->prepare("SELECT * FROM Post WHERE postID = $id");
-    $stmt->execute();
+    try {
+        $id = $_GET["id"];
+        $stmt = $conn->prepare("SELECT * FROM Post WHERE postID = $id");
+        $stmt->execute();
+    } catch (Exception $e) {
+        echo "<script>window.location.href='index.php';</script>";
+    }
     $result = $stmt->get_result();
     $post_data = $result->fetch_assoc();
     $postID = $id;
     $title = $post_data["title"];
-    $created = $row["created"];
+    $created = $post_data["created"];
     $description = isset($post_data["description"]) ? $post_data["description"] : "";
     $image = isset($post_data["image"]) ? $post_data["image"] : "img/posts/default.jpg";
     $owner = $post_data["owner"];
