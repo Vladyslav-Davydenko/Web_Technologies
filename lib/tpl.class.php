@@ -230,10 +230,10 @@ class Template
                 </div>
             </div>
             <div class="comment-section">
-                <form class="form-for-comment" action="make-post-comments.php" method="get">
+                <form class="form-for-comment" method="get" action="make-post-comments.php" id="createPostComment">
                     <div class="form-field-comment">
-                        <input type="textarea" cols="90" rows="15" name="text-comment" class="input-text-comment" placeholder="Enter your Comment">
-                        <input type="hidden" name="title-comment" value="'.$replaceWith->postID.'">
+                        <input type="textarea" cols="90" rows="15" id="commentText" name="commentText" class="input-text-comment" placeholder="Enter your Comment">
+                        <input type="hidden" name="commentPostID" id="commentPostID" value="'.$replaceWith->postID.'">
                     </div>
                     <input class="btn" type="submit" value="Send a Comment" />
                 </form>

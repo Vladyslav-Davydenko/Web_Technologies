@@ -1,22 +1,24 @@
 <?php 
-    if ($_GET && isset($_GET['text-comment'], $_GET['title-comment'])) {
-        $file = fopen("data/comments.csv", "a+");
-        $comment_data = array($_GET['title-comment'], $_GET['text-comment'], "Vilsivul", "img/avatars/Visl.jpg", "1", );
-        fputcsv($file, $comment_data, ";");
-        header("Refresh:0; url=single_post.php?title=$comment_data[0]");
+require_once('data/db_connection.php');
+
+$conn = mysqli_connect($server, $user, $password, $database);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+session_start();
+if (($_SERVER['REQUEST_METHOD'] === 'GET') && isset($_GET['commentText']) && isset($_GET['commentPostID'])) {
+    $commentText = $_GET['commentText'];
+    $postID = $_GET['commentPostID'];
+    if(!isset($_SESSION['id'])){
+        echo "<script>window.location.href='login.php';</script>";
     }
-
-    if ($_POST && isset($_FILES['myfile'], $_POST['title-of-post'], $_POST['post-desc'])) {
-        $file = fopen("data/posts.csv", "a+");
-
-        $target_dir = "img/posts/";
-        $target_file = $target_dir.$_FILES['myfile']['name'];
-
-        if (move_uploaded_file($_FILES['myfile']['tmp_name'], $target_file)) {
-            $new_post_data = array($_POST['title-of-post'], $_POST['post-desc'], "0", "Vilsivul", "0", $target_file, "img/avatars/Visl.jpg");
-            fputcsv($file, $new_post_data, ";");
-            header("Refresh:0; url=profile.php?username=Vilsivul");
-        }
-
-    }
+    $ownerID = $_SESSION['id'];
+    // Writing into DB
+    $sql = "INSERT INTO Comment (postID, ownerID, commentText) VALUES (?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "iis", $postID, $ownerID, $commentText);
+    mysqli_stmt_execute($stmt);
+    echo "<script>window.location.href='single_post.php?id=". $postID ."';</script>";
+}
 ?>

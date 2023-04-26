@@ -3,7 +3,6 @@ require_once('lib/tpl.class.php');
 require_once('base/PostClass.php');
 require_once('base/PostCommentsClass.php');
 include_once "data/db_connection.php";
-$link = mysqli_connect($server, $user, $password, $database);
 
 const TEMPLATE_PATH = "templates";
 
@@ -23,5 +22,4 @@ $t -> logInlogOutScript("script");
 $output = $t->render(); 
 
 echo $output;
-
 ?>
