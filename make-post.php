@@ -55,9 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="butt">Create New Post</button>
         <div class="pop">
             <form method="POST" enctype="multipart/form-data">
-                <div class="box">
-                    <h2 class="select-photo">Select a photo</h2>
-                    <input type="file" id="myfile" name="myfile" required />
+                <div class="box" id="image-preview">
+                    <h2 class="select-photo" id="h2">Select a photo</h2>
+                    <input type="file" id="file-input" name="myfile" required />
                 </div>
                 <div class="input-box">
                     <input type="text" name="title-of-post" id="title-of-post" placeholder="Add your Location">
@@ -70,4 +70,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="profile.php"><button type="button" class="submit-but">Back Home</button></a>
         </div>
     </div>
+    <script src="./make-post.js"></script>
 </body>
