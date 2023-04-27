@@ -207,6 +207,13 @@ class Template
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $user_data = $result->fetch_assoc();
+
+                $statement = $conn->prepare("SELECT COUNT(*) AS numComments FROM Comment WHERE postID = ?;");
+                $statement->bind_param("i", $replaceWith->postID);
+                $statement->execute();
+                $output = $statement->get_result();
+                $counterComments = $output->fetch_assoc();
+
                 $singlePost .= '<div class="single-post-kiril">
                 <div class="post-header">
                     <div class="post-meta"><span class="author">'.$user_data["username"].'</span><br>
@@ -226,7 +233,7 @@ class Template
                         <div class="post-like">
                         <span class="number-of-likes"></span>
                         <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                        <span class="number-of-comments"></span>
+                        <span class="number-of-comments">'.$counterComments["numComments"].'</span>
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
                 </div>
