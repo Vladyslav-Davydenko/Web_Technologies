@@ -29,12 +29,11 @@ function getPostsForUser() {
         die("Connection failed: " . $conn->connect_error);
     }
     $posts_list = array();
-    if ($_SESSION['id'] == $_GET['username'] || !isset($_GET['username'])){
-        $id = $_SESSION["id"];
+    if(!isset($_GET['username'])){
+        $id = $_SESSION['id'];
     } else{
         $id = $_GET['username'];
     }
-      $id = $_SESSION["id"];
       $stmt = $conn->prepare("SELECT * FROM Post WHERE owner = ?");
       $stmt->bind_param("i", $id);
       $stmt->execute();

@@ -27,7 +27,12 @@ class User{
 
 function getUser($conn)
 {
-    $id = $_SESSION["id"];
+    if (!isset($_GET["username"])){
+        $id = $_SESSION['id'];
+    }
+    else{
+        $id = $_GET["username"];
+    }
     $stmt = $conn->prepare("SELECT * FROM User WHERE ID = $id");
     $stmt->execute();
 
