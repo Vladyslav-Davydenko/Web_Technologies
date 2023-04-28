@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 
 class Template
@@ -61,6 +60,7 @@ class Template
                                 <p>' . $replaceWith[$i]->description . '
                                 </p>
                             </div>
+                            <h4>'.$replaceWith[$i]->created.'</h4>
                         </div>
                     </div>';
                     $stmt->close();
@@ -89,6 +89,7 @@ class Template
                             <p>
                             ' . $replaceWith[$i]->description . '
                             </p>
+                            <h4>'.$replaceWith[$i]->created.'</h4>
                         </div>
                     </div>';
                     }
@@ -209,6 +210,7 @@ class Template
                 $singlePost .= '<div class="single-post-kiril">
                 <div class="post-header">
                     <div class="post-meta"><span class="author">'.$user_data["username"].'</span><br>
+                    <div class="post-meta"><span class="author">'.$replaceWith->created.'</span><br>
                 </div>
                     <h2 class="post-title">'.$replaceWith->title.'</h2>
                     <div class="post-image-single">
@@ -228,6 +230,7 @@ class Template
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
                 </div>
+            </div>
             </div>
             <div class="comment-section">
                 <form class="form-for-comment" method="get" action="make-post-comments.php" id="createPostComment">
@@ -268,15 +271,16 @@ class Template
                             $commentInfo .= '<div class="comment-post"> 
                             <div class="comment-info"> 
                                 <div class="post-author-img"> 
-                                    <a href="profile.php?username='.$user_data["id"].'"><img class="avatar-small" src="'.$user_data["avatar"].'"></a> 
+                                    <a href="profile.php?username='.$user_data["ID"].'"><img class="avatar-small" src="'.$user_data["avatar"].'"></a> 
                                 </div> 
                             <div class="post-author-text"> 
-                                <a href="profile.php?username='.$user_data["id"].'"><h4>by '.$user_data["username"].'</h4></a> 
+                                <a href="profile.php?username='.$user_data["ID"].'"><h4>by '.$user_data["username"].'</h4></a> 
                             </div>
                         </div>
                         <div class="comment"> 
                             <p>'.$comment->commentText.'</p> 
                         </div>
+                        <h4>'.$comment->created.'</h4>
                     </div>'; 
                         }
                     }
