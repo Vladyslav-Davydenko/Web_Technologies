@@ -64,6 +64,7 @@
     // Close the database connection    
 }
   
+  session_start();
   $script = "";
   if(isset($_SESSION["id"])){
     $userId = $_SESSION["id"];

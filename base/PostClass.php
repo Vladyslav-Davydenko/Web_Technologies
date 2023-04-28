@@ -9,16 +9,14 @@ class Post
     public string $description;
     public int $owner;
     public string $image;
-    public string $created;
 
-    public function __construct(int $postID, string $title, string $description, int $owner, string $image, string $created)
+    public function __construct(int $postID, string $title, string $description, int $owner, string $image)
     {
         $this->postID = $postID;
         $this->title = $title;
         $this->description = $description;
         $this->owner = $owner;
         $this->image = $image;
-        $this->created = $created;
     }
 }
 
@@ -44,8 +42,8 @@ function getPostsForUser() {
         $description = isset($row["description"]) ? $row["description"] : "";
         $image = isset($row["image"]) ? $row["image"] : "img/posts/default.jpg";
         $owner = $id;
-        $created = $row["created"];
-        $post = new Post($postID, $title, $description, $owner, $image, $created);
+
+        $post = new Post($postID, $title, $description, $owner, $image);
         $posts_list[] = $post;
       }
       
@@ -69,13 +67,12 @@ function getPosts() {
         $description = isset($row["description"]) ? $row["description"] : "";
         $image = isset($row["image"]) ? $row["image"] : "img/posts/default.jpg";
         $owner = $row["owner"];
-        $created = $row["created"];
         if(isset($_GET['text']) && strpos(strtolower($title), strtolower($_GET['text'])) !== false){
-            $post = new Post($postID, $title, $description, $owner, $image, $created);
+            $post = new Post($postID, $title, $description, $owner, $image);
             $posts_list[] = $post;
         }
         if(!isset($_GET['text'])){
-            $post = new Post($postID, $title, $description, $owner, $image, $created);
+            $post = new Post($postID, $title, $description, $owner, $image);
             $posts_list[] = $post;
         }
     }
@@ -89,22 +86,17 @@ function getSinglePost() {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    try {
-        $id = $_GET["id"];
-        $stmt = $conn->prepare("SELECT * FROM Post WHERE postID = $id");
-        $stmt->execute();
-    } catch (Exception $e) {
-        echo "<script>window.location.href='index.php';</script>";
-    }
+    $id = $_GET["id"];
+    $stmt = $conn->prepare("SELECT * FROM Post WHERE postID = $id");
+    $stmt->execute();
     $result = $stmt->get_result();
     $post_data = $result->fetch_assoc();
     $postID = $id;
     $title = $post_data["title"];
-    $created = $post_data["created"];
     $description = isset($post_data["description"]) ? $post_data["description"] : "";
     $image = isset($post_data["image"]) ? $post_data["image"] : "img/posts/default.jpg";
     $owner = $post_data["owner"];
-    $post = new Post($postID, $title, $description, $owner, $image, $created);
+    $post = new Post($postID, $title, $description, $owner, $image);
     return $post;
 }
 

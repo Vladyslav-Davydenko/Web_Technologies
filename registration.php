@@ -24,7 +24,7 @@
         if (empty($password)) {
             $error = 'Password Field is Empty';
         } else {
-            if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~`!@#$%^&*()_\-+={[}\]|:;'<,>.?\/]).{8,16}$/", $password)){
+            if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/", $password)){
                 $error = 'Password is Invalid';
             }
         }
@@ -44,7 +44,7 @@
         if (empty($username)) {
             $error = 'Username field is Empty';
         } else {
-            if(!preg_match("/^[A-Za-z][A-Za-z0-9_]{6,15}$/", $username)){
+            if(!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $username)){
                 $error = 'Username is Invalid';
             }
         }

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 
 class Template
@@ -60,7 +61,6 @@ class Template
                                 <p>' . $replaceWith[$i]->description . '
                                 </p>
                             </div>
-                            <h4>'.$replaceWith[$i]->created.'</h4>
                         </div>
                     </div>';
                     $stmt->close();
@@ -89,9 +89,9 @@ class Template
                             <p>
                             ' . $replaceWith[$i]->description . '
                             </p>
-                            <h4>'.$replaceWith[$i]->created.'</h4>
                         </div>
-                    </div>';
+                    </div>
+                    <script>const searchBtn = document.querySelector("#searchBtn");searchBtn.disabled=true;</script>';
                     }
                 }
             }
@@ -131,18 +131,26 @@ class Template
                     </li>';
                     }       
                     
-                $sidebar .= '</ul>
-                </div>
-                <div class="create-btn">
-                    <a href="make-post.php">
-                    <input class="btn" type="submit" value="&#43 Add New Post" />
-                    </a>
-                </div>
-                <div class="create-btn">
-                    <a href="edit_form.php">
-                    <input class="btn" type="submit" value="Edit Your Profile" />
-                    </a>
-                </div>';
+                $sidebar .= '</ul>'; 
+                if((isset($_GET["username"]) && $_GET["username"] == $_SESSION["id"]) || (!isset($_GET["username"]) && isset($_SESSION["id"]))){
+                    $sidebar .= '</div>
+                    <div class="create-btn">
+                        <a href="make-post.php">
+                        <input class="btn" type="submit" value="&#43 Add New Post" />
+                        </a>
+                    </div>
+                    <div class="create-btn">
+                        <a href="edit_form.php">
+                        <input class="btn" type="submit" value="Edit Your Profile" />
+                        </a>
+                    </div>';
+                } else{
+                    $sidebar .= '</div>
+                    <div class="create-btn">
+                    </div>
+                    <div class="create-btn">
+                    </div>';
+                }
             }
             $this->assign($searchFor, $sidebar);
         }
@@ -217,7 +225,6 @@ class Template
                 $singlePost .= '<div class="single-post-kiril">
                 <div class="post-header">
                     <div class="post-meta"><span class="author">'.$user_data["username"].'</span><br>
-                    <div class="post-meta"><span class="author">'.$replaceWith->created.'</span><br>
                 </div>
                     <h2 class="post-title">'.$replaceWith->title.'</h2>
                     <div class="post-image-single">
@@ -238,7 +245,6 @@ class Template
                     </div>
                 </div>
             </div>
-            </div>
             <div class="comment-section">
                 <form class="form-for-comment" method="get" action="make-post-comments.php" id="createPostComment">
                     <div class="form-field-comment">
@@ -247,7 +253,8 @@ class Template
                     </div>
                     <input class="btn" type="submit" value="Send a Comment" />
                 </form>
-            </div>';
+            </div>
+            <script>const searchBtn = document.querySelector("#searchBtn");searchBtn.disabled=true;</script>';
             }
         }
         mysqli_close($conn);
@@ -278,16 +285,15 @@ class Template
                             $commentInfo .= '<div class="comment-post"> 
                             <div class="comment-info"> 
                                 <div class="post-author-img"> 
-                                    <a href="profile.php?username='.$user_data["ID"].'"><img class="avatar-small" src="'.$user_data["avatar"].'"></a> 
+                                    <a href="profile.php?username='.$user_data["id"].'"><img class="avatar-small" src="'.$user_data["avatar"].'"></a> 
                                 </div> 
                             <div class="post-author-text"> 
-                                <a href="profile.php?username='.$user_data["ID"].'"><h4>by '.$user_data["username"].'</h4></a> 
+                                <a href="profile.php?username='.$user_data["id"].'"><h4>by '.$user_data["username"].'</h4></a> 
                             </div>
                         </div>
                         <div class="comment"> 
                             <p>'.$comment->commentText.'</p> 
                         </div>
-                        <h4>'.$comment->created.'</h4>
                     </div>'; 
                         }
                     }
@@ -304,11 +310,7 @@ class Template
         const logoutBtn = document.querySelector("#logout");
         const profileBtn = document.querySelector("#profileBtn");
         const profileBtnHamb = document.querySelector("#profileHamb");
-        const searchBtn = document.querySelector("#searchBtn");
-        searchBtn.disabled = false;
-        if (window.location.pathname !== "/index.php") {
-            searchBtn.disabled = true;
-          }';
+        const searchBtn = document.querySelector("#searchBtn");';
         if(!empty($searchFor)) {
             if (isset($_SESSION["id"])){
                 $script .= 'loginBtn.style.display = "none";

@@ -1,5 +1,5 @@
 const imagePreview = document.getElementById("image-preview");
-const fileInput = document.getElementById("file-input");
+const fileInput = document.getElementById("myfile");
 const h2El = document.getElementById("h2");
 
 fileInput.addEventListener("change", (event) => {

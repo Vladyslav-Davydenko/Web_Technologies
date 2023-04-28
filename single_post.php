@@ -22,4 +22,5 @@ $t -> logInlogOutScript("script");
 $output = $t->render(); 
 
 echo $output;
+echo '<script>const searchBtn = document.querySelector("#searchBtn");searchBtn.disabled=true;</script>';
 ?>
