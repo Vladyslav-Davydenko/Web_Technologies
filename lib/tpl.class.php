@@ -63,7 +63,7 @@ class Template
                             </div>
                         </div>
                     </div>';
-                    $stmt->close();
+                        $stmt->close();
                     }
                 }
             }
@@ -82,7 +82,7 @@ class Template
                 if ($rows > 0) {
                     for ($i = 0; $i < $rows; $i++) {
                         $profilePost .= '<div class="single-post">
-                        <a href="single_post.php?id='.$replaceWith[$i]->postID.'"><img src="' . $replaceWith[$i]->image . '"></a>
+                        <a href="single_post.php?id=' . $replaceWith[$i]->postID . '"><img src="' . $replaceWith[$i]->image . '"></a>
                         <div class="post-text">
                         <form action="submit.php" method="post">
                             <h3>' . $replaceWith[$i]->title . '</h3>
@@ -109,29 +109,29 @@ class Template
                     <h3>' . $replaceWith->username . '</h3>
                     <p class="profile-text">' . $replaceWith->bio . '</p>
                     <ul class="prof-social">';
-                    if($replaceWith->social != ""){
-                        $sidebar .= '<li>
+                if ($replaceWith->social != "") {
+                    $sidebar .= '<li>
                         <a title="Blog" href="' . $replaceWith->social . '" target="_blank"><i class="fa fa-globe"></i></a>
                         </li>';
-                    }
-                    if($replaceWith->twitter != ""){
-                        $sidebar .= '<li>
+                }
+                if ($replaceWith->twitter != "") {
+                    $sidebar .= '<li>
                         <a title="Twitter" href="' . $replaceWith->twitter . '" target="_blank"><i class="fa fa-twitter"></i></a>
                     </li>';
-                    }
-                    if($replaceWith->facebook != ""){
-                        $sidebar .= '<li>
+                }
+                if ($replaceWith->facebook != "") {
+                    $sidebar .= '<li>
                         <a title="Facebook" href="' . $replaceWith->facebook . '" target="_blank"><i class="fa fa-facebook"></i></a>
                     </li>';
-                    }
-                    if($replaceWith->instagram != ""){
-                        $sidebar .= '<li>
+                }
+                if ($replaceWith->instagram != "") {
+                    $sidebar .= '<li>
                         <a title="Instagram" href="' . $replaceWith->instagram . '" target="_blank"><i class="fa fa-instagram"></i></a>
                     </li>';
-                    }       
-                    
-                $sidebar .= '</ul>'; 
-                if((isset($_GET["username"]) && $_GET["username"] == $_SESSION["id"]) || (!isset($_GET["username"]) && isset($_SESSION["id"]))){
+                }
+
+                $sidebar .= '</ul>';
+                if ((isset($_GET["username"]) && $_GET["username"] == $_SESSION["id"]) || (!isset($_GET["username"]) && isset($_SESSION["id"]))) {
                     $sidebar .= '</div>
                     <div class="create-btn">
                         <a href="make-post.php">
@@ -143,7 +143,7 @@ class Template
                         <input class="btn" type="submit" value="Edit Your Profile" />
                         </a>
                     </div>';
-                } else{
+                } else {
                     $sidebar .= '</div>
                     <div class="create-btn">
                     </div>
@@ -164,34 +164,28 @@ class Template
                 <div class="main-about">
                 <div class="about-post">
                     <h3>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
-                        quibusdam quas beatae in doloribus. Sed, iste!
+                        Travel memories, created by students of Tallinn University of Technologies, School of Information Technologies, provides opportunities for memorising all memories of the most vivid adventures and share it with everyone
                     </h3>
                 </div>
                 <div class="workers">
                     <div class="about-post">
                         <img class="about-img" src="img/avatars/kirill.jpg">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                            Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
-                            quibusdam quas beatae in doloribus. Sed, iste!
+                        Kiril Boiko - one of the main developers, first-year Cybersecurity Engineering student, responsible for creating and testing single post web page, responsible, adaptive, enthusiastic and valid member of Travel memories project
                         </p>
                     </div>
                     <div class="about-post">
                         <img class="about-img" src="img/avatars/Visl.jpg">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                            Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
-                            quibusdam quas beatae in doloribus. Sed, iste!
+                        Vladyslav Davydenko - leader of Travel Memories, one of the main developers, first-year Cybersecurity Engineering student, responsible for creating and testing main and user profile pages, has organization, time management and problem-solving skills, valid member of Travel memories project
+
                         </p>
                     </div>
                     <div class="about-post">
                         <img class="about-img" src="img/avatars/masha.jpg">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                            Dolorem perspiciatis totam libero id iure aut nisi eaque quasi explicabo ipsam iusto assumenda porro, 
-                            quibusdam quas beatae in doloribus. Sed, iste!
+                        Mariia Boiko - main design of Travel Memories, first-year Cybersecurity Engineering student, responsible for designing Travel Memories and creating additional web pages, creative, flexible and positive member of Travel memories project
+
                         </p>
                     </div>
                 </div>
@@ -200,15 +194,16 @@ class Template
         $this->assign($searchFor, $infoAbout);
     }
 
-    function createSinglePost($searchFor, $replaceWith) {
+    function createSinglePost($searchFor, $replaceWith)
+    {
         include('data/db_connection.php');
         $conn = mysqli_connect($server, $user, $password, $database);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
         $singlePost = '';
-        if(!empty($searchFor)) {
-            if(!empty($replaceWith)) {
+        if (!empty($searchFor)) {
+            if (!empty($replaceWith)) {
                 $id = $replaceWith->owner;
                 $stmt = $conn->prepare("SELECT * FROM User WHERE ID = $id");
                 $stmt->execute();
@@ -223,23 +218,23 @@ class Template
 
                 $singlePost .= '<div class="single-post-kiril">
                 <div class="post-header">
-                    <div class="post-meta"><span class="author">'.$user_data["username"].'</span><br>
+                    <div class="post-meta"><span class="author">' . $user_data["username"] . '</span><br>
                 </div>
-                    <h2 class="post-title">'.$replaceWith->title.'</h2>
+                    <h2 class="post-title">' . $replaceWith->title . '</h2>
                     <div class="post-image-single">
-                        <img src="'.$replaceWith->image.'">
+                        <img src="' . $replaceWith->image . '">
                     </div>
                 </div>
                 <div class="post-body">
                     <div class="entry-desc">
-                        <p>'.$replaceWith->description.'</p>
+                        <p>' . $replaceWith->description . '</p>
                     </div>
                 </div>
                 <div class="post-image-reply-section">
                         <div class="post-like">
                         <span class="number-of-likes"></span>
                         <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                        <span class="number-of-comments">'.$counterComments["numComments"].'</span>
+                        <span class="number-of-comments">' . $counterComments["numComments"] . '</span>
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
                 </div>
@@ -248,7 +243,7 @@ class Template
                 <form class="form-for-comment" method="get" action="make-post-comments.php" id="createPostComment">
                     <div class="form-field-comment">
                         <input type="textarea" cols="90" rows="15" id="commentText" name="commentText" class="input-text-comment" placeholder="Enter your Comment">
-                        <input type="hidden" name="commentPostID" id="commentPostID" value="'.$replaceWith->postID.'">
+                        <input type="hidden" name="commentPostID" id="commentPostID" value="' . $replaceWith->postID . '">
                     </div>
                     <input class="btn" type="submit" value="Send a Comment" />
                 </form>
@@ -256,51 +251,53 @@ class Template
             }
         }
         mysqli_close($conn);
-        $this -> assign($searchFor, $singlePost);
+        $this->assign($searchFor, $singlePost);
     }
-    
-    function createPostComments($searchFor, $replaceWith) {
+
+    function createPostComments($searchFor, $replaceWith)
+    {
         include('data/db_connection.php');
         $conn = mysqli_connect($server, $user, $password, $database);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
         $commentInfo = '';
-        if(!empty($searchFor)) {
-            if(!empty($replaceWith)) {
-                    foreach($replaceWith as $comment) {
-                        if (!empty($_GET['id'])) {
-                            $id = $_GET['id'];
-                        } else {
-                            echo "<script>window.location.href='index.php';</script>";
-                        }
-                        $ownerID = $comment->ownerID;
-                        $stmt = $conn->prepare("SELECT * FROM User WHERE ID = $ownerID");
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        $user_data = $result->fetch_assoc();
-                        if ($comment->postID == $id) {
-                            $commentInfo .= '<div class="comment-post"> 
+        if (!empty($searchFor)) {
+            if (!empty($replaceWith)) {
+                foreach ($replaceWith as $comment) {
+                    if (!empty($_GET['id'])) {
+                        $id = $_GET['id'];
+                    } else {
+                        echo "<script>window.location.href='index.php';</script>";
+                    }
+                    $ownerID = $comment->ownerID;
+                    $stmt = $conn->prepare("SELECT * FROM User WHERE ID = $ownerID");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $user_data = $result->fetch_assoc();
+                    if ($comment->postID == $id) {
+                        $commentInfo .= '<div class="comment-post"> 
                             <div class="comment-info"> 
                                 <div class="post-author-img"> 
-                                    <a href="profile.php?username='.$user_data["ID"].'"><img class="avatar-small" src="'.$user_data["avatar"].'"></a> 
+                                    <a href="profile.php?username=' . $user_data["ID"] . '"><img class="avatar-small" src="' . $user_data["avatar"] . '"></a> 
                                 </div> 
                             <div class="post-author-text"> 
-                                <a href="profile.php?username='.$user_data["ID"].'"><h4>by '.$user_data["username"].'</h4></a> 
+                                <a href="profile.php?username=' . $user_data["ID"] . '"><h4>by ' . $user_data["username"] . '</h4></a> 
                             </div>
                         </div>
                         <div class="comment"> 
-                            <p>'.$comment->commentText.'</p> 
+                            <p>' . $comment->commentText . '</p> 
                         </div>
-                    </div>'; 
-                        }
+                    </div>';
                     }
                 }
             }
+        }
         $this->assign($searchFor, $commentInfo);
     }
 
-    function logInlogOutScript($searchFor){
+    function logInlogOutScript($searchFor)
+    {
         $script = '<script type="text/javascript">
         const loginBtnHamb = document.querySelector("#loginHamb");
         const logoutBtnHamb = document.querySelector("#logoutHamb");
@@ -309,8 +306,8 @@ class Template
         const profileBtn = document.querySelector("#profileBtn");
         const profileBtnHamb = document.querySelector("#profileHamb");
         const searchBtn = document.querySelector("#searchBtn");';
-        if(!empty($searchFor)) {
-            if (isset($_SESSION["id"])){
+        if (!empty($searchFor)) {
+            if (isset($_SESSION["id"])) {
                 $script .= 'loginBtn.style.display = "none";
                 logoutBtn.style.display = "block";
                 loginBtnHamb.style.display = "none";
@@ -340,7 +337,7 @@ class Template
                 profileBtnHamb.addEventListener("click", () => {
                     window.location.href="profile.php";
                 });';
-            }else{
+            } else {
                 $script .= '
                 loginBtnHamb.style.display = "block";
                 logoutBtnHamb.style.display = "none";
