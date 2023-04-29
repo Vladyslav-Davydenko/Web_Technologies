@@ -90,8 +90,7 @@ class Template
                             ' . $replaceWith[$i]->description . '
                             </p>
                         </div>
-                    </div>
-                    <script>const searchBtn = document.querySelector("#searchBtn");searchBtn.disabled=true;</script>';
+                    </div>';
                     }
                 }
             }
@@ -253,8 +252,7 @@ class Template
                     </div>
                     <input class="btn" type="submit" value="Send a Comment" />
                 </form>
-            </div>
-            <script>const searchBtn = document.querySelector("#searchBtn");searchBtn.disabled=true;</script>';
+            </div>';
             }
         }
         mysqli_close($conn);
@@ -285,10 +283,10 @@ class Template
                             $commentInfo .= '<div class="comment-post"> 
                             <div class="comment-info"> 
                                 <div class="post-author-img"> 
-                                    <a href="profile.php?username='.$user_data["id"].'"><img class="avatar-small" src="'.$user_data["avatar"].'"></a> 
+                                    <a href="profile.php?username='.$user_data["ID"].'"><img class="avatar-small" src="'.$user_data["avatar"].'"></a> 
                                 </div> 
                             <div class="post-author-text"> 
-                                <a href="profile.php?username='.$user_data["id"].'"><h4>by '.$user_data["username"].'</h4></a> 
+                                <a href="profile.php?username='.$user_data["ID"].'"><h4>by '.$user_data["username"].'</h4></a> 
                             </div>
                         </div>
                         <div class="comment"> 
