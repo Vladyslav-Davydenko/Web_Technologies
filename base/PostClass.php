@@ -71,7 +71,7 @@ function getPosts() {
             $post = new Post($postID, $title, $description, $owner, $image);
             $posts_list[] = $post;
         }
-        if(!isset($_GET['text'])){
+        if(!isset($_GET['text']) || $_GET['text'] === ""){
             $post = new Post($postID, $title, $description, $owner, $image);
             $posts_list[] = $post;
         }
