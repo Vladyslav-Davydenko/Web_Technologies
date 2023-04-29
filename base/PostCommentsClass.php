@@ -5,14 +5,14 @@ class PostComments
         public int $postID;
         public int $ownerID;
         public string $commentText;
-    
+        public string $created;
 
-    public function __construct(int $postID, int $ownerID, string $commentText) 
+    public function __construct(int $postID, int $ownerID, string $commentText, string $created) 
     {
         $this->postID = $postID;
         $this->ownerID = $ownerID;
         $this->commentText = $commentText;
-        
+        $this->created = $created;
     }
 }
 
@@ -33,7 +33,8 @@ function getSinglePostComments()
         $postID = $row["postID"];
         $ownerID = $row["ownerID"];
         $commentText = $row["commentText"];
-        $comment = new PostComments($postID, $ownerID, $commentText);
+        $created = $row["created"];
+        $comment = new PostComments($postID, $ownerID, $commentText, $created);
         $postCommentsList[] = $comment;
       }
     $stmt->close();

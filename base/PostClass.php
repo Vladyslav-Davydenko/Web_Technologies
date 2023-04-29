@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('base/UserClass.php');
 
 class Post
@@ -9,14 +8,16 @@ class Post
     public string $description;
     public int $owner;
     public string $image;
+    public string $created;
 
-    public function __construct(int $postID, string $title, string $description, int $owner, string $image)
+    public function __construct(int $postID, string $title, string $description, int $owner, string $image, string $created)
     {
         $this->postID = $postID;
         $this->title = $title;
         $this->description = $description;
         $this->owner = $owner;
         $this->image = $image;
+        $this->created = $created;
     }
 }
 
@@ -39,11 +40,12 @@ function getPostsForUser() {
       while ($row = $result->fetch_assoc()) {
         $postID = $row["postID"];
         $title = $row["title"];
+        $created = $row["created"];
         $description = isset($row["description"]) ? $row["description"] : "";
         $image = isset($row["image"]) ? $row["image"] : "img/posts/default.jpg";
         $owner = $id;
 
-        $post = new Post($postID, $title, $description, $owner, $image);
+        $post = new Post($postID, $title, $description, $owner, $image, $created);
         $posts_list[] = $post;
       }
       
@@ -64,15 +66,16 @@ function getPosts() {
     while ($row = $result->fetch_assoc()) {
         $postID = $row["postID"];
         $title = $row["title"];
+        $created = $row["created"];
         $description = isset($row["description"]) ? $row["description"] : "";
         $image = isset($row["image"]) ? $row["image"] : "img/posts/default.jpg";
         $owner = $row["owner"];
         if(isset($_GET['text']) && strpos(strtolower($title), strtolower($_GET['text'])) !== false){
-            $post = new Post($postID, $title, $description, $owner, $image);
+            $post = new Post($postID, $title, $description, $owner, $image, $created);
             $posts_list[] = $post;
         }
         if(!isset($_GET['text']) || $_GET['text'] === ""){
-            $post = new Post($postID, $title, $description, $owner, $image);
+            $post = new Post($postID, $title, $description, $owner, $image, $created);
             $posts_list[] = $post;
         }
     }
@@ -93,10 +96,11 @@ function getSinglePost() {
     $post_data = $result->fetch_assoc();
     $postID = $id;
     $title = $post_data["title"];
+    $created = $post_data["created"];
     $description = isset($post_data["description"]) ? $post_data["description"] : "";
     $image = isset($post_data["image"]) ? $post_data["image"] : "img/posts/default.jpg";
     $owner = $post_data["owner"];
-    $post = new Post($postID, $title, $description, $owner, $image);
+    $post = new Post($postID, $title, $description, $owner, $image, $created);
     return $post;
 }
 

@@ -12,10 +12,11 @@ if(isset($_SESSION['id'])){
         $commentText = $_GET['commentText'];
         $postID = $_GET['commentPostID'];
         $ownerID = $_SESSION['id'];
+        $created = date('Y-m-d');
         // Writing into DB
-        $sql = "INSERT INTO Comment (postID, ownerID, commentText) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO Comment (postID, ownerID, commentText, created) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "iis", $postID, $ownerID, $commentText);
+        mysqli_stmt_bind_param($stmt, "iiss", $postID, $ownerID, $commentText, $created);
         mysqli_stmt_execute($stmt);
         echo "<script>window.location.href='single_post.php?id=". $postID ."';</script>";
     }

@@ -61,6 +61,7 @@ class Template
                                 <p>' . $replaceWith[$i]->description . '
                                 </p>
                             </div>
+                            <h4>'.$replaceWith[$i]->created.'</h4>
                         </div>
                     </div>';
                         $stmt->close();
@@ -84,12 +85,12 @@ class Template
                         $profilePost .= '<div class="single-post">
                         <a href="single_post.php?id=' . $replaceWith[$i]->postID . '"><img src="' . $replaceWith[$i]->image . '"></a>
                         <div class="post-text">
-                        <form action="submit.php" method="post">
                             <h3>' . $replaceWith[$i]->title . '</h3>
                             <p>
                             ' . $replaceWith[$i]->description . '
                             </p>
                         </div>
+                        <h4>'.$replaceWith[$i]->created.'</h4>
                     </div>';
                     }
                 }
@@ -219,6 +220,7 @@ class Template
                 $singlePost .= '<div class="single-post-kiril">
                 <div class="post-header">
                     <div class="post-meta"><span class="author">' . $user_data["username"] . '</span><br>
+                    <span class="author">'.$replaceWith->created.'</span><br>
                 </div>
                     <h2 class="post-title">' . $replaceWith->title . '</h2>
                     <div class="post-image-single">
@@ -232,8 +234,7 @@ class Template
                 </div>
                 <div class="post-image-reply-section">
                         <div class="post-like">
-                        <span class="number-of-likes"></span>
-                        <button class="post-like-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        <span class="number-of-likes">Comments:</span>
                         <span class="number-of-comments">' . $counterComments["numComments"] . '</span>
                         <a class="post-comment-button"><i class="fa fa-comment"></i></a>
                     </div>
@@ -288,8 +289,9 @@ class Template
                         <div class="comment"> 
                             <p>' . $comment->commentText . '</p> 
                         </div>
-                    </div>';
-                    }
+                        <h4>'.$comment->created.'</h4>
+                    </div>'; 
+                        }
                 }
             }
         }

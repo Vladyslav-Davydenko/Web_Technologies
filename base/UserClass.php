@@ -1,5 +1,4 @@
 <?php 
-session_start();
 class User{
     public int $userID;
     public string $email;
