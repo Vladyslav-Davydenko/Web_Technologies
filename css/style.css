@@ -954,7 +954,7 @@ form i {
 .select-photo::before {
   position: absolute;
   content: "";
-  width: 57%;
+  width: 65%;
   height: 5px;
   border-radius: 30px;
   background: linear-gradient(65deg, #ff4d6d, #a4133c);
@@ -1090,12 +1090,19 @@ input::placeholder {
 }
 
 .pop .submit-but {
+  width: 100%;
+  background: linear-gradient(65deg, #ff4d6d, #a4133c);
+  border: none;
   padding-top: 7px;
   padding-bottom: 7px;
   margin-top: 25px;
   font-size: 23px;
   border-radius: 10px;
   cursor: pointer;
+  text-decoration: none;
+  color: #fff0f3;
+  display: block;
+  text-align: center;
 }
 
 .sign-box .submit-but {
