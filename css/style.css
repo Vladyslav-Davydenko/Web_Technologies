@@ -360,6 +360,9 @@ nav a {
   transition: all 0.3s ease-in-out;
 }
 h4 {
+  position: relative;
+  right: 5px;
+  top: 5px;
   font-family: "Squealer";
   font-size: 18px;
   color: #30343f;
@@ -497,7 +500,13 @@ p {
 .comment > p {
   margin: 20px 0px 30px 0px;
 }
-
+#delete-btn {
+  position: relative;
+  bottom: 45px;
+  right: 10px;
+  font-size: 22px;
+  float: right;
+}
 .form-for-comment {
   margin-left: 25px;
   display: flex;
@@ -593,9 +602,10 @@ p {
   grid-template-rows: auto;
 }
 .posts .single-post {
-  max-height: 400px;
+  height: 475px;
 }
 .single-post {
+  height: 475px;
   max-width: 300px;
   background-color: #fff0f3;
   border-radius: 15px;

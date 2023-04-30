@@ -44,7 +44,7 @@
         if (empty($username)) {
             $error = 'Username field is Empty';
         } else {
-            if(!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $username)){
+            if(!preg_match("/^[A-Za-z][A-Za-z0-9_]{6,15}$/", $username)){
                 $error = 'Username is Invalid';
             }
         }
