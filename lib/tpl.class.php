@@ -165,35 +165,44 @@ class Template
         $infoAbout = '';
         if (!empty($searchFor)) {
             $infoAbout .= '
-                <div class="main-about">
+            <div class="main-about">
+            <div class="about-post">
+                <h3>
+                Travel memories is a website that allows people to share their memories with others about their travel experience, 
+                leave comments and save here the history of their holidays
+                </h3>
+            </div>
+            <div class="workers">
                 <div class="about-post">
-                    <h3>
-                        Travel memories, created by students of Tallinn University of Technologies, School of Information Technologies, provides opportunities for memorising all memories of the most vivid adventures and share it with everyone
-                    </h3>
-                </div>
-                <div class="workers">
-                    <div class="about-post">
-                        <img class="about-img" src="img/avatars/kirill.jpg">
-                        <p>
-                        Kiril Boiko - one of the main developers, first-year Cybersecurity Engineering student, responsible for creating and testing single post web page, responsible, adaptive, enthusiastic and valid member of Travel memories project
-                        </p>
-                    </div>
-                    <div class="about-post">
-                        <img class="about-img" src="img/avatars/Visl.jpg">
-                        <p>
-                        Vladyslav Davydenko - leader of Travel Memories, one of the main developers, first-year Cybersecurity Engineering student, responsible for creating and testing main and user profile pages, has organization, time management and problem-solving skills, valid member of Travel memories project
+                    <img class="about-img" src="img/avatars/kirill.jpg">
+                    <p>
+                        Kirill Boiko <br>
+                        Student of Tallinn University of Technology <br>
+                        Email: kiboik@ttu.ee <br>
+                        Tel: +37212341234 <br>
 
-                        </p>
-                    </div>
-                    <div class="about-post">
-                        <img class="about-img" src="img/avatars/masha.jpg">
-                        <p>
-                        Mariia Boiko - main design of Travel Memories, first-year Cybersecurity Engineering student, responsible for designing Travel Memories and creating additional web pages, creative, flexible and positive member of Travel memories project
-
-                        </p>
-                    </div>
+                    </p>
                 </div>
-                </div>';
+                <div class="about-post">
+                    <img class="about-img" src="img/avatars/Visl.jpg">
+                    <p>
+                        Vladyslav Davydenko <br>
+                        Student of Tallinn University of Technology <br>
+                        Email: vldavy@ttu.ee <br>
+                        Tel: +37212341234 <br>
+                    </p>
+                </div>
+                <div class="about-post">
+                    <img class="about-img" src="img/avatars/masha.jpg">
+                    <p>
+                        Maria Boiko <br>
+                        Student of Tallinn University of Technology <br>
+                        Email: masha5boiko@gmail.com <br>
+                        Tel: +37212341234 <br>
+                    </p>
+                </div>
+            </div>
+        </div>';
         }
         $this->assign($searchFor, $infoAbout);
     }

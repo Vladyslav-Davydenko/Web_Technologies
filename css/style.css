@@ -394,6 +394,12 @@ p {
   font-family: "Libre-Baskerville-Italic";
   margin-bottom: 20px;
 }
+.single-post p {
+  width: 295px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .entry-desc > p {
   font-size: 24px !important;
   word-spacing: 4px;
@@ -513,7 +519,7 @@ p {
   justify-content: center;
   gap: 1.6rem;
 }
-.form{
+.form {
   display: flex;
   justify-content: center;
   height: 100px;
@@ -602,7 +608,7 @@ p {
   grid-template-rows: auto;
 }
 .posts .single-post {
-  height: 475px;
+  height: 400px;
 }
 .single-post {
   height: 475px;
@@ -698,6 +704,7 @@ p {
 
 .profile-side-bar {
   display: flex;
+  width: 300px;
   flex-direction: column;
   align-items: center;
   background-color: #fff0f3;
