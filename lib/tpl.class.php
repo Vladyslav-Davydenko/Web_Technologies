@@ -85,10 +85,13 @@ class Template
                         $profilePost .= '<div class="single-post">
                         <a href="single_post.php?id=' . $replaceWith[$i]->postID . '"><img src="' . $replaceWith[$i]->image . '"></a>
                         <div class="post-text">
-                            <h3>' . $replaceWith[$i]->title . '</h3>
-                            <p>
-                            ' . $replaceWith[$i]->description . '
-                            </p>
+                            <h3>' . $replaceWith[$i]->title . '</h3>';
+                            if((isset($_GET["username"]) && $_GET["username"] == $_SESSION["id"]) || (!isset($_GET["username"]) && isset($_SESSION["id"]))) {
+                                $profilePost .= '<a href="delete-post.php?id=' . $replaceWith[$i]->postID . '" name="delete-btn" id="delete-btn">
+                                <i class="fa-solid fa-xmark"></i>
+                                </a>';
+                            }              
+                            $profilePost .= '<p>' . $replaceWith[$i]->description . '</p>
                         </div>
                         <h4>'.$replaceWith[$i]->created.'</h4>
                     </div>';
