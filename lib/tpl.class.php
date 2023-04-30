@@ -90,6 +90,29 @@ class Template
                                 $profilePost .= '<a href="delete-post.php?id=' . $replaceWith[$i]->postID . '" name="delete-btn" id="delete-btn">
                                 <i class="fa-solid fa-xmark"></i>
                                 </a>';
+                                $profilePost .= '<script>
+                                document.getElementById("delete-btn").addEventListener("click", function(event) {
+                                    event.preventDefault();
+                                    // show the confirmation dialog
+                                    if (confirm("Are you sure you want to delete this post with postID=' . $replaceWith[$i]->postID . '?")) {
+                                    // send the AJAX request to execute the PHP script
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("GET", "delete-post.php?id=' . $replaceWith[$i]->postID . '");
+                                    xhr.setRequestHeader(`Content-Type`, `application/x-www-form-urlencoded`);
+                                    xhr.onload = function() {
+                                        if (xhr.status === 200 && xhr.responseText) {
+                                        // display the response from the PHP script
+                                        alert("Post with `postID` = ' . $replaceWith[$i]->postID . ', has been successfully deleted!");
+                                        location.reload();
+                                        } else {
+                                        // handle the error case
+                                        alert("Error executing PHP script!");
+                                        }
+                                    };
+                                    xhr.send("id=" + ' . $replaceWith[$i]->postID . ');
+                                    }
+                                });
+                                </script>';
                             }              
                             $profilePost .= '<p>' . $replaceWith[$i]->description . '</p>
                         </div>
