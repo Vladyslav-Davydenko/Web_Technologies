@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $created = date('Y-m-d');
     if (isset($_FILES['myfile']) && $_FILES['myfile']['error'] == UPLOAD_ERR_OK) {
       $uploaded_file = $_FILES['myfile']['tmp_name'];
-      $destination = 'img/posts/'. $title .'.jpg';
+      $random_number = random_int(100, 999);
+      $destination = 'img/posts/'. $title .'_'. $random_number .'.jpg';
 
       if (move_uploaded_file($uploaded_file, $destination)) {
         $image = $destination;
