@@ -10,7 +10,7 @@
     session_start();
 
     if(isset($_SESSION["id"])){
-        echo "<script>window.location.href='index.php';</script>";
+        header('Location: index.php');
     }
     
     if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["createAccountButton"])) {
@@ -55,7 +55,7 @@
             $check = mysqli_query($conn, $sql1);
             if (mysqli_num_rows($check) > 0) {
                 echo "<script type='text/javascript'>alert('User already exist with such email');</script>";
-                echo "<script>window.location.href='login.php';</script>";
+                header('Location: login.php');
             }
             else{
                 $sql = "INSERT INTO User (username, email, password) VALUES (?, ?, ?)";
@@ -64,13 +64,12 @@
                 mysqli_stmt_execute($stmt);
                 $user_id = mysqli_insert_id($conn);
                 $_SESSION['id'] = $user_id;
-                echo "<script>window.location.href='index.php';</script>";
+                header('Location: index.php');
             }
-            // echo "<script>window.location.href='index.php';</script>";
         }    
         else{
             echo "<script type='text/javascript'>alert('$error');</script>";
-            echo "<script>window.location.href='registration.php';</script>";
+            header('Location: registration.php');
 
         } 
         // Close the database connection

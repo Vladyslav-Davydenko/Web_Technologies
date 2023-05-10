@@ -22,5 +22,4 @@ $t -> logInlogOutScript("script");
 $output = $t->render(); 
 
 echo $output;
-echo '<script>searchBtn.disabled=true;</script>';
 ?>

@@ -299,7 +299,7 @@ class Template
                     if (!empty($_GET['id'])) {
                         $id = $_GET['id'];
                     } else {
-                        echo "<script>window.location.href='index.php';</script>";
+                        header('Location: index.php');
                     }
                     $ownerID = $comment->ownerID;
                     $stmt = $conn->prepare("SELECT * FROM User WHERE ID = $ownerID");

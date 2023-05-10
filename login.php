@@ -10,7 +10,7 @@
     session_start();
     // TODO: check if session is the right one
     if(isset($_SESSION["id"])){
-        echo "<script>window.location.href='index.php';</script>";
+        header('Location: index.php');
     }
     if ((($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["loginSubmitButton"]))) {
         $email = $_POST['loginEmail'];
@@ -29,11 +29,11 @@
         // User exists and the password is correct
         $row = mysqli_fetch_assoc($result) ;
         $_SESSION['id'] = $row['ID'];
-        echo "<script>window.location.href='index.php';</script>";
+        header('Location: index.php');
         } else {
         // User does not exist or the password is incorrect
         echo "<script type='text/javascript'>alert('User does not exist or password is incorrect');</script>";
-        echo "<script>window.location.href='login.php';</script>";
+        header('Location: index.php');
         } 
         
     // Close the database connection  
