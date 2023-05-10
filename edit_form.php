@@ -2,12 +2,20 @@
   require_once('data/db_connection.php');
   require_once('base/UserClass.php');
 
+  function sanitizeInput($input) {
+    $input = stripslashes($input);
+    $input = strip_tags($input);
+    $input = htmlspecialchars($input);
+    $input = trim($input);
+    return $input;
+  }
+
   $conn = mysqli_connect($server, $user, $password, $database);
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
   if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST["editAccountButton"])) {
-    $username = $_POST["username"];
+    $username = sanitizeInput($_POST["username"]);
     $email = $_POST["email"];
     $bio = isset($_POST['bio']) ? $_POST['bio'] : "";
     $avatar = "img/avatars/default.png";
@@ -25,6 +33,16 @@
     $facebook = isset($_POST['facebook']) ? $_POST['facebook'] : "";
     $social = isset($_POST['web']) ? $_POST['web'] : "";
     $error = '';
+
+    if(!empty($bio)) {
+      $bio = sanitizeInput($bio);
+    } 
+    if(!empty($twitter) || !empty($instagram) || !empty($facebook) || !empty($social)) {
+      $twitter = sanitizeInput($twitter);
+      $instagram = sanitizeInput($instagram);
+      $facebook = sanitizeInput($facebook);
+      $social = sanitizeInput($social); 
+    }
 
     //E-mail Validation
     $email = trim($email);
