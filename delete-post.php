@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt); 
 }
-echo "<script>window.location.href = 'profile.php';</script>";
+header('Location: profile.php');
 
 
 ?>

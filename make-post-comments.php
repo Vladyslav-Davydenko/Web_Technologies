@@ -18,11 +18,11 @@ if(isset($_SESSION['id'])){
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "iiss", $postID, $ownerID, $commentText, $created);
         mysqli_stmt_execute($stmt);
-        echo "<script>window.location.href='single_post.php?id=". $postID ."';</script>";
+        header('Location: single_post.php?id=' . $postID);
     }
 }
 else{
-    echo "<script>window.location.href='login.php';</script>";
+    header('Location: login.php');
 }
 
 ?>

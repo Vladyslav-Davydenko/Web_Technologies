@@ -53,12 +53,12 @@
       mysqli_stmt_bind_param($stmt, "ssssssssi", $username, $email, $bio, $avatar, $social, $instagram, $facebook, $twitter, $userId);
       $result = mysqli_stmt_execute($stmt);
       mysqli_stmt_close($stmt);
-      echo "<script>window.location.href='profile.php';</script>";
+      header('Location: profile.php');
       
     }    
     else{
         echo "<script type='text/javascript'>alert('$error');</script>";
-        echo "<script>window.location.href='edit_form.php';</script>";
+        header('Location: edit_form.php');
 
     } 
     // Close the database connection    
