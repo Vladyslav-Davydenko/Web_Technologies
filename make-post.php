@@ -4,33 +4,36 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = mysqli_connect($server, $user, $password, $database);
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  }
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
     $title = $_POST["title-of-post"];
     $description = $_POST["post-desc"];
     $image = "img/posts/default.jpg";
     $created = date('Y-m-d');
     if (isset($_FILES['myfile']) && $_FILES['myfile']['error'] == UPLOAD_ERR_OK) {
-      $uploaded_file = $_FILES['myfile']['tmp_name'];
-      $random_number = random_int(100, 999);
-      $destination = 'img/posts/'. $title .'_'. $random_number .'.jpg';
+        $uploaded_file = $_FILES['myfile']['tmp_name'];
+        $random_number = random_int(100, 999);
+        $destination = 'img/posts/' . $title . '_' . $random_number . '.jpg';
 
-      if (move_uploaded_file($uploaded_file, $destination)) {
-        $image = $destination;
-      }  
-  }
+        if (move_uploaded_file($uploaded_file, $destination)) {
+            $image = $destination;
+        }
+    }
+    if (!isset($_SESSION["id"])) {
+        header('Location: login.php');
+    } else {
+        $user = $_SESSION["id"];
+        // Writing into DB
+        $sql = "INSERT INTO Post (title, image, description, owner, created) VALUES (?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "sssis", $title, $image, $description, $user, $created);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        echo "<script>window.location.href='profile.php';</script>";
+    }
 
-    $user = $_SESSION["id"];
-    // Writing into DB
-    $sql = "INSERT INTO Post (title, image, description, owner, created) VALUES (?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssis", $title, $image, $description, $user, $created);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    echo "<script>window.location.href='profile.php';</script>";
 
-   
 }
 
 ?>
@@ -58,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" enctype="multipart/form-data">
                 <div class="box" id="image-preview">
                     <h2 class="select-photo" id="h2">Select a photo</h2>
-                    <input type="file" id="myfile" name="myfile" accept="image/png, image/jpg, image/jpeg"/>
+                    <input type="file" id="myfile" name="myfile" accept="image/png, image/jpg, image/jpeg" />
                 </div>
                 <div class="input-box">
                     <input type="text" name="title-of-post" id="title-of-post" placeholder="Add your Location">
